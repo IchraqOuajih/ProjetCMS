@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inscription – Rendezy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+  <div class="register-page">
+
+
+    <div class="register-info">
+      <h1>Bienvenue sur <span>Rendezy</span></h1>
+      <p>
+        Créez votre compte pour réserver facilement vos rendez-vous
+        chez les meilleurs professionnels.
+      </p>
+
+      <ul>
+        <li>✔ Réservation rapide</li>
+        <li>✔ Confirmation instantanée</li>
+        <li>✔ Professionnels vérifiés</li>
+      </ul>
+    </div>
+
+    
+    <div class="register-card">
+
+      <h2>Créer un compte</h2>
+
+      <form>
+        <div class="input-group">
+          <input type="text" placeholder="Nom" required>
+          <input type="text" placeholder="Prénom" required>
+        </div>
+
+        <input type="email" placeholder="Adresse email" required>
+
+      
+        <div class="password-wrapper">
+          <input type="password" placeholder="Mot de passe" id="password" required>
+          <span class="toggle-password">&#128065;</span>
+        </div>
+
+        <div class="password-wrapper">
+          <input type="password" placeholder="Confirmer le mot de passe" id="confirm-password" required>
+          <span class="toggle-password">&#128065;</span>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          S’inscrire
+        </button>
+      </form>
+
+      <div class="divider">
+        <span>OU</span>
+      </div>
+
+      <div class="social-login">
+        <button class="google">
+          <i class="fa-brands fa-google"></i> Continuer avec Google
+        </button>
+
+        <button class="facebook">
+          <i class="fa-brands fa-facebook-f"></i> Continuer avec Facebook
+        </button>
+      </div>
+
+      <p class="login-link">
+        Déjà un compte ? <a href="login.html">Se connecter</a>
+      </p>
+
+    </div>
+  </div>
+
+<script>
+  const togglePasswords = document.querySelectorAll('.toggle-password');
+
+  togglePasswords.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const input = toggle.previousElementSibling; 
+      const isPassword = input.getAttribute('type') === 'password';
+
+      
+      input.setAttribute('type', isPassword ? 'text' : 'password');
+
+     
+      toggle.textContent = isPassword ? '👁' : '🙈';
+    });
+  });
+</script>
+
+  
+</body>
+</html>
