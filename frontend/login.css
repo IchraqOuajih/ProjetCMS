@@ -1,0 +1,245 @@
+
+:root {
+  --bg-dark: #0b0b15;
+  --bg-card: rgba(30, 30, 40, 0.8);
+  --primary: #7c3aed;   
+  --secondary: #3b82f6;
+  --text-main: #ffffff;
+  --text-muted: #d1d5db;
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --blur: blur(12px);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.login-page {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 80vh;
+  background: rgba(0,0,0,0.7);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.4);
+}
+
+
+.login-info {
+  flex: 1;
+  background: linear-gradient(135deg, #0b0b15, #1f1f30);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login-info h1 {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.login-info h1 span {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-info p {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.login-info ul {
+  margin-top: 20px;
+  list-style: none;
+}
+
+.login-info ul li {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+
+.login-card {
+  flex: 1;
+  background: var(--bg-card);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  border-left: 1px solid var(--border-glass);
+  backdrop-filter: var(--blur);
+}
+
+.login-card h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  text-align: center;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-card input[type="email"],
+.login-card input[type="password"] {
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-glass);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-main);
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 18px; 
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+
+.btn-primary {
+  padding: 15px 50px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+  background: linear-gradient(90deg, #8f4fff, #3767b5);
+}
+
+
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+
+.divider span {
+  background: var(--bg-card);
+  padding: 0 15px;
+  position: relative;
+  z-index: 1;
+  color: var(--text-muted);
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--border-glass);
+  z-index: 0;
+}
+
+
+.social-login button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.social-login .google {
+  background: #db4437;
+}
+
+.social-login .facebook {
+  background: #4267b2;
+}
+
+.social-login button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  color: var(--text-muted);
+}
+
+.login-link a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .login-info, .login-card {
+    border: none;
+    padding: 40px 30px;
+  }
+}
+
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+  padding: 15px 20px;
+  height: 50px; 
+  width: 100%;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-glass);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-main);
+  outline: none;
+  box-sizing: border-box; 

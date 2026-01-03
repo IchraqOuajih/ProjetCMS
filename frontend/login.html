@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Se connecter – Rendezy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <div class="login-page">
+
+ 
+    <div class="login-info">
+      <h1>Bienvenue sur <span>Rendezy</span></h1>
+      <p>Connectez-vous pour gérer vos rendez-vous et profiter de nos services professionnels.</p>
+
+      <ul>
+        <li>✔ Réservation rapide</li>
+        <li>✔ Confirmation instantanée</li>
+        <li>✔ Professionnels vérifiés</li>
+      </ul>
+    </div>
+
+
+    <div class="login-card">
+      <h2>Se connecter</h2>
+
+      <form>
+        <input type="email" placeholder="Adresse email" required>
+
+        <div class="password-wrapper">
+          <input type="password" placeholder="Mot de passe" id="password" required>
+          <span class="toggle-password"><i class="fa-regular fa-eye"></i></span>
+        </div>
+
+        <div class="button-wrapper">
+          <button type="submit" class="btn-primary">Se connecter</button>
+        </div>
+      </form>
+
+      <div class="divider"><span>OU</span></div>
+
+      <div class="social-login">
+        <button class="google"><i class="fa-brands fa-google"></i> Continuer avec Google</button>
+        <button class="facebook"><i class="fa-brands fa-facebook-f"></i> Continuer avec Facebook</button>
+      </div>
+
+      <p class="login-link">
+        Pas encore de compte ? <a href="register.html">Créer un compte</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+
+    const togglePasswords = document.querySelectorAll('.toggle-password');
+    togglePasswords.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const input = toggle.previousElementSibling;
+        const icon = toggle.querySelector('i');
+        const isPassword = input.getAttribute('type') === 'password';
+        input.setAttribute('type', isPassword ? 'text' : 'password');
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+      });
+    });
+  </script>
+
+</body>
+</html>

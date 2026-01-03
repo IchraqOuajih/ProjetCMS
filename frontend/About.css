@@ -10,7 +10,6 @@ body {
   color: #ffffff;
 }
 
-/* HERO */
 .about-hero {
   padding: 100px 20px;
   text-align: center;
@@ -33,7 +32,7 @@ body {
   opacity: 0.85;
 }
 
-/* CONTENU */
+
 .about-content {
   padding: 80px 60px;
   display: grid;
@@ -70,7 +69,7 @@ body {
   opacity: 0.85;
 }
 
-/* VALEURS */
+
 .about-values {
   padding: 70px 20px;
   background: #121a2f;
@@ -96,7 +95,7 @@ body {
   font-size: 14px;
 }
 
-/* FOOTER */
+
 .footer {
   padding: 30px;
   text-align: center;
