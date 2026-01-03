@@ -10,7 +10,7 @@ body {
   color: #ffffff;
 }
 
-/* HERO */
+
 .terms-hero {
   padding: 90px 20px;
   text-align: center;
@@ -29,7 +29,7 @@ body {
   opacity: 0.85;
 }
 
-/* CONTENU */
+
 .terms-content {
   padding: 80px 60px;
   max-width: 1000px;
@@ -52,7 +52,7 @@ body {
   opacity: 0.9;
 }
 
-/* FOOTER */
+
 .footer {
   padding: 30px;
   text-align: center;
