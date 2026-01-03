@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ – Rendezy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <h1>Foire Aux Questions</h1>
+    <p>
+      Retrouvez ici les réponses aux questions les plus fréquentes
+      concernant l’utilisation de Rendezy.
+    </p>
+  </section>
+
+  <!-- FAQ CONTENT -->
+  <section class="faq-content">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Comment créer un compte sur Rendezy ?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Cliquez sur “S’inscrire”, remplissez le formulaire avec vos informations
+          personnelles ou utilisez l’inscription via Google ou Facebook.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        L’inscription est-elle gratuite ?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Oui, l’inscription et l’utilisation de Rendezy sont totalement gratuites
+          pour les utilisateurs.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Comment réserver un rendez-vous ?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Sélectionnez un service, choisissez un professionnel,
+          puis une date et confirmez votre rendez-vous.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Puis-je annuler ou modifier un rendez-vous ?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Oui, selon les conditions définies par le professionnel concerné.
+          Vous pouvez gérer vos rendez-vous depuis votre compte.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Comment proposer mes services sur Rendezy ?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Cliquez sur “Postuler votre travail”, remplissez le formulaire
+          et notre équipe validera votre profil.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Mes données personnelles sont-elles sécurisées ?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Oui, Rendezy respecte la confidentialité et la protection
+          des données personnelles conformément à la réglementation.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 Rendezy. Tous droits réservés.</p>
+  </footer>
+
+  <!-- JS FAQ -->
+  <script>
+    const questions = document.querySelectorAll('.faq-question');
+
+    questions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+
+        answer.classList.toggle('open');
+        icon.classList.toggle('rotate');
+      });
+    });
+  </script>
+
+</body>
+</html>
