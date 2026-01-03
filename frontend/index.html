@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rendezy | Réservez tous vos rendez-vous</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<script>
+// Sélection du logo
+const logoLink = document.getElementById('logoLink');
+
+logoLink.addEventListener('click', (e) => {
+    e.preventDefault(); // empêche le href="#" de provoquer un saut brusque
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll vers le haut
+});
+</script>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+   <div class="logo">
+  <span id="logoLink">Rendezy</span>
+</div>
+
+
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">Comment ça marche</a>
+      <a href="#contact">Contact</a>
+      <a href="register.html" class="btn-primary">S’inscrire</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+  <div class="bubbles"></div>
+
+  <div class="hero-content">
+    <h1>
+      Réservez <span>n’importe quel</span><br />
+      rendez-vous en un clic
+    </h1>
+    <p>
+      Médecins, coiffeurs, garages, administrations, avocats…<br>
+      Réservez, gérez et simplifiez tous vos rendez-vous depuis une seule plateforme.
+    </p>
+    <div class="hero-buttons">
+  <a href="#" class="btn-primary" id="btnStart">Commencer</a>
+  <a href="#" class="btn-secondary" id="btnhow">Voir comment</a>
+</div>
+
+  </div>
+
+  <div class="hero-visual mockup">
+  <div class="app-card card1">
+    <h4>📅 Rendez-vous confirmé</h4>
+    <p>Dr. Ahmed – 15 Mars à 10:30</p>
+    <span class="status">Confirmé</span>
+  </div>
+
+  <div class="app-card card2">
+    <h4>⏰ Nouveau rendez-vous</h4>
+    <p>Coiffeur – 15 Mars à 14:00</p>
+    <span class="status pending">En attente</span>
+  </div>
+</div>
+
+</section>
+
+
+
+<section class="moving-text-section">
+    <div class="bubbles"></div> 
+  <div class="moving-text-container" id="movingTextContainer">
+    <span>Bienvenue au Rendezy</span>
+    <span>Réservez facilement</span>
+    <span>Gérez votre agenda</span>
+    <span>Tous vos services ici</span>
+  </div>
+</section>
+
+
+
+<div class="choice-wrapper">
+  <section class="choice-section">
+    <h2>Que souhaitez-vous faire ?</h2>
+
+    <div class="choice-grid">
+      <div class="choice-card">
+        <h3>📌 S’inscrire</h3>
+        <p>Découvrez tous les services disponibles et réservez vos rendez-vous facilement.</p>
+        <a href="register.html" class="btn-primary">S’inscrire</a>
+      </div>
+
+      <div class="choice-card">
+        <h3>💼 Postuler votre travail</h3>
+        <p>Rejoignez notre plateforme et proposez vos services aux utilisateurs.</p>
+        <a href="apply.html" class="btn-secondary">Postuler</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <h2>Services disponibles</h2>
+
+   <div class="services-grid">
+  <div class="service-card">👨‍⚕️ Médecins</div>
+  <div class="service-card">💇 Coiffeurs</div>
+  <div class="service-card">🚗 Garages</div>
+  <div class="service-card">🏛 Administrations</div>
+  <div class="service-card">⚖️ Avocats</div>
+  <div class="service-card">🦷 Dentistes</div>
+  <div class="service-card">👁️ Opticiens</div>
+  <div class="service-card">💅 Esthéticien(ne)s</div>
+  <div class="service-card">🩺 Kinésithérapeutes</div>
+  <div class="service-card">🩻 Laboratoires</div>
+</div>
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works" id="how">
+    <h2>Comment ça marche ?</h2>
+
+    <div class="steps">
+      <div class="step">
+        <span>01</span>
+        <h3>Choisissez un service</h3>
+        <p>Sélectionnez le type de rendez-vous dont vous avez besoin.</p>
+      </div>
+
+      <div class="step">
+        <span>02</span>
+        <h3>Choisissez une date</h3>
+        <p>Consultez les disponibilités en temps réel.</p>
+      </div>
+
+      <div class="step">
+        <span>03</span>
+        <h3>Confirmez</h3>
+        <p>Votre rendez-vous est réservé instantanément.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <h2>Gagnez du temps dès aujourd’hui</h2>
+    <p>Créez votre compte gratuitement et gérez vos rendez-vous facilement.</p>
+    <a href="register.html" class="btn-primary">Créer un compte</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Rendezy</h4>
+      <p>© 2026 Rendezy. Tous droits réservés.</p>
+      <p>Votre plateforme pour réserver facilement vos services.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Médecins</a></li>
+        <li><a href="#">Coiffeurs</a></li>
+        <li><a href="#">Garages</a></li>
+        <li><a href="#">Administrations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Conditions d'utilisation</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <p>Email : contact@rendezy.com</p>
+      <p>Téléphone : +212 6 12 34 56 78</p>
+      <div class="socials">
+        <a href="#">🔗</a>
+        <a href="#">🔗</a>
+        <a href="#">🔗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+ <script>
+function createBubbles(containerSelector, count, sizeMin, sizeMax, durationMin, durationMax) {
+    const container = document.querySelector(containerSelector);
+
+    for (let i = 0; i < count; i++) {
+        const bubble = document.createElement('span');
+        bubble.classList.add('bubble');
+
+        const size = Math.random() * (sizeMax - sizeMin) + sizeMin;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+
+        bubble.style.left = Math.random() * 100 + '%';
+        bubble.style.animationDuration = (Math.random() * (durationMax - durationMin) + durationMin) + 's';
+        bubble.style.animationDelay = '0s'; // apparition immédiate
+
+        container.appendChild(bubble);
+    }
+}
+
+// Bulles pour la section hero
+createBubbles('.hero .bubbles', 190, 8, 12, 1, 112);
+
+// Bulles pour la section moving text (apparition immédiate)
+createBubbles('.moving-text-section .bubbles', 190, 8, 12, 1, 116);
+</script>
+
+
+<script>
+const container = document.getElementById('movingTextContainer');
+let position = container.offsetWidth; // start from right
+let speed = 1; // vitesse du texte
+
+function moveText() {
+    position -= speed;
+    if (position < -container.scrollWidth / 2) { // reset quand tout est passé
+        position = container.offsetWidth;
+    }
+    container.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(moveText);
+}
+
+// Dupliquer le contenu pour un effet de boucle continue
+container.innerHTML += container.innerHTML;
+
+moveText();
+</script>
+
+<script>
+// Sélectionner toutes les cartes de services
+const serviceCards = document.querySelectorAll('.services-grid .service-card');
+
+// Sélectionner la section "Que souhaitez-vous faire ?"
+const choiceSection = document.querySelector('.choice-section');
+
+serviceCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Calculer la position de la section moins un offset
+        const offset = 100; // distance en pixels depuis le haut
+        const top = choiceSection.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+});
+</script>
+
+
+
+
+<script>
+// Sélection de la section "Que souhaitez-vous faire ?"
+const choiceSectio = document.querySelector('.choice-section');
+
+// Bouton Commencer
+const btnStart = document.getElementById('btnStart');
+
+btnStart.addEventListener('click', (e) => {
+    e.preventDefault(); // empêche le href par défaut
+    const offset = 100; // distance depuis le haut de l'écran
+    const top = choiceSectio.getBoundingClientRect().top + window.scrollY - offset;
+    
+    window.scrollTo({ top: top, behavior: 'smooth' });
+});
+
+</script>
+
+
+<script>
+    const btnHow = document.getElementById('btnhow');
+const howSection = document.getElementById('how');
+
+btnHow.addEventListener('click', (e) => {
+    e.preventDefault();
+    const offset = 50; // distance depuis le haut
+    const top = howSection.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+});</script>
+
+
+</body>
+
+</html>
