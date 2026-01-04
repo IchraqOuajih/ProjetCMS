@@ -135,3 +135,59 @@ function applyFilters() {
 
 specialityFilter.addEventListener("change", applyFilters);
 availabilityFilter.addEventListener("change", applyFilters);
+
+function slideTimes(btn, dir) {
+  const doctorCard = btn.closest(".doctor-card"); // trouver la carte
+  const wrapper = doctorCard.querySelector(".times.slider");
+  const pages = wrapper.querySelectorAll(".times-page");
+  let current = Array.from(pages).findIndex(p => p.classList.contains("active"));
+  pages[current].classList.remove("active");
+  current += dir;
+  if(current < 0) current = pages.length - 1;
+  if(current >= pages.length) current = 0;
+  pages[current].classList.add("active");
+}
+
+
+function slideTimes(btn, dir) {
+  const doctorCard = btn.closest(".doctor-card"); // trouver la carte
+  const wrapper = doctorCard.querySelector(".times.slider");
+  const pages = wrapper.querySelectorAll(".times-page");
+  let current = Array.from(pages).findIndex(p => p.classList.contains("active"));
+  pages[current].classList.remove("active");
+  current += dir;
+  if(current < 0) current = pages.length - 1;
+  if(current >= pages.length) current = 0;
+  pages[current].classList.add("active");
+}
+
+
+
+function initFavs() {
+  document.querySelectorAll(".fav-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("fav-active");
+    });
+  });
+}
+
+// Après render
+renderDoctors(doctorsData);
+initFavs();
+initDays();
+
+
+fetch('doctors.json')
+  .then(res => res.json())
+  .then(data => {
+    doctorsData = data;
+    renderDoctors(doctorsData); // génère toutes les cartes
+    initDays();  // active les boutons jours
+    initFavs();  // active les favoris
+  });
+
+
+
+
+
+  

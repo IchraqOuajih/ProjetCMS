@@ -112,16 +112,23 @@
           <i data-lucide="search"></i>
         </button>
       </div>
-      <button class="map-btn">
-        <i class="fas fa-map"></i> Choisir sur la carte
-
-
-        <!-- RESULTATS -->
-        <div id="results" class="results"></div>
+      <button class="map-btn" id="openMapBtn">
+        <i data-lucide="map-pin"></i>
+        Choisir la ville sur la carte
+      </button><!-- MODAL POUR LA MAP -->
+      <div id="mapModal" class="map-modal">
+        <div class="map-box">
+          <span id="closeMap" class="close-map">&times;</span>
+          <div id="map" style="height:400px; width:100%; border-radius:12px;"></div>
+          <p class="map-hint">Clique sur la carte pour choisir une ville</p>
+        </div>
+      </div>
+      <!-- RESULTATS -->
+      <div id="results" class="results"></div>
 
     </div>
   </section>
-    <article class="doctor-card" data-cat="coeur" data-availability="today">
+  <article class="doctor-card" data-cat="coeur" data-availability="today">
 
 
     <section class="filters">
@@ -145,88 +152,170 @@
     </section>
     <section class="doctors-list">
 
-  <!-- ===== DOCTOR CARD ===== -->
-  <article
-    class="doctor-card"
-    data-cat="coeur"
-    data-availability="today"
-  >
+      <!-- ===== DOCTOR CARD ===== -->
+      <article class="doctor-card" data-cat="coeur" data-availability="today">
 
-    <!-- HEADER -->
-    <div class="doctor-main">
+        <!-- HEADER -->
+        <div class="doctor-main">
 
-      <div class="doctor-avatar">AB</div>
+          <div class="doctor-avatar">AB</div>
 
-      <div class="doctor-info">
-        <h3>Dr Hamid EL HARTI</h3>
-        <p>Cardiologue · Casablanca</p>
+          <div class="doctor-info">
+            <h3>Dr Hamid EL HARTI</h3>
+            <p>Cardiologue · Casablanca</p>
 
-        <div class="doctor-meta">
-          <span class="rating">⭐ 4.8</span>
-          <span class="badge verified">✔ Vérifié</span>
-          <span class="badge available">Disponible</span>
-        </div>
-      </div>
-
-      <!-- FAVORITE -->
-      <button class="fav-btn" title="Ajouter aux favoris">
-        <i data-lucide="heart"></i>
-      </button>
-
-    </div>
-
-    <section class="doctors-list" id="doctorsList">
-  <!-- Les cartes seront générées via JS -->
-</section>
-
-    <!-- ACTIONS -->
-    <div class="doctor-actions">
-
-      <!-- DAYS -->
-      <div class="days">
-        <button class="day active">Aujourd’hui</button>
-        <button class="day">Demain</button>
-        <button class="day">Autre</button>
-      </div>
-
-      <!-- TIMES SLIDER -->
-      <div class="times-wrapper">
-
-        <button class="nav" onclick="slideTimes(this,-1)">‹</button>
-
-        <div class="times slider">
-          <!-- PAGE 1 -->
-          <div class="times-page active">
-            <button class="time available">09:00</button>
-            <button class="time available">09:30</button>
-            <button class="time available">10:00</button>
-            <button class="time reserved">10:30</button>
+            <div class="doctor-meta">
+              <span class="rating">⭐ 4.8</span>
+              <span class="badge verified">✔ Vérifié</span>
+              <span class="badge available">Disponible</span>
+            </div>
           </div>
 
-          <!-- PAGE 2 -->
-          <div class="times-page">
-            <button class="time available">11:00</button>
-            <button class="time reserved">11:30</button>
-            <button class="time available">12:00</button>
-            <button class="time available">12:30</button>
+          <!-- FAVORITE -->
+          <button class="fav-btn" title="Ajouter aux favoris">
+            <i data-lucide="heart"></i>
+          </button>
+
+        </div>
+
+        <section class="doctors-list" id="doctorsList">
+          <!-- Les cartes seront générées via JS -->
+        </section>
+
+        <!-- ACTIONS -->
+        <div class="doctor-actions">
+
+          <!-- DAYS -->
+          <div class="days">
+            <button class="day active">Aujourd’hui</button>
+            <button class="day">Demain</button>
+            <button class="day">Autre</button>
+          </div>
+
+          <!-- TIMES SLIDER -->
+          <div class="times-wrapper">
+
+            <button class="nav" onclick="slideTimes(this,-1)">‹</button>
+
+            <div class="times slider">
+              <!-- PAGE 1 -->
+              <div class="times-page active">
+                <button class="time available">09:00</button>
+                <button class="time available">09:30</button>
+                <button class="time available">10:00</button>
+                <button class="time reserved">10:30</button>
+              </div>
+
+              <!-- PAGE 2 -->
+              <div class="times-page">
+                <button class="time available">11:00</button>
+                <button class="time reserved">11:30</button>
+                <button class="time available">12:00</button>
+                <button class="time available">12:30</button>
+              </div>
+            </div>
+
+            <button class="nav" onclick="slideTimes(this,1)">›</button>
+
           </div>
         </div>
 
-        <button class="nav" onclick="slideTimes(this,1)">›</button>
+        <!-- FOOTER -->
+        <div class="doctor-footer">
+          <span class="price">Consultation : <strong>150 DH</strong></span>
+          <button class="reserve-btn">Prendre rendez-vous</button>
+        </div>
 
-      </div>
-    </div>
+      </article>
 
-    <!-- FOOTER -->
-    <div class="doctor-footer">
-      <span class="price">Consultation : <strong>150 DH</strong></span>
-      <button class="reserve-btn">Prendre rendez-vous</button>
-    </div>
+    </section>
 
-  </article>
+<!-- ===== SERVICES ===== -->
+  <section class="services fade-in" id="services">
+  <h2>Services disponibles</h2>
 
+  <div class="floating-bubbles"></div>
+
+  <div class="services-grid">
+
+    <a href="medecins.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="stethoscope"></i>
+      <span>Médecins</span>
+    </a>
+
+    <a href="coiffeurs.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
+      <i data-lucide="scissors"></i>
+      <span>Coiffeurs</span>
+    </a>
+
+    <a href="garages.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+      <i data-lucide="car"></i>
+      <span>Garages</span>
+    </a>
+
+    <a href="administrations.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+      <i data-lucide="building-2"></i>
+      <span>Administrations</span>
+    </a>
+
+    <a href="avocats.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="scale"></i>
+      <span>Avocats</span>
+    </a>
+
+    <a href="dentistes.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="tooth"></i>
+      <span>Dentistes</span>
+    </a>
+
+    <a href="opticiens.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="eye"></i>
+      <span>Opticiens</span>
+    </a>
+
+    <a href="esthetique.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
+      <i data-lucide="sparkles"></i>
+      <span>Esthéticien(ne)s</span>
+    </a>
+
+    <a href="kinesitherapie.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="activity"></i>
+      <span>Kinésithérapeutes</span>
+    </a>
+
+    <a href="laboratoires.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="flask-conical"></i>
+      <span>Laboratoires</span>
+    </a>
+    <!--<a href="hotels.html" class="service-box" data-bg="https://images.unsplash.com/photo-1501117716987-c8e0a39720b0?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="hotel"></i>
+  <span>Hôtels</span>
+</a>
+
+<a href="restaurants.html" class="service-box" data-bg="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="coffee"></i>
+  <span>Restaurants</span>
+</a>
+-->
+
+    <a href="#autres" class="service-box"
+      data-bg="https://images.unsplash.com/photo-1614851099511-773084f6911d?auto=format&fit=crop&w=900&q=80"> 
+      <i data-lucide="briefcase"></i> 
+      <span>Autres services</span> 
+    </a>
+
+  </div>
 </section>
-
 
 
     <!-- ===== FOOTER ===== -->
