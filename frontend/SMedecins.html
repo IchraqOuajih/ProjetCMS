@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendezy | Médecins</title>
+  <link rel="stylesheet" href="SMedecins.css">
+  <link rel="stylesheet" href="Dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <a href="dashboard.html" class="logo">Rendezy</a>
+    <nav class="main-nav">
+      <a href="dashboard.html">Accueil</a>
+      <a href="#why">Pourquoi Rendezy ?</a>
+      <a href="#doctors">Médecins</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Boostez vos rendez-vous médicaux</h1>
+      <p>Gérez votre agenda et permettez à vos patients de réserver facilement leurs consultations.</p>
+      <button class="btn-primary">Demande de démo</button>
+    </div>
+  </section>
+
+  <!-- POURQUOI CHOISIR Rendezy -->
+  <section id="why" class="why-section fade-in">
+    <h2>Pourquoi choisir Rendezy ?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i data-lucide="calendar"></i>
+        <h3>Agenda modulable</h3>
+        <p>Organisez vos vacations et créneaux de réservation selon votre activité.</p>
+      </div>
+      <div class="feature-card">
+        <i data-lucide="search"></i>
+        <h3>Recherche rapide</h3>
+        <p>Filtrez vos rendez-vous et disponibilités avec un outil simple et intuitif.</p>
+      </div>
+      <div class="feature-card">
+        <i data-lucide="message-square"></i>
+        <h3>Rappels automatiques</h3>
+        <p>Envoyez des SMS et emails pour réduire les rendez-vous non honorés.</p>
+      </div>
+      <div class="feature-card">
+        <i data-lucide="shield"></i>
+        <h3>Protection des données</h3>
+        <p>Conforme RGPD / HDS pour sécuriser vos informations et celles de vos patients.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉDECINS -->
+  <section id="doctors" class="doc-list fade-in">
+    <h2>Médecins disponibles</h2>
+
+    <div class="cards-container">
+      <div class="doc-card">
+        <img src="https://images.unsplash.com/photo-1580281657527-47f249e8f7c5?auto=format&fit=crop&w=800&q=80" alt="Dr. Ahmed">
+        <div class="doc-info">
+          <h3>Dr. Ahmed</h3>
+          <p>Généraliste – Casablanca</p>
+          <button class="btn-secondary book-btn">Voir disponibilités</button>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Dr. Sara">
+        <div class="doc-info">
+          <h3>Dr. Sara</h3>
+          <p>Pédiatre – Rabat</p>
+          <button class="btn-secondary book-btn">Voir disponibilités</button>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <img src="https://images.unsplash.com/photo-1599507594527-03773f6c9cfa?auto=format&fit=crop&w=800&q=80" alt="Dr. Youssef">
+        <div class="doc-info">
+          <h3>Dr. Youssef</h3>
+          <p>Cardiologue – Marrakech</p>
+          <button class="btn-secondary book-btn">Voir disponibilités</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTIQUES -->
+  <section class="stats fade-in">
+    <h2>Optimisez votre activité</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>1M+</h3>
+        <p>Rendez-vous pris par mois</p>
+      </div>
+      <div class="stat-card">
+        <h3>95%</h3>
+        <p>Taux de satisfaction des patients</p>
+      </div>
+      <div class="stat-card">
+        <h3>99%</h3>
+        <p>Rendez-vous honorés grâce aux rappels</p>
+      </div>
+      <div class="stat-card">
+        <h3>Multi-sites</h3>
+        <p>Planification sur plusieurs lieux et spécialités</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq fade-in">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-item">
+      <h4>Combien de temps prend l'installation ?</h4>
+      <p>Aucune installation n'est nécessaire. Tout est accessible en ligne.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Combien coûte Rendezy ?</h4>
+      <p>Différentes formules selon la taille de votre cabinet et vos besoins.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Qui peut répondre à mes questions ?</h4>
+      <p>Notre équipe est disponible pour vous guider à chaque étape.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta fade-in">
+    <h2>Prêt à booster vos rendez-vous ?</h2>
+    <p>Demandez une démo gratuite et découvrez comment Rendezy peut simplifier votre agenda.</p>
+    <button class="btn-primary">Demande de démo</button>
+  </section>
+
+  <footer class="app-footer">
+    <div>© 2026 Rendezy — Tous droits réservés</div>
+  </footer>
+
+  <script src="SMedecins.js"></script>
+  <script src="Dashboard.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
