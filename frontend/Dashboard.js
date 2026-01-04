@@ -1,3 +1,24 @@
+//activetyyyyyy
+const navLinks = document.querySelectorAll('#main-nav a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Supprime la classe active de tous les liens
+        navLinks.forEach(l => l.classList.remove('active'));
+        // Ajoute la classe active au lien cliqué
+        this.classList.add('active');
+
+        // Si le lien est une ancre (commence par #) et pas juste "#"
+        if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
+            e.preventDefault(); // empêche le jump instantané
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth' }); // scroll fluide
+        }
+    });
+});
+
+
+
 //avatar 
 // Avatar menu toggle
 const avatarBtn = document.getElementById("avatar-btn");
