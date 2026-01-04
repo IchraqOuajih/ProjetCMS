@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Prestataire</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<div class="dashboard">
+
+  <!-- ===== Header ===== -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <img src="logo.png" alt="Logo" class="logo">
+      <span class="site-name">EasyService</span>
+    </div>
+    <div class="header-right">
+      <i class="icon bell">🔔</i>
+      <i class="icon mail">✉️</i>
+      <div class="profile">LV</div>
+    </div>
+  </header>
+
+  <!-- ===== Hero: Rendez-vous d'aujourd'hui ===== -->
+  <section class="hero-section">
+    <h2>Rendez-vous Confirmés Aujourd'hui</h2>
+
+    <div class="appointment-card confirmed">
+      <div class="appt-info">
+        <p class="client-name">Sarah A.</p>
+        <p class="service-name">Coiffure</p>
+        <p class="appt-time">14:30 - 04 Jan 2026</p>
+      </div>
+      <div class="appt-actions">
+        <button class="btn maintain">Maintenir</button>
+        <button class="btn cancel" onclick="showCancelForm(this)">Annuler</button>
+      </div>
+      <form class="cancel-form" style="display:none;">
+        <textarea placeholder="Cause de l'annulation / Nouvelle date proposée"></textarea>
+        <button type="submit">Envoyer au client</button>
+      </form>
+    </div>
+
+    <div class="appointment-card confirmed">
+      <div class="appt-info">
+        <p class="client-name">Youssef B.</p>
+        <p class="service-name">Massage</p>
+        <p class="appt-time">15:00 - 04 Jan 2026</p>
+      </div>
+      <div class="appt-actions">
+        <button class="btn maintain">Maintenir</button>
+        <button class="btn cancel" onclick="showCancelForm(this)">Annuler</button>
+      </div>
+      <form class="cancel-form" style="display:none;">
+        <textarea placeholder="Cause de l'annulation / Nouvelle date proposée"></textarea>
+        <button type="submit">Envoyer au client</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- ===== Section Acceptation / Ajout nouvelle date ===== -->
+  <section class="new-date-section">
+    <h2>Acceptation / Nouvelle Date</h2>
+    <form id="new-date-form">
+      <input type="text" placeholder="Nom du client" required>
+      <input type="datetime-local" required>
+      <button type="submit">Confirmer la date</button>
+    </form>
+  </section>
+
+</div>
+
+<script src="dashboard.js"></script>
+<script>
+function showCancelForm(btn) {
+  const form = btn.closest('.appointment-card').querySelector('.cancel-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
