@@ -35,7 +35,6 @@
                 <a href="#" class="active">Dashboard</a>
                 <a href="#appointments">Rendez-vous</a>
                 <a href="#services">Services</a>
-                <a href="#history">Historique</a>
             </nav>
         </div>
 
@@ -61,10 +60,17 @@
             Modifier le profil
         </button>
 
+<button class="dropdown-btn hist-btn" id="history-btn" onclick="window.location.href='historique.html'">
+    <i data-lucide="clock"></i> Historique
+</button>
+
+
         <button class="dropdown-btn logout-btn" id="logout-btn">
             <i data-lucide="log-out"></i>
             Déconnexion
         </button>
+
+        
     </div>
 </div>
 
@@ -126,35 +132,98 @@
     </section>
 
     <!-- ===== SERVICES ===== -->
-   <section class="services fade-in" id="services">
+  <section class="services fade-in" id="services">
   <h2>Services disponibles</h2>
-  <div class="services-row">
-    <a href="#medecin" class="service-card">
+
+  <div class="floating-bubbles"></div>
+
+  <div class="services-grid">
+
+    <a href="medecins.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
       <i data-lucide="stethoscope"></i>
       <span>Médecins</span>
     </a>
-    <a href="#coiffeur" class="service-card">
+
+    <a href="coiffeurs.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
       <i data-lucide="scissors"></i>
       <span>Coiffeurs</span>
     </a>
-    <a href="#garage" class="service-card">
+
+    <a href="garages.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
       <i data-lucide="car"></i>
       <span>Garages</span>
     </a>
-    <a href="#avocat" class="service-card">
+
+    <a href="administrations.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+      <i data-lucide="building-2"></i>
+      <span>Administrations</span>
+    </a>
+
+    <a href="avocats.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
       <i data-lucide="scale"></i>
       <span>Avocats</span>
     </a>
-    <a href="#autres" class="service-card">
-      <i data-lucide="briefcase"></i>
-      <span>Autres services</span>
+
+    <a href="dentistes.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="tooth"></i>
+      <span>Dentistes</span>
     </a>
+
+    <a href="opticiens.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="eye"></i>
+      <span>Opticiens</span>
+    </a>
+
+    <a href="esthetique.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
+      <i data-lucide="sparkles"></i>
+      <span>Esthéticien(ne)s</span>
+    </a>
+
+    <a href="kinesitherapie.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="activity"></i>
+      <span>Kinésithérapeutes</span>
+    </a>
+
+    <a href="laboratoires.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80
+">
+      <i data-lucide="flask-conical"></i>
+      <span>Laboratoires</span>
+    </a>
+    <!--<a href="hotels.html" class="service-box" data-bg="https://images.unsplash.com/photo-1501117716987-c8e0a39720b0?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="hotel"></i>
+  <span>Hôtels</span>
+</a>
+
+<a href="restaurants.html" class="service-box" data-bg="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="coffee"></i>
+  <span>Restaurants</span>
+</a>
+-->
+
+    <a href="#autres" class="service-box"
+      data-bg="https://images.unsplash.com/photo-1614851099511-773084f6911d?auto=format&fit=crop&w=900&q=80"> 
+      <i data-lucide="briefcase"></i> 
+      <span>Autres services</span> 
+    </a>
+
   </div>
 </section>
 
 
+
     <section class="why-choose fade-in" id="why">
   <h2>Pourquoi choisir Rendezy ?</h2>
+  
   <div class="why-grid">
     <div class="why-card">
       <i data-lucide="clock"></i>
@@ -211,49 +280,7 @@
     </div>
   </div>
 
-  <!-- ACTIONS RAPIDES -->
- 
-
-
-  <!-- RENDEZ-VOUS À VENIR -->
-  <div class="appointments" id="appointments">
-    <h2>Rendez-vous à venir</h2>
-    <div class="appointment-card confirmed">
-      <div>
-        <h4>Coiffeur</h4>
-        <p>12 Janvier 2026 - 14:30</p>
-      </div>
-      
-      <span class="status"><i data-lucide="check-circle"></i> Confirmé</span>
-    </div>
-    <div class="appointment-card pending">
-      <div>
-        <h4>Médecin</h4>
-        <p>18 Janvier 2026 - 10:00</p>
-      </div>
-      <span class="status"><i data-lucide="clock"></i> En attente</span>
-    </div>
-  </div>
-</section>
-
-
-        <!-- Actions principales -->
-        <div class="quick-actions">
-            <div class="action-card"><i data-lucide="calendar-plus"></i>
-                <h3>Nouveau rendez-vous</h3>
-                <p>Réservez un nouveau créneau facilement</p><button class="btn-primary">Réserver</button>
-            </div>
-            <div class="action-card"><i data-lucide="list-check"></i>
-                <h3>Mes rendez-vous</h3>
-                <p>Consultez vos rendez-vous à venir</p><button class="btn-secondary">Voir</button>
-            </div>
-            <div class="action-card"><i data-lucide="user"></i>
-                <h3>Profil</h3>
-                <p>Modifiez vos informations personnelles</p><button class="btn-secondary">Modifier</button>
-            </div>
-        </div>
-
-        <!-- Rendez-vous à venir -->
+  <!-- Rendez-vous à venir -->
         <div class="appointments" id="appointments">
             <h2>Rendez-vous à venir</h2>
             <div class="appointment-card">
@@ -271,14 +298,33 @@
                 <span class="status pending"><i data-lucide="clock"></i> En attente</span>
             </div>
         </div>
+
+        <!-- Actions principales -->
+        <div class="quick-actions">
+            <div class="action-card"><i data-lucide="calendar-plus"></i>
+                <h3>Nouveau rendez-vous</h3>
+                <p>Réservez un nouveau créneau facilement</p><button class="btn-primary">Réserver</button>
+            </div>
+            <div class="action-card"><i data-lucide="list-check"></i>
+                <h3>Mes rendez-vous</h3>
+                <p>Consultez vos rendez-vous à venir</p><button class="btn-secondary">Voir</button>
+            </div>
+            <div class="action-card"><i data-lucide="user"></i>
+                <h3>Profil</h3>
+                <p>Modifiez vos informations personnelles</p><button class="btn-secondary">Modifier</button>
+            </div>
+        </div>
+
+        
     </section>
 
     <!-- ===== CTA FINALE ===== -->
     <section class="cta fade-in">
-        <h2>Gagnez du temps dès aujourd’hui</h2>
-        <p>Créez votre compte gratuitement et gérez vos rendez-vous facilement.</p>
-        <a href="#register" class="btn-primary">Créer un compte</a>
-    </section>
+    <h2>Gérez tous vos rendez-vous facilement</h2>
+    <p>Trouvez rapidement les services dont vous avez besoin et organisez votre planning sans effort.</p>
+    <a href="#services" class="btn-primary">Découvrir les services</a>
+</section>
+
 
     <!-- ===== FOOTER ===== -->
     <footer class="app-footer">
