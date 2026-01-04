@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendezy | Réservez vos rendez-vous</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="Dashboard.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="app-header" id="main-header">
+        <div class="header-left">
+            <div class="glogo">
+                <img src="img/LogoRendezy.png" alt="">
+                <div class="logo">Rendezy</div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#" class="active">Dashboard</a>
+                <a href="#appointments">Rendez-vous</a>
+                <a href="#services">Services</a>
+                <a href="#history">Historique</a>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <button class="icon-btn" id="notif-btn">
+                <i data-lucide="bell"></i>
+            </button>
+
+            <button class="icon-btn" id="mail-btn">
+                <i data-lucide="mail"></i>
+            </button>
+
+            <!-- USER MENU -->
+            <div class="user-menu">
+    <div class="avatar" id="avatar-btn">LV</div>
+
+    <div class="dropdown-menu" id="avatar-menu">
+        <div class="avatar" id="avatar-btn">LV</div>
+        <p class="username" id="username">La Victorieuse</p>
+
+        <button class="dropdown-btn" id="edit-profile-btn">
+            <i data-lucide="edit-3"></i>
+            Modifier le profil
+        </button>
+
+        <button class="dropdown-btn logout-btn" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Déconnexion
+        </button>
+    </div>
+</div>
+
+        </div>
+    </header>
+
+
+    <!-- ===== HERO / LANDING ===== -->
+    <section class="hero">
+
+        <!-- BACKGROUND ANIMÉ -->
+        <div class="floating-icons">
+            <div class="hero-visual" id="hero-visual">
+                <i data-lucide="stethoscope" class="floating-icon medic"></i>
+                <i data-lucide="scissors" class="floating-icon hair"></i>
+                <i data-lucide="car" class="floating-icon garage"></i>
+                <i data-lucide="scale" class="floating-icon lawyer"></i>
+                <i data-lucide="briefcase" class="floating-icon other"></i>
+                <i data-lucide="calendar" class="floating-icon calendar"></i>
+                <i data-lucide="clock" class="floating-icon clock"></i>
+                <i data-lucide="check-circle" class="floating-icon check"></i>
+            </div>
+
+        </div>
+
+        <!-- CONTENU -->
+        <div class="hero-content">
+            <h1>Trouvez le bon service,<br><span>au bon endroit</span></h1>
+            <p>Réservez facilement des professionnels près de chez vous</p>
+
+            <!-- SEARCH HUB -->
+            <div class="search-hub">
+                <input type="text" id="serviceInput" placeholder="Service (Médecin, Coiffeur...)">
+                <input type="text" id="cityInput" placeholder="Ville">
+                <button id="searchBtn">
+                    <i data-lucide="search"></i>
+                </button>
+            </div>
+            <button class="map-btn" id="openMapBtn">
+                <i data-lucide="map-pin"></i>
+                Choisir la ville sur la carte
+            </button><!-- MODAL POUR LA MAP -->
+<div id="mapModal" class="map-modal">
+  <div class="map-box">
+    <span id="closeMap" class="close-map">&times;</span>
+    <div id="map" style="height:400px; width:100%; border-radius:12px;"></div>
+    <p class="map-hint">Clique sur la carte pour choisir une ville</p>
+  </div>
+</div>
+
+
+            <!-- RESULTATS -->
+            <div id="results" class="results"></div>
+        </div>
+
+    </section>
+
+
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+   <section class="services fade-in" id="services">
+  <h2>Services disponibles</h2>
+  <div class="services-row">
+    <a href="#medecin" class="service-card">
+      <i data-lucide="stethoscope"></i>
+      <span>Médecins</span>
+    </a>
+    <a href="#coiffeur" class="service-card">
+      <i data-lucide="scissors"></i>
+      <span>Coiffeurs</span>
+    </a>
+    <a href="#garage" class="service-card">
+      <i data-lucide="car"></i>
+      <span>Garages</span>
+    </a>
+    <a href="#avocat" class="service-card">
+      <i data-lucide="scale"></i>
+      <span>Avocats</span>
+    </a>
+    <a href="#autres" class="service-card">
+      <i data-lucide="briefcase"></i>
+      <span>Autres services</span>
+    </a>
+  </div>
+</section>
+
+
+    <section class="why-choose fade-in" id="why">
+  <h2>Pourquoi choisir Rendezy ?</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <i data-lucide="clock"></i>
+      <h3>Gain de temps</h3>
+      <p>Réservez vos rendez-vous rapidement et évitez les attentes inutiles.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="map-pin"></i>
+      <h3>Services près de chez vous</h3>
+      <p>Trouvez facilement des professionnels dans votre ville.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="shield-check"></i>
+      <h3>Sécurité & Fiabilité</h3>
+      <p>Les professionnels sont vérifiés pour garantir des services de qualité.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="user-plus"></i>
+      <h3>Facile à utiliser</h3>
+      <p>Interface intuitive et simple pour tout type d’utilisateur.</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="dashboard fade-in">
+  <div class="dashboard-header">
+    <h1>Bienvenue 👋</h1>
+    <p>Gérez tous vos rendez-vous depuis un seul endroit.</p>
+  </div>
+
+  <!-- STATISTIQUES -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <i data-lucide="calendar"></i>
+      <h4>Rendez-vous</h4>
+      <span>12</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="check-circle"></i>
+      <h4>Confirmés</h4>
+      <span>8</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="clock"></i>
+      <h4>En attente</h4>
+      <span>3</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="x-circle"></i>
+      <h4>Annulés</h4>
+      <span>1</span>
+    </div>
+  </div>
+
+  <!-- ACTIONS RAPIDES -->
+ 
+
+
+  <!-- RENDEZ-VOUS À VENIR -->
+  <div class="appointments" id="appointments">
+    <h2>Rendez-vous à venir</h2>
+    <div class="appointment-card confirmed">
+      <div>
+        <h4>Coiffeur</h4>
+        <p>12 Janvier 2026 - 14:30</p>
+      </div>
+      
+      <span class="status"><i data-lucide="check-circle"></i> Confirmé</span>
+    </div>
+    <div class="appointment-card pending">
+      <div>
+        <h4>Médecin</h4>
+        <p>18 Janvier 2026 - 10:00</p>
+      </div>
+      <span class="status"><i data-lucide="clock"></i> En attente</span>
+    </div>
+  </div>
+</section>
+
+
+        <!-- Actions principales -->
+        <div class="quick-actions">
+            <div class="action-card"><i data-lucide="calendar-plus"></i>
+                <h3>Nouveau rendez-vous</h3>
+                <p>Réservez un nouveau créneau facilement</p><button class="btn-primary">Réserver</button>
+            </div>
+            <div class="action-card"><i data-lucide="list-check"></i>
+                <h3>Mes rendez-vous</h3>
+                <p>Consultez vos rendez-vous à venir</p><button class="btn-secondary">Voir</button>
+            </div>
+            <div class="action-card"><i data-lucide="user"></i>
+                <h3>Profil</h3>
+                <p>Modifiez vos informations personnelles</p><button class="btn-secondary">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Rendez-vous à venir -->
+        <div class="appointments" id="appointments">
+            <h2>Rendez-vous à venir</h2>
+            <div class="appointment-card">
+                <div>
+                    <h4>Coiffeur</h4>
+                    <p>12 Janvier 2026 - 14:30</p>
+                </div>
+                <span class="status confirmed"><i data-lucide="check-circle"></i> Confirmé</span>
+            </div>
+            <div class="appointment-card">
+                <div>
+                    <h4>Médecin</h4>
+                    <p>18 Janvier 2026 - 10:00</p>
+                </div>
+                <span class="status pending"><i data-lucide="clock"></i> En attente</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINALE ===== -->
+    <section class="cta fade-in">
+        <h2>Gagnez du temps dès aujourd’hui</h2>
+        <p>Créez votre compte gratuitement et gérez vos rendez-vous facilement.</p>
+        <a href="#register" class="btn-primary">Créer un compte</a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="app-footer">
+        <div class="footer-left">© 2026 Rendezy — Tous droits réservés</div>
+        <div class="footer-right">
+            <a href="#">Aide</a>
+            <a href="#">Conditions</a>
+            <a href="#">Confidentialité</a>
+            <span>v1.0</span>
+        </div>
+    </footer>
+
+
+    <!-- JS -->
+    <script src="Dashboard.js"></script>
+</body>
+
+</html>
