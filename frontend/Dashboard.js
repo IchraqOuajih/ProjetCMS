@@ -1,4 +1,4 @@
-//activetyyyyyy
+//activetyyyyyy sf reglty !
 const navLinks = document.querySelectorAll('#main-nav a');
 
 navLinks.forEach(link => {
