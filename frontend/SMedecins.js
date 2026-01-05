@@ -5,7 +5,7 @@ const heroImages = [
   'https://images.unsplash.com/photo-1603398938378-5b9d6848c1e3?auto=format&fit=crop&w=1200&q=80',
   'https://images.unsplash.com/photo-1580281658623-463df16f7e9d?auto=format&fit=crop&w=1200&q=80'
 ];
-
+/************************ */
 let currentHero = 0;
 const hero = document.querySelector('.hero');
 
