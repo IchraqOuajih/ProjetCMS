@@ -1,0 +1,233 @@
+:root {
+      --blue: #2563eb;
+      --purple: #7c3aed;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--dark), #1e293b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      background: linear-gradient(135deg, #111827, #020617);
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    /* LEFT */
+    .info {
+      padding: 50px;
+      background: linear-gradient(160deg, var(--purple), var(--blue));
+    }
+
+    .info h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .info p {
+      opacity: 0.9;
+      line-height: 1.7;
+    }
+
+    .info ul {
+      margin-top: 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info li {
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    /* RIGHT */
+    .form-box {
+      padding: 50px;
+      background: #020617;
+    }
+
+    .form-box h2 {
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+
+    .row {
+      display: flex;
+      gap: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #020617;
+      border: 1px solid #1e293b;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--gray);
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    /* SERVICES GRID */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .service {
+      padding: 12px;
+      border-radius: 10px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 13px;
+    }
+
+    .service i {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: var(--purple);
+    }
+
+    .service.active {
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      border-color: transparent;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .info {
+        display: none;
+      }
+    }
+
+
+
+    .specialties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.specialty {
+  padding: 15px;
+  background: #111;
+  border: 2px solid #6a5acd;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.specialty:hover {
+  background: #6a5acd;
+}
+
+.specialty.active {
+  background: linear-gradient(135deg, #6a5acd, #00bfff);
+}
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c63ff; /* mauve */
+  font-size: 18px;
+}
+
+.toggle-password:hover {
+  color: #4a47ff;
+}
+
+
+
+.sub-service {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background-color: #e0e0ff;
+            color: #1a1a2e;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .sub-service.active {
+            background-color: #5a4fff;
+            color: white;
+        }
+
+        .sub-service:hover {
+            background-color: #9a8fff;
+            color: white;
+        }
+
+        #specialties {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
