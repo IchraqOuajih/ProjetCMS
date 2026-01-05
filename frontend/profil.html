@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Postulateur</title>
+<link rel="stylesheet" href="./profil.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Dashboard Postulateur</h1>
+  <div class="profile">
+    <span id="proName">Nom Prénom</span>
+  </div>
+</header>
+
+<div class="container">
+  <nav>
+    <h2>Gestion</h2>
+    <button id="viewProfileBtn"><i class="fa-solid fa-user"></i> Mon profil</button>
+    <button id="manageAvailabilityBtn"><i class="fa-solid fa-calendar-check"></i> Disponibilités</button>
+    <button id="viewReservationsBtn"><i class="fa-solid fa-book"></i> Mes Réservations</button>
+  </nav>
+
+  <main>
+    <!-- Profil -->
+    <div id="profileSection">
+      <h2 class="section-title">Mon Profil</h2>
+      <div class="profile-grid">
+        <div class="profile-card"><h3>Nom</h3><p id="profileNameCard"></p></div>
+        <div class="profile-card"><h3>Email</h3><p id="profileEmail"></p></div>
+        <div class="profile-card"><h3>Métier</h3><p id="profileJob"></p></div>
+        <div class="profile-card"><h3>Ville</h3><p id="profileLocation"></p></div>
+        <div class="profile-card description-card"><h3>Description</h3><p id="profileDesc"></p></div>
+      </div>
+    </div>
+
+    <!-- Disponibilités -->
+    <div id="availabilitySection" style="display:none;">
+      <h2 class="section-title">Mes Disponibilités</h2>
+      <div class="calendar-controls">
+        <label>Mois : <select id="monthSelect"></select></label>
+        <label>Année : <select id="yearSelect"></select></label>
+      </div>
+      <div class="calendar" id="calendar"></div>
+      <button id="saveAvailability" style="margin-top:15px;padding:10px 20px;background:#6a11cb;color:white;border:none;border-radius:5px;cursor:pointer;">Enregistrer disponibilités</button>
+    </div>
+
+    <!-- Réservations -->
+    <div id="reservationsSection" style="display:none;">
+      <h2 class="section-title">Mes Réservations</h2>
+      <div id="reservationsList"><p>Aucune réservation pour le moment.</p></div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Navigation
+const profileSection = document.getElementById('profileSection');
+const availabilitySection = document.getElementById('availabilitySection');
+const reservationsSection = document.getElementById('reservationsSection');
+
+document.getElementById('viewProfileBtn').addEventListener('click', () => {
+  profileSection.style.display = 'block';
+  availabilitySection.style.display = 'none';
+  reservationsSection.style.display = 'none';
+});
+document.getElementById('manageAvailabilityBtn').addEventListener('click', () => {
+  profileSection.style.display = 'none';
+  availabilitySection.style.display = 'block';
+  reservationsSection.style.display = 'none';
+});
+document.getElementById('viewReservationsBtn').addEventListener('click', () => {
+  profileSection.style.display = 'none';
+  availabilitySection.style.display = 'none';
+  reservationsSection.style.display = 'block';
+});
+
+// Récupération id depuis URL
+const params = new URLSearchParams(window.location.search);
+const proId = params.get("id");
+
+if (proId) {
+  fetch(`http://localhost:3000/api/professionals/${proId}`)
+    .then(res => res.json())
+    .then(pro => {
+      document.getElementById('profileNameCard').innerText = pro.firstName + " " + pro.lastName;
+      document.getElementById('profileEmail').innerText = pro.email;
+      document.getElementById('profileJob').innerText = pro.service + (pro.specialty ? " - " + pro.specialty : "");
+      document.getElementById('profileLocation').innerText = pro.location;
+      document.getElementById('profileDesc').innerText = pro.description;
+      document.getElementById('proName').innerText = pro.firstName + " " + pro.lastName;
+    })
+    .catch(err => console.error(err));
+}
+
+// Calendrier disponibilités
+const monthSelect = document.getElementById('monthSelect');
+const yearSelect = document.getElementById('yearSelect');
+const calendarEl = document.getElementById('calendar');
+const months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+const today = new Date();
+let selectedMonth = today.getMonth();
+let selectedYear = today.getFullYear();
+let selectedDays = [];
+
+function populateMonthYear() {
+  months.forEach((m, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.text = m;
+    if (i === selectedMonth) opt.selected = true;
+    monthSelect.appendChild(opt);
+  });
+  for (let y = today.getFullYear(); y <= today.getFullYear() + 5; y++) {
+    const opt = document.createElement('option');
+    opt.value = y;
+    opt.text = y;
+    if (y === selectedYear) opt.selected = true;
+    yearSelect.appendChild(opt);
+  }
+}
+
+function renderCalendar(month, year) {
+  calendarEl.innerHTML = '';
+  const weekdays = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+  weekdays.forEach(d => {
+    const wd = document.createElement('div');
+    wd.className = 'weekday';
+    wd.innerText = d;
+    calendarEl.appendChild(wd);
+  });
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  let start = firstDay === 0 ? 6 : firstDay - 1;
+  for (let i = 0; i < start; i++) calendarEl.appendChild(document.createElement('div'));
+  for (let i = 1; i <= daysInMonth; i++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.className = 'day';
+    dayDiv.innerText = i;
+    if (selectedDays.includes(i)) dayDiv.classList.add('selected');
+    dayDiv.addEventListener('click', () => {
+      if (dayDiv.classList.contains('selected')) {
+        dayDiv.classList.remove('selected');
+        selectedDays = selectedDays.filter(d => d !== i);
+      } else {
+        dayDiv.classList.add('selected');
+        selectedDays.push(i);
+      }
+    });
+    calendarEl.appendChild(dayDiv);
+  }
+}
+
+monthSelect.addEventListener('change', e => { selectedMonth = parseInt(e.target.value); renderCalendar(selectedMonth, selectedYear); });
+yearSelect.addEventListener('change', e => { selectedYear = parseInt(e.target.value); renderCalendar(selectedMonth, selectedYear); });
+
+document.getElementById('saveAvailability').addEventListener('click', () => {
+  console.log("Jours disponibles:", selectedDays, "Mois:", selectedMonth + 1, "Année:", selectedYear);
+  alert("Disponibilités enregistrées !");
+});
+
+populateMonthYear();
+renderCalendar(selectedMonth, selectedYear);
+</script>
+</body>
+</html>
