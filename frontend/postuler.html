@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Professionnelle</title>
+
+    <link rel="stylesheet" href="./postuler.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<div class="container">
+  <div class="info">
+    <h1>Rejoignez Rendezy</h1>
+    <p>Vous êtes un professionnel ? Proposez vos services sur Rendezy et recevez des rendez-vous de clients vérifiés.</p>
+  </div>
+
+  <div class="form-box">
+    <h2>Inscription Professionnelle</h2>
+    <form id="proForm">
+      <div class="row">
+        <input type="text" id="firstName" placeholder="Prénom" required>
+        <input type="text" id="lastName" placeholder="Nom" required>
+      </div>
+
+      <input type="email" id="email" placeholder="Adresse email professionnelle" required>
+
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Mot de passe" required>
+        <span class="toggle-password">
+          <i class="fa-regular fa-eye"></i>
+        </span>
+      </div>
+
+      <input type="text" id="location" placeholder="Ville ou lieu de travail (ex : Casablanca, Rabat...)" required>
+
+      <h4>Votre domaine</h4>
+      <div class="services" id="services">
+        <div class="service"><i class="fa-solid fa-user-doctor"></i>Médecin</div>
+        <div class="service"><i class="fa-solid fa-scale-balanced"></i>Avocat</div>
+        <div class="service"><i class="fa-solid fa-scissors"></i>Coiffeur</div>
+        <div class="service"><i class="fa-solid fa-tooth"></i>Dentiste</div>
+        <div class="service"><i class="fa-solid fa-eye"></i>Opticien</div>
+        <div class="service"><i class="fa-solid fa-spa"></i>Esthéticien</div>
+        <div class="service"><i class="fa-solid fa-dumbbell"></i>Kinésithérapeute</div>
+        <div class="service"><i class="fa-solid fa-vials"></i>Laboratoire</div>
+        <div class="service"><i class="fa-solid fa-car"></i>Garage</div>
+        <div class="service"><i class="fa-solid fa-building"></i>Administration</div>
+        <div class="service other"><i class="fa-solid fa-ellipsis"></i> Autre</div>
+      </div>
+
+      <div id="specialties-container" style="display:none;">
+        <h3>Choisissez une spécialité</h3>
+        <div id="specialties"></div>
+      </div>
+
+      <input type="text" id="otherJob" placeholder="Précisez votre métier" style="display:none;">
+
+      <textarea id="description" placeholder="Décrivez votre activité, expérience, diplômes..." required></textarea>
+
+      <button type="submit">Soumettre ma demande</button>
+    </form>
+  </div>
+</div>
+
+<script>
+let selectedService = null;
+let selectedSpecialty = null;
+
+const servicesData = {
+  "Médecin": ["Généraliste", "Cardiologue", "Chirurgien", "Pédiatre", "Dermatologue"],
+  "Avocat": ["Droit pénal", "Droit civil", "Droit des affaires", "Droit du travail"],
+  "Coiffeur": ["Homme", "Femme", "Enfants", "Coloration"],
+  "Dentiste": ["Orthodontie", "Implantologie", "Soins dentaires"],
+  "Opticien": ["Lunettes", "Lentilles", "Contrôle de vue"],
+  "Esthéticien": ["Soins visage", "Épilation", "Massage"],
+  "Kinésithérapeute": ["Rééducation", "Sport", "Neurologie"],
+  "Garage": ["Mécanique", "Électricité auto", "Diagnostic"],
+  "Laboratoire": ["Analyses médicales", "Biologie", "Radiologie"],
+  "Administration": ["Services publics", "Gestion", "Accueil"]
+};
+
+const specialtiesContainer = document.getElementById("specialties-container");
+const specialtiesDiv = document.getElementById("specialties");
+const otherInput = document.getElementById("otherJob");
+
+const firstName = document.getElementById("firstName");
+const lastName = document.getElementById("lastName");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const locationInput = document.getElementById("location");
+const description = document.getElementById("description");
+
+
+document.querySelectorAll(".service").forEach(service => {
+  service.addEventListener("click", () => {
+    document.querySelectorAll(".service").forEach(s => s.classList.remove("active"));
+    service.classList.add("active");
+
+    const serviceName = service.innerText.trim();
+    selectedService = serviceName;
+    selectedSpecialty = null;
+    specialtiesDiv.innerHTML = "";
+    specialtiesContainer.style.display = "none";
+
+    if (service.classList.contains("other")) {
+      otherInput.style.display = "block";
+      selectedService = null;
+      return;
+    } else {
+      otherInput.style.display = "none";
+      otherInput.value = "";
+    }
+
+    if (servicesData[serviceName]) {
+      specialtiesContainer.style.display = "block";
+      servicesData[serviceName].forEach(spec => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "sub-service";
+        btn.textContent = spec;
+
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".sub-service").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedSpecialty = spec;
+        });
+
+        specialtiesDiv.appendChild(btn);
+      });
+    }
+  });
+});
+
+
+document.getElementById("proForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  let serviceFinal = selectedService;
+  if (otherInput.style.display === "block") serviceFinal = otherInput.value.trim();
+
+  if (!serviceFinal) { alert("Veuillez choisir un domaine"); return; }
+  if (servicesData[serviceFinal] && !selectedSpecialty) { alert("Veuillez choisir une spécialité"); return; }
+
+  const data = {
+    firstName: firstName.value.trim(),
+    lastName: lastName.value.trim(),
+    email: email.value.trim(),
+    password: password.value.trim(),
+    location: locationInput.value.trim(),
+    service: serviceFinal,
+    specialty: selectedSpecialty,
+    description: description.value.trim()
+  };
+
+  console.log("Données soumises:", data);
+  window.location.href = "demande-envoyee.html";
+});
+
+
+const togglePassword = document.querySelector(".toggle-password");
+togglePassword.addEventListener("click", () => {
+  const isPassword = password.type === "password";
+  password.type = isPassword ? "text" : "password";
+  togglePassword.innerHTML = isPassword
+      ? '<i class="fa-regular fa-eye-slash"></i>'
+      : '<i class="fa-regular fa-eye"></i>';
+});
+</script>
+
+</body>
+</html>
