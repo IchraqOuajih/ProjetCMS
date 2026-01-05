@@ -1,3 +1,39 @@
+// Liste d'images liées aux médecins (plus foncées et pro)
+const heroImages = [
+  'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1603398938378-5b9d6848c1e3?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1580281658623-463df16f7e9d?auto=format&fit=crop&w=1200&q=80'
+];
+
+let currentHero = 0;
+const hero = document.querySelector('.hero');
+
+function changeHeroBg() {
+  hero.style.backgroundImage = `url('${heroImages[currentHero]}')`;
+  currentHero = (currentHero + 1) % heroImages.length;
+}
+
+// Initial
+changeHeroBg();
+
+// Changer toutes les 6 secondes
+setInterval(changeHeroBg, 6000);
+
+
+
+/* =========================
+   MAP
+========================= */
+
+
+
+
+
+
+
+
+
 const specialityFilter = document.getElementById("specialityFilter");
 const availabilityFilter = document.getElementById("availabilityFilter");
 const doctorCards = document.querySelectorAll(".doctor-card");

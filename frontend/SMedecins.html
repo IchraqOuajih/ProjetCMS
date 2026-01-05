@@ -36,7 +36,7 @@
 
       <nav class="main-nav" id="main-nav">
         <a href="#" class="active">Dashboard</a>
-        <a href="#appointments">Rendez-vous</a>
+        <a href="./Rdv.html">Rendez-vous</a>
         <a href="#services">Services</a>
       </nav>
     </div>
@@ -101,32 +101,42 @@
 
     <!-- CONTENU -->
     <div class="hero-content">
-      <h1>Trouvez le docteur,<br><span>au bon endroit</span></h1>
-      <p>Réservez facilement ...</p>
+  <h1>
+    Trouvez le <span>meilleur médecin</span><br>
+    près de chez vous
+  </h1>
+  <p>
+    Prenez rendez-vous facilement en quelques clics et accédez aux meilleurs spécialistes de votre ville.
+  </p>
 
-      <!-- SEARCH HUB -->
-      <div class="search-hub">
-        <input type="text" id="serviceInput" placeholder="nom docteur">
-        <input type="text" id="cityInput" placeholder="Ville">
-        <button id="searchBtn">
-          <i data-lucide="search"></i>
-        </button>
-      </div>
-      <button class="map-btn" id="openMapBtn">
-        <i data-lucide="map-pin"></i>
-        Choisir la ville sur la carte
-      </button><!-- MODAL POUR LA MAP -->
-      <div id="mapModal" class="map-modal">
-        <div class="map-box">
-          <span id="closeMap" class="close-map">&times;</span>
-          <div id="map" style="height:400px; width:100%; border-radius:12px;"></div>
-          <p class="map-hint">Clique sur la carte pour choisir une ville</p>
-        </div>
-      </div>
-      <!-- RESULTATS -->
-      <div id="results" class="results"></div>
+  <!-- SEARCH HUB -->
+   <!-- SEARCH HUB -->
+            <div class="search-hub">
+                <input type="text" id="serviceInput" placeholder="Service (Médecin, Coiffeur...)">
+                <input type="text" id="cityInput" placeholder="Ville">
+                <button id="searchBtn">
+                    <i data-lucide="search"></i>
+                </button>
+            </div>
 
+  <button class="map-btn" id="openMapBtn">
+    <i data-lucide="map-pin"></i>
+    Sélectionner votre ville sur la carte
+  </button>
+
+  <!-- MODAL POUR LA MAP -->
+  <div id="mapModal" class="map-modal">
+    <div class="map-box">
+      <span id="closeMap" class="close-map">&times;</span>
+      <div id="map" style="height:400px; width:100%; border-radius:12px;"></div>
+      <p class="map-hint">Cliquez sur la carte pour choisir votre ville</p>
     </div>
+  </div>
+
+  <!-- RESULTATS -->
+  <div id="results" class="results"></div>
+</div>
+
   </section>
   <article class="doctor-card" data-cat="coeur" data-availability="today">
 
