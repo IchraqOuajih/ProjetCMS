@@ -1,0 +1,42 @@
+[
+  {
+    "id": "doc1",
+    "name": "Dr Hamid EL HARTI",
+    "speciality": "coeur",
+    "city": "Casablanca",
+    "rating": 4.8,
+    "availability": "today",
+    "avatar": "AB",
+    "price": 150,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"reserved"},
+      {"hour":"12:00","status":"available"},
+      {"hour":"12:30","status":"available"}
+    ]
+  },
+  {
+    "id": "doc2",
+    "name": "Dr Salma BENALI",
+    "speciality": "os",
+    "city": "Rabat",
+    "rating": 4.5,
+    "availability": "week",
+    "avatar": "SB",
+    "price": 120,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"available"}
+    ]
+  }
+]

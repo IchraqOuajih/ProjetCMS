@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendezy | Réservez vos rendez-vous</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="Dashboard.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="app-header" id="main-header">
+        <div class="header-left">
+            <div class="glogo">
+                <img src="img/LogoRendezy.png" alt="">
+                <div class="logo">Rendezy</div>
+            </div>
+
+            
+            <nav class="main-nav" id="main-nav">
+    <a href="#" class="active">Dashboard</a>
+    <a href="#appointments">Rendez-vous</a>
+    <a href="#services">Services</a>
+</nav>
+        </div>
+
+        <div class="header-right">
+            <button class="icon-btn" id="notif-btn">
+                <i data-lucide="bell"></i>
+            </button>
+
+            <button class="icon-btn" id="mail-btn">
+                <i data-lucide="mail"></i>
+            </button>
+
+            <!-- USER MENU -->
+            <div class="user-menu">
+    <div class="avatar" id="avatar-btn">LV</div>
+
+    <div class="dropdown-menu" id="avatar-menu">
+        <div class="avatar" id="avatar-btn">LV</div>
+        <p class="username" id="username">La Victorieuse</p>
+
+        <button class="dropdown-btn" id="edit-profile-btn">
+            <i data-lucide="edit-3"></i>
+            Modifier le profil
+        </button>
+
+<button class="dropdown-btn hist-btn" id="history-btn" onclick="window.location.href='historique.html'">
+    <i data-lucide="clock"></i> Historique
+</button>
+
+
+        <button class="dropdown-btn logout-btn" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Déconnexion
+        </button>
+
+        
+    </div>
+</div>
+
+        </div>
+    </header>
+
+
+    <!-- ===== HERO / LANDING ===== -->
+    <section class="hero">
+
+        <!-- BACKGROUND ANIMÉ -->
+        <div class="floating-icons">
+            <div class="hero-visual" id="hero-visual">
+                <i data-lucide="stethoscope" class="floating-icon medic"></i>
+                <i data-lucide="scissors" class="floating-icon hair"></i>
+                <i data-lucide="car" class="floating-icon garage"></i>
+                <i data-lucide="scale" class="floating-icon lawyer"></i>
+                <i data-lucide="briefcase" class="floating-icon other"></i>
+                <i data-lucide="calendar" class="floating-icon calendar"></i>
+                <i data-lucide="clock" class="floating-icon clock"></i>
+                <i data-lucide="check-circle" class="floating-icon check"></i>
+            </div>
+
+        </div>
+
+        <!-- CONTENU -->
+        <div class="hero-content">
+            <h1>Trouvez le bon service,<br><span>au bon endroit</span></h1>
+            <p>Réservez facilement des professionnels près de chez vous</p>
+
+            <!-- SEARCH HUB -->
+            <div class="search-hub">
+                <input type="text" id="serviceInput" placeholder="Service (Médecin, Coiffeur...)">
+                <input type="text" id="cityInput" placeholder="Ville">
+                <button id="searchBtn">
+                    <i data-lucide="search"></i>
+                </button>
+            </div>
+            <button class="map-btn" id="openMapBtn">
+                <i data-lucide="map-pin"></i>
+                Choisir la ville sur la carte
+            </button><!-- MODAL POUR LA MAP -->
+<div id="mapModal" class="map-modal">
+  <div class="map-box">
+    <span id="closeMap" class="close-map">&times;</span>
+    <div id="map" style="height:400px; width:100%; border-radius:12px;"></div>
+    <p class="map-hint">Clique sur la carte pour choisir une ville</p>
+  </div>
+</div>
+
+
+            <!-- RESULTATS -->
+            <div id="results" class="results"></div>
+        </div>
+
+    </section>
+
+
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+  <section class="services fade-in" id="services">
+  <h2>Services disponibles</h2>
+
+  <div class="floating-bubbles"></div>
+
+  <div class="services-grid">
+
+    <a href="medecins.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="stethoscope"></i>
+      <span>Médecins</span>
+    </a>
+
+    <a href="coiffeurs.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
+      <i data-lucide="scissors"></i>
+      <span>Coiffeurs</span>
+    </a>
+
+    <a href="garages.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+      <i data-lucide="car"></i>
+      <span>Garages</span>
+    </a>
+
+    <a href="administrations.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+      <i data-lucide="building-2"></i>
+      <span>Administrations</span>
+    </a>
+
+    <a href="avocats.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="scale"></i>
+      <span>Avocats</span>
+    </a>
+
+    <a href="dentistes.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="tooth"></i>
+      <span>Dentistes</span>
+    </a>
+
+    <a href="opticiens.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="eye"></i>
+      <span>Opticiens</span>
+    </a>
+
+    <a href="esthetique.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
+      <i data-lucide="sparkles"></i>
+      <span>Esthéticien(ne)s</span>
+    </a>
+
+    <a href="kinesitherapie.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="activity"></i>
+      <span>Kinésithérapeutes</span>
+    </a>
+
+    <a href="laboratoires.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="flask-conical"></i>
+      <span>Laboratoires</span>
+    </a>
+    <!--<a href="hotels.html" class="service-box" data-bg="https://images.unsplash.com/photo-1501117716987-c8e0a39720b0?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="hotel"></i>
+  <span>Hôtels</span>
+</a>
+
+<a href="restaurants.html" class="service-box" data-bg="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="coffee"></i>
+  <span>Restaurants</span>
+</a>
+-->
+
+    <a href="#autres" class="service-box"
+      data-bg="https://images.unsplash.com/photo-1614851099511-773084f6911d?auto=format&fit=crop&w=900&q=80"> 
+      <i data-lucide="briefcase"></i> 
+      <span>Autres services</span> 
+    </a>
+
+  </div>
+</section>
+
+
+
+    <section class="why-choose fade-in" id="why">
+  <h2>Pourquoi choisir Rendezy ?</h2>
+  
+  <div class="why-grid">
+    <div class="why-card">
+      <i data-lucide="clock"></i>
+      <h3>Gain de temps</h3>
+      <p>Réservez vos rendez-vous rapidement et évitez les attentes inutiles.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="map-pin"></i>
+      <h3>Services près de chez vous</h3>
+      <p>Trouvez facilement des professionnels dans votre ville.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="shield-check"></i>
+      <h3>Sécurité & Fiabilité</h3>
+      <p>Les professionnels sont vérifiés pour garantir des services de qualité.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="user-plus"></i>
+      <h3>Facile à utiliser</h3>
+      <p>Interface intuitive et simple pour tout type d’utilisateur.</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="dashboard fade-in">
+  <div class="dashboard-header">
+    <h1>Bienvenue 👋</h1>
+    <p>Gérez tous vos rendez-vous depuis un seul endroit.</p>
+  </div>
+
+  <!-- STATISTIQUES -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <i data-lucide="calendar"></i>
+      <h4>Rendez-vous</h4>
+      <span>12</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="check-circle"></i>
+      <h4>Confirmés</h4>
+      <span>8</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="clock"></i>
+      <h4>En attente</h4>
+      <span>3</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="x-circle"></i>
+      <h4>Annulés</h4>
+      <span>1</span>
+    </div>
+  </div>
+
+  <!-- Rendez-vous à venir -->
+        <div class="appointments" id="appointments">
+            <h2>Rendez-vous à venir</h2>
+            <div class="appointment-card">
+                <div>
+                    <h4>Coiffeur</h4>
+                    <p>12 Janvier 2026 - 14:30</p>
+                </div>
+                <span class="status confirmed"><i data-lucide="check-circle"></i> Confirmé</span>
+            </div>
+            <div class="appointment-card">
+                <div>
+                    <h4>Médecin</h4>
+                    <p>18 Janvier 2026 - 10:00</p>
+                </div>
+                <span class="status pending"><i data-lucide="clock"></i> En attente</span>
+            </div>
+        </div>
+
+        <!-- Actions principales -->
+        <div class="quick-actions">
+            <div class="action-card"><i data-lucide="calendar-plus"></i>
+                <h3>Nouveau rendez-vous</h3>
+                <p>Réservez un nouveau créneau facilement</p><button class="btn-primary">Réserver</button>
+            </div>
+            <div class="action-card"><i data-lucide="list-check"></i>
+                <h3>Mes rendez-vous</h3>
+                <p>Consultez vos rendez-vous à venir</p><button class="btn-secondary">Voir</button>
+            </div>
+            <div class="action-card"><i data-lucide="user"></i>
+                <h3>Profil</h3>
+                <p>Modifiez vos informations personnelles</p><button class="btn-secondary">Modifier</button>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <!-- ===== CTA FINALE ===== -->
+    <section class="cta fade-in">
+    <h2>Gérez tous vos rendez-vous facilement</h2>
+    <p>Trouvez rapidement les services dont vous avez besoin et organisez votre planning sans effort.</p>
+    <a href="#services" class="btn-primary">Découvrir les services</a>
+</section>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Rendezy</h4>
+      <p>© 2026 Rendezy. Tous droits réservés.</p>
+      <p>Votre plateforme pour réserver facilement vos services.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Médecins</a></li>
+        <li><a href="#">Coiffeurs</a></li>
+        <li><a href="#">Garages</a></li>
+        <li><a href="#">Administrations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Conditions d'utilisation</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <p>Email : contact@rendezy.com</p>
+      <p>Téléphone : +212 6 12 34 56 78</p>
+      <div class="socials">
+        <a href="#">🔗</a>
+        <a href="#">🔗</a>
+        <a href="#">🔗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- JS -->
+    <script src="Dashboard.js"></script>
+</body>
+
+</html>
