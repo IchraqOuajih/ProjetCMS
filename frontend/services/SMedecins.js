@@ -1,3 +1,55 @@
+card.innerHTML += `
+  <button class="reserve-btn" onclick="openReservation('${doctor._id}')">
+    Réserver
+  </button>
+`;
+let selectedProId = null;
+
+function openReservation(proId) {
+  selectedProId = proId;
+  document.getElementById("reservationModal").style.display = "flex";
+}
+
+function closeReservation() {
+  document.getElementById("reservationModal").style.display = "none";
+}
+
+async function confirmReservation() {
+  const date = document.getElementById("resDate").value;
+  const time = document.getElementById("resTime").value;
+
+  if (!date || !time) {
+    alert("Veuillez choisir une date et une heure");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        proId: selectedProId,
+        date,
+        time
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Rendez-vous réservé ✅");
+      closeReservation();
+    } else {
+      alert(data.message);
+    }
+
+  } catch (err) {
+    alert("Erreur serveur");
+  }
+}
+
 const doctors = [
   {
     id: 1, name: "Dr Hamid EL HARTI", speciality: "Cardiologie", city: "Casablanca",

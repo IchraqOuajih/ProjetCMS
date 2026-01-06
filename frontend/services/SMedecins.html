@@ -224,6 +224,19 @@
 </footer>
     <script src="SMedecins.js"></script>
     <script src="Dashboard.js"></script>
+    <div id="reservationModal" class="reservation-modal">
+  <div class="reservation-box">
+    <span onclick="closeReservation()" class="close">&times;</span>
+
+    <h3>Prendre rendez-vous</h3>
+
+    <input type="date" id="resDate">
+    <input type="time" id="resTime">
+
+    <button onclick="confirmReservation()">Confirmer</button>
+  </div>
+</div>
+
 </body>
 
 </html>
