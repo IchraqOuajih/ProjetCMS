@@ -141,4 +141,35 @@ function renderCalendar(month, year) {
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   let start = firstDay === 0 ? 6 : firstDay - 1;
-  for (let i = 0; i < start; i++) calendarEl.appendChild(document.c
+  for (let i = 0; i < start; i++) calendarEl.appendChild(document.createElement('div'));
+  for (let i = 1; i <= daysInMonth; i++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.className = 'day';
+    dayDiv.innerText = i;
+    if (selectedDays.includes(i)) dayDiv.classList.add('selected');
+    dayDiv.addEventListener('click', () => {
+      if (dayDiv.classList.contains('selected')) {
+        dayDiv.classList.remove('selected');
+        selectedDays = selectedDays.filter(d => d !== i);
+      } else {
+        dayDiv.classList.add('selected');
+        selectedDays.push(i);
+      }
+    });
+    calendarEl.appendChild(dayDiv);
+  }
+}
+
+monthSelect.addEventListener('change', e => { selectedMonth = parseInt(e.target.value); renderCalendar(selectedMonth, selectedYear); });
+yearSelect.addEventListener('change', e => { selectedYear = parseInt(e.target.value); renderCalendar(selectedMonth, selectedYear); });
+
+document.getElementById('saveAvailability').addEventListener('click', () => {
+  console.log("Jours disponibles:", selectedDays, "Mois:", selectedMonth + 1, "Année:", selectedYear);
+  alert("Disponibilités enregistrées !");
+});
+
+populateMonthYear();
+renderCalendar(selectedMonth, selectedYear);
+</script>
+</body>
+</html>
