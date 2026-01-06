@@ -1,19 +1,32 @@
 const Pro = require("./pro.model");
 
-// Créer un pro
+// Créer un nouveau professionnel
 exports.createPro = async (req, res) => {
     try {
         const newPro = new Pro(req.body);
         await newPro.save();
-        // renvoyer l'objet créé avec son ID
-        res.status(201).json(newPro);
+        res.status(201).json({ message: "Professionnel créé avec succès ✅", pro: newPro });
+    } catch (err) {
+        console.error(err);
+        if (err.code === 11000) { // email unique
+            return res.status(400).json({ message: "Email déjà utilisé" });
+        }
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+// Récupérer tous les professionnels
+exports.getAllPros = async (req, res) => {
+    try {
+        const pros = await Pro.find();
+        res.json(pros);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Erreur serveur" });
     }
 };
 
-// Récupérer un pro par ID
+// Récupérer un professionnel par son ID
 exports.getProById = async (req, res) => {
     try {
         const pro = await Pro.findById(req.params.id);

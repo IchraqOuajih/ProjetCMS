@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
         <input type="password" id="password" placeholder="Mot de passe" required>
         <span class="toggle-password"><i class="fa-regular fa-eye"></i></span>
       </div>
-      <input type="text" id="location" placeholder="Ville ou lieu de travail (ex : Casablanca, Rabat...)" required>
+      <input type="text" id="location" placeholder="Ville ou lieu de travail" required>
 
       <h4>Votre domaine</h4>
       <div class="services" id="services">
@@ -39,8 +39,8 @@
         <div class="service"><i class="fa-solid fa-eye"></i>Opticien</div>
         <div class="service"><i class="fa-solid fa-spa"></i>Esthéticien</div>
         <div class="service"><i class="fa-solid fa-dumbbell"></i>Kinésithérapeute</div>
-        <div class="service"><i class="fa-solid fa-vials"></i>Laboratoire</div>
         <div class="service"><i class="fa-solid fa-car"></i>Garage</div>
+        <div class="service"><i class="fa-solid fa-vials"></i>Laboratoire</div>
         <div class="service"><i class="fa-solid fa-building"></i>Administration</div>
         <div class="service other"><i class="fa-solid fa-ellipsis"></i> Autre</div>
       </div>
@@ -61,6 +61,8 @@
 <script>
 let selectedService = null;
 let selectedSpecialty = null;
+
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
 
 const servicesData = {
   "Médecin":["Généraliste","Cardiologue","Chirurgien","Pédiatre","Dermatologue"],
@@ -102,13 +104,18 @@ document.querySelectorAll(".service").forEach(service=>{
       otherInput.style.display="block";
       selectedService=null;
       return;
-    } else { otherInput.style.display="none"; otherInput.value=""; }
+    } else { 
+      otherInput.style.display="none"; 
+      otherInput.value=""; 
+    }
 
     if(servicesData[serviceName]){
       specialtiesContainer.style.display="block";
       servicesData[serviceName].forEach(spec=>{
         const btn = document.createElement("button");
-        btn.type="button"; btn.className="sub-service"; btn.textContent=spec;
+        btn.type="button"; 
+        btn.className="sub-service"; 
+        btn.textContent=spec;
         btn.addEventListener("click",()=>{
           document.querySelectorAll(".sub-service").forEach(b=>b.classList.remove("active"));
           btn.classList.add("active");
@@ -127,37 +134,52 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
   let serviceFinal = selectedService;
   if(otherInput.style.display==="block") serviceFinal = otherInput.value.trim();
 
-  if(!serviceFinal){ alert("Veuillez choisir un domaine"); return; }
-  if(servicesData[serviceFinal] && !selectedSpecialty){ alert("Veuillez choisir une spécialité"); return; }
+  if(!serviceFinal){ 
+    alert("Veuillez choisir un domaine"); 
+    return; 
+  }
+  
+  if(servicesData[serviceFinal] && !selectedSpecialty){ 
+    alert("Veuillez choisir une spécialité"); 
+    return; 
+  }
 
   const data = {
-    firstName:firstName.value.trim(),
-    lastName:lastName.value.trim(),
-    email:email.value.trim(),
-    password:password.value.trim(),
-    location:locationInput.value.trim(),
-    service:serviceFinal,
-    specialty:selectedSpecialty,
-    description:description.value.trim()
+    firstName: firstName.value.trim(),
+    lastName: lastName.value.trim(),
+    email: email.value.trim(),
+    password: password.value.trim(),
+    location: locationInput.value.trim(),
+    service: serviceFinal,
+    specialty: selectedSpecialty || "",
+    description: description.value.trim()
   };
 
   try {
-    const response = await fetch("http://localhost:3000/api/professionals",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(data)
+    const response = await fetch(`${BASE_URL}/api/professionals`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
     });
 
     if(response.ok){
       const savedPro = await response.json();
-      // Redirection vers profil.html avec id
-      window.location.href = `profil.html?id=${savedPro._id}`;
+      
+      console.log("Réponse API:", savedPro);
+      
+      // Stocker l'ID ET toutes les données dans localStorage
+      localStorage.setItem("proId", savedPro._id);
+      localStorage.setItem("proData", JSON.stringify(savedPro));
+      
+      // Redirection vers profil.html
+      window.location.href = "profil.html";
     } else {
       const error = await response.json();
-      alert("Erreur : "+(error.message || "Impossible d'envoyer la demande"));
+      alert("Erreur : " + (error.message || "Impossible d'envoyer la demande"));
     }
-  } catch(err){
-    alert("Erreur réseau : "+err.message);
+  } catch(err) {
+    console.error("Erreur:", err);
+    alert("Erreur réseau : " + err.message);
   }
 });
 
