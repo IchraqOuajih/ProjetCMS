@@ -1,11 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendezy | Laboratoires</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="Dashboard.css">
+  <link rel="stylesheet" href="SLaboratoires.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+
 </head>
+
 <body>
-    <h1>hjhj</h1>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header" id="main-header">
+    <div class="header-left">
+      <div class="glogo">
+        <img src="img/LogoRendezy.png" alt="">
+        <div class="logo">Rendezy</div>
+      </div>
+
+
+      <nav class="main-nav" id="main-nav">
+        <a href="./Dashboard.html">Dashboard</a>
+        <a href="#" class="active">service (laboratoires)</a>
+      </nav>
+    </div>
+
+    <div class="header-right">
+      <button class="icon-btn" id="notif-btn">
+        <i data-lucide="bell"></i>
+      </button>
+
+      <button class="icon-btn" id="mail-btn">
+        <i data-lucide="mail"></i>
+      </button>
+
+      <!-- USER MENU -->
+      <div class="user-menu">
+        <div class="avatar" id="avatar-btn">LV</div>
+
+        <div class="dropdown-menu" id="avatar-menu">
+          <div class="avatar" id="avatar-btn">LV</div>
+          <p class="username" id="username">La Victorieuse</p>
+
+          <button class="dropdown-btn" id="edit-profile-btn">
+            <i data-lucide="edit-3"></i>
+            Modifier le profil
+          </button>
+
+          <button class="dropdown-btn hist-btn" id="history-btn" onclick="window.location.href='historique.html'">
+            <i data-lucide="clock"></i> Historique
+          </button>
+
+
+          <button class="dropdown-btn logout-btn" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Déconnexion
+          </button>
+
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ===== HERO / LANDING ===== -->
+  <section class="hero">
+
+    <!-- BACKGROUND ANIMÉ -->
+    <div class="floating-icons">
+      <div class="hero-visual" id="hero-visual">
+        <i data-lucide="test-tube" class="floating-icon laboratoire"></i>
+        <i data-lucide="scissors" class="floating-icon hair"></i>
+        <i data-lucide="stethoscope" class="floating-icon medic"></i>
+        <i data-lucide="car" class="floating-icon garage"></i>
+        <i data-lucide="scale" class="floating-icon lawyer"></i>
+        <i data-lucide="tooth" class="floating-icon dentist"></i>
+        <i data-lucide="eye" class="floating-icon opticien"></i>
+        <i data-lucide="sparkles" class="floating-icon estheticien"></i>
+        <i data-lucide="activity" class="floating-icon kinesitherapeute"></i>
+        <i data-lucide="calendar" class="floating-icon calendar"></i>
+        <i data-lucide="clock" class="floating-icon clock"></i>
+        <i data-lucide="check-circle" class="floating-icon check"></i>
+      </div>
+
+    </div>
+
+    <!-- CONTENU -->
+    <div class="hero-content">
+      <h1>
+        Trouvez le <span>meilleur laboratoire</span><br>
+        pour vos analyses médicales
+      </h1>
+      <p>
+        Réservez facilement votre rendez-vous dans les meilleurs laboratoires d'analyses médicales de votre ville.
+      </p>
+
+      <!-- SEARCH HUB -->
+      <div class="search-hub">
+        <input type="text" id="serviceInput" placeholder="Nom du laboratoire">
+        <input type="text" id="cityInput" placeholder="Ville">
+        <button id="searchBtn">
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+
+      <button class="map-btn" id="openMapBtn">
+        <i data-lucide="map-pin"></i>
+        Sélectionner votre ville sur la carte
+      </button>
+
+      <!-- MODAL POUR LA MAP -->
+      <div id="mapModal" class="map-modal">
+        <div class="map-box">
+          <span id="closeMap" class="close-map">&times;</span>
+          <div id="map" style="height:400px; width:100%; border-radius:12px;"></div>
+          <p class="map-hint">Cliquez sur la carte pour choisir votre ville</p>
+        </div>
+      </div>
+
+      <!-- RESULTATS -->
+      <div id="results" class="results"></div>
+    </div>
+
+  </section>
+
+  <!-- ===== FILTERS SECTION ===== -->
+  <section class="filters">
+    <div class="filter-group">
+      <label>Type d'analyse</label>
+      <select id="specialityFilter">
+        <option value="all">Tous</option>
+        <option value="analyses sanguines">Analyses Sanguines</option>
+        <option value="biologie médicale">Biologie Médicale</option>
+        <option value="examens biologiques">Examens Biologiques</option>
+        <option value="tests COVID-19">Tests COVID-19</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Disponibilité</label>
+      <select id="availabilityFilter">
+        <option value="all">Tous</option>
+        <option value="today">Aujourd'hui</option>
+        <option value="week">Cette semaine</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ===== LABORATOIRES LIST ===== -->
+  <section class="doctors-list" id="laboratoires-list"></section>
+   
+    <!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Rendezy</h4>
+      <p>© 2026 Rendezy. Tous droits réservés.</p>
+      <p>Votre plateforme pour réserver facilement vos services.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="./SMedecins.html">Médecins</a></li>
+        <li><a href="./SCoiffeurs.html">Coiffeurs</a></li>
+        <li><a href="./SGarages.html">Garages</a></li>
+        <li><a href="./SAdministrations.html">Administrations</a></li>
+        <li><a href="./SAvocats.html">Avocats</a></li>
+        <li><a href="./SDentistes.html">Dentistes</a></li>
+        <li><a href="./SOpticiens.html">Opticiens</a></li>
+        <li><a href="./SEstheticiens.html">Esthéticiens</a></li>
+        <li><a href="./SKinesitherapeutes.html">Kinésithérapeutes</a></li>
+        <li><a href="./SLaboratoires.html">Laboratoires</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="About.html">À propos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="Terms.html">Conditions d'utilisation</a></li>
+        <li><a href="po.html">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+  <h4>Contact</h4>
+
+  <p>
+     Email :
+    <a href="mailto:mabrouki.maryem37@gmail.com@gmail.com">Rendezy@gmail.com</a>
+  </p>
+
+  <p>
+     WhatsApp :
+    <a href="https://wa.me/212642683395" target="_blank">
+      +212 6 42 68 33 95
+    </a>
+  </p>
+
+  
+   <p>
+     Instagram :
+    <a href="https://www.instagram.com/am_ouki" target="_blank" >
+      @Rendezy
+    </a>
+  </p>
+
+  </div>
+</footer>
+    <script src="SLaboratoires.js"></script>
+    <script src="Dashboard.js"></script>
 </body>
+
 </html>
+

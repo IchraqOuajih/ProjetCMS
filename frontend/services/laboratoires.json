@@ -1,0 +1,83 @@
+[
+  {
+    "id": "lab1",
+    "name": "Laboratoire d'Analyses Médicales Central",
+    "speciality": "analyses sanguines",
+    "city": "Casablanca",
+    "rating": 4.8,
+    "availability": "today",
+    "avatar": "LC",
+    "price": 150,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"available"}
+    ]
+  },
+  {
+    "id": "lab2",
+    "name": "Laboratoire Santé Plus",
+    "speciality": "biologie médicale",
+    "city": "Rabat",
+    "rating": 4.7,
+    "availability": "today",
+    "avatar": "LS",
+    "price": 200,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "lab3",
+    "name": "Laboratoire Médical Moderne",
+    "speciality": "examens biologiques",
+    "city": "Marrakech",
+    "rating": 4.9,
+    "availability": "week",
+    "avatar": "LM",
+    "price": 180,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"reserved"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"reserved"},
+      {"hour":"11:30","status":"available"}
+    ]
+  },
+  {
+    "id": "lab4",
+    "name": "Centre d'Analyses Biologiques",
+    "speciality": "tests COVID-19",
+    "city": "Fès",
+    "rating": 4.6,
+    "availability": "today",
+    "avatar": "CA",
+    "price": 120,
+    "times": [
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  }
+]
+

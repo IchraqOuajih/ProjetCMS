@@ -1,0 +1,83 @@
+[
+  {
+    "id": "esth1",
+    "name": "Institut Beauté Élégance",
+    "speciality": "soins du visage",
+    "city": "Casablanca",
+    "rating": 4.8,
+    "availability": "today",
+    "avatar": "IB",
+    "price": 200,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"reserved"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "esth2",
+    "name": "Centre Esthétique Zen",
+    "speciality": "épilation",
+    "city": "Rabat",
+    "rating": 4.7,
+    "availability": "today",
+    "avatar": "CE",
+    "price": 150,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"15:00","status":"available"},
+      {"hour":"15:30","status":"available"}
+    ]
+  },
+  {
+    "id": "esth3",
+    "name": "Spa Beauté Naturelle",
+    "speciality": "massage relaxant",
+    "city": "Marrakech",
+    "rating": 4.9,
+    "availability": "week",
+    "avatar": "SN",
+    "price": 300,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"available"},
+      {"hour":"14:00","status":"reserved"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "esth4",
+    "name": "Institut Beauté Prestige",
+    "speciality": "manucure et pédicure",
+    "city": "Fès",
+    "rating": 4.6,
+    "availability": "today",
+    "avatar": "IP",
+    "price": 120,
+    "times": [
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  }
+]
+

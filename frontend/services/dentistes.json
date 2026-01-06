@@ -1,0 +1,83 @@
+[
+  {
+    "id": "dent1",
+    "name": "Dr. Karim BENNANI",
+    "speciality": "orthodontie",
+    "city": "Casablanca",
+    "rating": 4.8,
+    "availability": "today",
+    "avatar": "KB",
+    "price": 200,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"reserved"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "dent2",
+    "name": "Dr. Leila AMRANI",
+    "speciality": "chirurgie dentaire",
+    "city": "Rabat",
+    "rating": 4.7,
+    "availability": "today",
+    "avatar": "LA",
+    "price": 250,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"15:00","status":"available"},
+      {"hour":"15:30","status":"available"}
+    ]
+  },
+  {
+    "id": "dent3",
+    "name": "Dr. Youssef EL ALAOUI",
+    "speciality": "implantologie",
+    "city": "Marrakech",
+    "rating": 4.9,
+    "availability": "week",
+    "avatar": "YE",
+    "price": 300,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"available"},
+      {"hour":"14:00","status":"reserved"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "dent4",
+    "name": "Dr. Salma CHERKAOUI",
+    "speciality": "dentisterie esthétique",
+    "city": "Fès",
+    "rating": 4.6,
+    "availability": "today",
+    "avatar": "SC",
+    "price": 180,
+    "times": [
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  }
+]
+

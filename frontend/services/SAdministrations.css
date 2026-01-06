@@ -24,7 +24,7 @@ option{
 }
 
 
-/* Animation d’entrée */
+/* Animation d'entrée */
 @keyframes fadeSlide {
   from {
     opacity: 0;
@@ -702,9 +702,4 @@ option{
     min-width: 60px;
   }
 }
-
-
-
-/***                */
-
 

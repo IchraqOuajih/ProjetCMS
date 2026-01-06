@@ -1,0 +1,83 @@
+[
+  {
+    "id": "avoc1",
+    "name": "Maître Ahmed BENALI",
+    "speciality": "droit pénal",
+    "city": "Casablanca",
+    "rating": 4.8,
+    "availability": "today",
+    "avatar": "AB",
+    "price": 500,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"reserved"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "avoc2",
+    "name": "Maître Fatima ALAMI",
+    "speciality": "droit civil",
+    "city": "Rabat",
+    "rating": 4.7,
+    "availability": "today",
+    "avatar": "FA",
+    "price": 450,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"15:00","status":"available"},
+      {"hour":"15:30","status":"available"}
+    ]
+  },
+  {
+    "id": "avoc3",
+    "name": "Maître Youssef EL FASSI",
+    "speciality": "droit des affaires",
+    "city": "Marrakech",
+    "rating": 4.9,
+    "availability": "week",
+    "avatar": "YE",
+    "price": 600,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"available"},
+      {"hour":"14:00","status":"reserved"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "avoc4",
+    "name": "Maître Salma IDRISSI",
+    "speciality": "droit du travail",
+    "city": "Fès",
+    "rating": 4.6,
+    "availability": "today",
+    "avatar": "SI",
+    "price": 400,
+    "times": [
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  }
+]
+

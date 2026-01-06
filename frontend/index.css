@@ -23,7 +23,7 @@
 }
 
 body {
-  background-color: #977081;
+  background-color: #120b0e;
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
@@ -37,6 +37,11 @@ a {
 /* =====================
    NAVBAR
 ===================== */
+
+
+.logo{display:flex; align-items:center; gap:0px; }
+
+.navbar img{margin-top: 5px;width:60px; height:60px;}
 .navbar {
   display: flex;
   justify-content: space-between;

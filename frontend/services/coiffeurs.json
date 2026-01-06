@@ -1,0 +1,63 @@
+[
+  {
+    "id": "coif1",
+    "name": "Salon Lina",
+    "speciality": "coupe",
+    "city": "Casablanca",
+    "rating": 4.7,
+    "availability": "today",
+    "avatar": "SL",
+    "price": 80,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "coif2",
+    "name": "Salon Beauty",
+    "speciality": "coloration",
+    "city": "Rabat",
+    "rating": 4.9,
+    "availability": "today",
+    "avatar": "SB",
+    "price": 120,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"15:00","status":"available"},
+      {"hour":"15:30","status":"available"}
+    ]
+  },
+  {
+    "id": "coif3",
+    "name": "Salon Elegance",
+    "speciality": "coupe",
+    "city": "Marrakech",
+    "rating": 4.6,
+    "availability": "week",
+    "avatar": "SE",
+    "price": 90,
+    "times": [
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"},
+      {"hour":"15:00","status":"reserved"},
+      {"hour":"15:30","status":"available"}
+    ]
+  }
+]
+

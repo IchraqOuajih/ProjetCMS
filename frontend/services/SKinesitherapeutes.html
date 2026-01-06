@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rendezy | doct</title>
+  <title>Rendezy | Kinésithérapeutes</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="Dashboard.css">
-  <link rel="stylesheet" href="SMedecins.css">
+  <link rel="stylesheet" href="SKinesitherapeutes.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
   <!-- Lucide Icons -->
@@ -20,8 +20,6 @@
 
 
 </head>
-
-</html>
 
 <body>
 
@@ -35,8 +33,8 @@
 
 
       <nav class="main-nav" id="main-nav">
-        <a href="./Dashboard.html" >Dashboard</a>
-        <a href="#" class="active">service (medecins)</a>
+        <a href="./Dashboard.html">Dashboard</a>
+        <a href="#" class="active">service (kinésithérapeutes)</a>
       </nav>
     </div>
 
@@ -86,11 +84,14 @@
     <!-- BACKGROUND ANIMÉ -->
     <div class="floating-icons">
       <div class="hero-visual" id="hero-visual">
-        <i data-lucide="stethoscope" class="floating-icon medic"></i>
+        <i data-lucide="activity" class="floating-icon kinesitherapeute"></i>
         <i data-lucide="scissors" class="floating-icon hair"></i>
+        <i data-lucide="stethoscope" class="floating-icon medic"></i>
         <i data-lucide="car" class="floating-icon garage"></i>
         <i data-lucide="scale" class="floating-icon lawyer"></i>
-        <i data-lucide="briefcase" class="floating-icon other"></i>
+        <i data-lucide="tooth" class="floating-icon dentist"></i>
+        <i data-lucide="eye" class="floating-icon opticien"></i>
+        <i data-lucide="sparkles" class="floating-icon estheticien"></i>
         <i data-lucide="calendar" class="floating-icon calendar"></i>
         <i data-lucide="clock" class="floating-icon clock"></i>
         <i data-lucide="check-circle" class="floating-icon check"></i>
@@ -101,17 +102,16 @@
     <!-- CONTENU -->
     <div class="hero-content">
       <h1>
-        Trouvez le <span>meilleur médecin</span><br>
-        près de chez vous
+        Trouvez le <span>meilleur kinésithérapeute</span><br>
+        pour votre rééducation
       </h1>
       <p>
-        Prenez rendez-vous facilement en quelques clics et accédez aux meilleurs spécialistes de votre ville.
+        Réservez facilement votre séance chez les meilleurs kinésithérapeutes et spécialistes en rééducation de votre ville.
       </p>
 
       <!-- SEARCH HUB -->
-      <!-- SEARCH HUB -->
       <div class="search-hub">
-        <input type="text" id="serviceInput" placeholder="Service (Médecin, Coiffeur...)">
+        <input type="text" id="serviceInput" placeholder="Nom du cabinet">
         <input type="text" id="cityInput" placeholder="Ville">
         <button id="searchBtn">
           <i data-lucide="search"></i>
@@ -144,8 +144,10 @@
       <label>Spécialité</label>
       <select id="specialityFilter">
         <option value="all">Toutes</option>
-        <option value="os">Os & Articulations</option>
-        <option value="coeur">Cœur</option>
+        <option value="rééducation fonctionnelle">Rééducation Fonctionnelle</option>
+        <option value="massage thérapeutique">Massage Thérapeutique</option>
+        <option value="sport et performance">Sport et Performance</option>
+        <option value="douleurs chroniques">Douleurs Chroniques</option>
       </select>
     </div>
 
@@ -159,8 +161,8 @@
     </div>
   </section>
 
-  <!-- ===== DOCTORS LIST ===== -->
-  <section class="doctors-list" id="doctors-list"></section>
+  <!-- ===== KINESITHERAPEUTES LIST ===== -->
+  <section class="doctors-list" id="kinesitherapeutes-list"></section>
    
     <!-- ===== FOOTER ===== -->
 <footer class="footer" id="contact">
@@ -222,8 +224,9 @@
 
   </div>
 </footer>
-    <script src="SMedecins.js"></script>
+    <script src="SKinesitherapeutes.js"></script>
     <script src="Dashboard.js"></script>
 </body>
 
 </html>
+

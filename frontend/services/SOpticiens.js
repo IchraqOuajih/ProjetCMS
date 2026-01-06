@@ -1,22 +1,42 @@
-const doctors = [
+const opticiens = [
   {
-    id: 1, name: "Dr Hamid EL HARTI", speciality: "Cardiologie", city: "Casablanca",
-    rating: 4.8, verified: true, available: true, price: 150, category: "coeur",
-    availability: "today", avatar: "HE",
-    days: ["Aujourd’hui","Demain","Autre"],
+    id: 1, name: "Optique Vision Plus", speciality: "Lunettes de Vue", city: "Casablanca",
+    rating: 4.8, verified: true, available: true, price: 300, category: "lunettes de vue",
+    availability: "today", avatar: "OV",
+    days: ["Aujourd'hui","Demain","Autre"],
     times: [
       { slots:[{ time:"09:00", status:"available"},{ time:"09:30", status:"available"},{ time:"10:00", status:"reserved"},{ time:"10:30", status:"available"}]},
-      { slots:[{ time:"11:00", status:"available"},{ time:"11:30", status:"reserved"},{ time:"12:00", status:"available"},{ time:"12:30", status:"available"}]}
+      { slots:[{ time:"11:00", status:"available"},{ time:"11:30", status:"reserved"},{ time:"14:00", status:"available"},{ time:"14:30", status:"available"}]}
     ]
   },
   {
-    id: 2, name: "Dr Amina LAMRANI", speciality: "Orthopédie", city: "Rabat",
-    rating: 4.6, verified: true, available: true, price: 130, category: "os",
-    availability: "today", avatar: "AL",
-    days: ["Aujourd’hui","Demain","Autre"],
+    id: 2, name: "Optique Centrale", speciality: "Lunettes de Soleil", city: "Rabat",
+    rating: 4.7, verified: true, available: true, price: 250, category: "lunettes de soleil",
+    availability: "today", avatar: "OC",
+    days: ["Aujourd'hui","Demain","Autre"],
     times: [
-      { slots:[{ time:"08:30", status:"available"},{ time:"09:00", status:"available"},{ time:"09:30", status:"reserved"},{ time:"10:00", status:"available"}]},
-      { slots:[{ time:"10:30", status:"available"},{ time:"11:00", status:"reserved"},{ time:"11:30", status:"available"},{ time:"12:00", status:"available"}]}
+      { slots:[{ time:"08:00", status:"available"},{ time:"08:30", status:"available"},{ time:"09:00", status:"reserved"},{ time:"09:30", status:"available"}]},
+      { slots:[{ time:"10:00", status:"available"},{ time:"10:30", status:"reserved"},{ time:"15:00", status:"available"},{ time:"15:30", status:"available"}]}
+    ]
+  },
+  {
+    id: 3, name: "Optique Moderne", speciality: "Lentilles de Contact", city: "Marrakech",
+    rating: 4.9, verified: true, available: true, price: 200, category: "lentilles de contact",
+    availability: "week", avatar: "OM",
+    days: ["Aujourd'hui","Demain","Autre"],
+    times: [
+      { slots:[{ time:"09:00", status:"available"},{ time:"09:30", status:"available"},{ time:"10:00", status:"available"},{ time:"10:30", status:"reserved"}]},
+      { slots:[{ time:"11:00", status:"available"},{ time:"11:30", status:"available"},{ time:"14:00", status:"reserved"},{ time:"14:30", status:"available"}]}
+    ]
+  },
+  {
+    id: 4, name: "Optique Santé", speciality: "Examen de la Vue", city: "Fès",
+    rating: 4.6, verified: true, available: true, price: 150, category: "examen de la vue",
+    availability: "today", avatar: "OS",
+    days: ["Aujourd'hui","Demain","Autre"],
+    times: [
+      { slots:[{ time:"08:30", status:"available"},{ time:"09:00", status:"reserved"},{ time:"09:30", status:"available"},{ time:"10:00", status:"available"}]},
+      { slots:[{ time:"10:30", status:"available"},{ time:"11:00", status:"reserved"},{ time:"14:00", status:"available"},{ time:"14:30", status:"available"}]}
     ]
   }
 ];
@@ -24,27 +44,29 @@ const doctors = [
 // ===== UTIL =====
 function capitalize(str){ return str.charAt(0).toUpperCase()+str.slice(1); }
 
-// ===== RENDER DOCTORS =====
-function renderDoctors(data){
-  const container = document.getElementById("doctors-list");
+// ===== RENDER OPTICIENS =====
+function renderOpticiens(data){
+  const container = document.getElementById("opticiens-list");
+  if (!container) return;
+  
   container.innerHTML = "";
 
-  data.forEach(doctor=>{
+  data.forEach(opticien=>{
     const article=document.createElement("article");
     article.className="doctor-card";
-    article.dataset.cat=doctor.category;
-    article.dataset.availability=doctor.availability;
+    article.dataset.cat=opticien.category;
+    article.dataset.availability=opticien.availability;
 
     article.innerHTML=`
       <div class="doctor-main">
-        <div class="doctor-avatar">${doctor.avatar}</div>
+        <div class="doctor-avatar">${opticien.avatar}</div>
         <div class="doctor-info">
-          <h3>${doctor.name}</h3>
-          <p>${doctor.speciality} · ${doctor.city}</p>
+          <h3>${opticien.name}</h3>
+          <p>${opticien.speciality} · ${opticien.city}</p>
           <div class="doctor-meta">
-            <span class="rating">⭐ ${doctor.rating}</span>
-            ${doctor.verified?'<span class="badge verified">✔ Vérifié</span>':''}
-            <span class="badge ${doctor.available?"available":"unavailable"}">${doctor.available?"Disponible":"Indisponible"}</span>
+            <span class="rating">⭐ ${opticien.rating}</span>
+            ${opticien.verified?'<span class="badge verified">✔ Vérifié</span>':''}
+            <span class="badge ${opticien.available?"available":"unavailable"}">${opticien.available?"Disponible":"Indisponible"}</span>
           </div>
         </div>
         <button class="fav-btn" aria-label="Ajouter aux favoris"><i data-lucide="heart"></i></button>
@@ -52,19 +74,19 @@ function renderDoctors(data){
 
       <div class="doctor-actions">
         <div class="days">
-          ${doctor.days.map((d,i)=>`<button class="day ${i===0?'active':''}"><span>${d}</span></button>`).join("")}
+          ${opticien.days.map((d,i)=>`<button class="day ${i===0?'active':''}"><span>${d}</span></button>`).join("")}
         </div>
         <div class="times-wrapper">
           <button class="nav prev" aria-label="Précédent">‹</button>
           <div class="times">
-            ${doctor.times.map((page,i)=>`<div class="times-page ${i===0?'active':''}">${page.slots.map(s=>`<button class="time ${s.status}" ${s.status === 'reserved' ? 'disabled' : ''}>${s.time}</button>`).join("")}</div>`).join("")}
+            ${opticien.times.map((page,i)=>`<div class="times-page ${i===0?'active':''}">${page.slots.map(s=>`<button class="time ${s.status}" ${s.status === 'reserved' ? 'disabled' : ''}>${s.time}</button>`).join("")}</div>`).join("")}
           </div>
           <button class="nav next" aria-label="Suivant">›</button>
         </div>
       </div>
 
       <div class="doctor-footer">
-        <span class="price">Consultation : <strong>${doctor.price} DH</strong></span>
+        <span class="price">Consultation : <strong>${opticien.price} DH</strong></span>
         <button class="reserve-btn"><span>Prendre rendez-vous</span></button>
       </div>
     `;
@@ -82,7 +104,6 @@ function attachEvents(){
     btn.addEventListener("click",(e)=>{
       e.preventDefault();
       btn.classList.toggle("fav-active");
-      // Initialiser Lucide Icons après le toggle
       if (typeof lucide !== 'undefined') {
         lucide.replace();
       }
@@ -103,8 +124,8 @@ function attachEvents(){
   // slider temps
   document.querySelectorAll(".nav").forEach(btn=>{
     btn.addEventListener("click",()=>{
-      const doctorCard = btn.closest(".doctor-card");
-      const wrapper = doctorCard.querySelector(".times");
+      const opticienCard = btn.closest(".doctor-card");
+      const wrapper = opticienCard.querySelector(".times");
       const pages = wrapper.querySelectorAll(".times-page");
       if (pages.length === 0) return;
       
@@ -128,7 +149,7 @@ function attachEvents(){
   document.querySelectorAll(".reserve-btn").forEach(btn=>{
     btn.addEventListener("click",()=>{
       const card=btn.closest(".doctor-card");
-      const doctorName=card.querySelector("h3").textContent;
+      const opticienName=card.querySelector("h3").textContent;
       const selectedTime=card.querySelector(".time.active")?.textContent;
       const selectedDay = card.querySelector(".days .day.active")?.textContent || "Aujourd'hui";
       const price = card.querySelector(".price strong")?.textContent || "";
@@ -142,8 +163,8 @@ function attachEvents(){
       
       // Stocker les informations dans localStorage
       const appointmentData = {
-        type: "Médecin",
-        name: doctorName,
+        type: "Opticien",
+        name: opticienName,
         speciality: speciality,
         city: city,
         day: selectedDay,
@@ -155,17 +176,23 @@ function attachEvents(){
       localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
       
       // Rediriger vers la page de rendez-vous
-      window.location.href = './Rendez_vs.html';
+      window.location.href = 'Rendez_vs.html';
     });
   });
 }
 
 // ===== FILTRES =====
-document.getElementById("specialityFilter").addEventListener("change",applyFilters);
-document.getElementById("availabilityFilter").addEventListener("change",applyFilters);
+const specialityFilter = document.getElementById("specialityFilter");
+const availabilityFilter = document.getElementById("availabilityFilter");
+
+if (specialityFilter && availabilityFilter) {
+  specialityFilter.addEventListener("change",applyFilters);
+  availabilityFilter.addEventListener("change",applyFilters);
+}
+
 function applyFilters(){
-  const spec=document.getElementById("specialityFilter").value;
-  const avail=document.getElementById("availabilityFilter").value;
+  const spec=document.getElementById("specialityFilter")?.value || "all";
+  const avail=document.getElementById("availabilityFilter")?.value || "all";
   document.querySelectorAll(".doctor-card").forEach(card=>{
     const show=(spec==="all"||card.dataset.cat===spec)&&(avail==="all"||card.dataset.availability===avail);
     card.style.display=show?"block":"none";
@@ -173,4 +200,5 @@ function applyFilters(){
 }
 
 // ===== INIT =====
-renderDoctors(doctors);
+renderOpticiens(opticiens);
+

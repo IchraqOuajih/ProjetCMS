@@ -1,0 +1,63 @@
+[
+  {
+    "id": "admin1",
+    "name": "CNSS Casablanca",
+    "speciality": "sécurité sociale",
+    "city": "Casablanca",
+    "rating": 4.5,
+    "availability": "today",
+    "avatar": "CN",
+    "price": 0,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"available"},
+      {"hour":"09:00","status":"reserved"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "admin2",
+    "name": "Préfecture Rabat",
+    "speciality": "documents officiels",
+    "city": "Rabat",
+    "rating": 4.3,
+    "availability": "today",
+    "avatar": "PR",
+    "price": 0,
+    "times": [
+      {"hour":"08:00","status":"available"},
+      {"hour":"08:30","status":"reserved"},
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"reserved"},
+      {"hour":"10:30","status":"available"},
+      {"hour":"14:00","status":"available"},
+      {"hour":"14:30","status":"available"}
+    ]
+  },
+  {
+    "id": "admin3",
+    "name": "Mairie Marrakech",
+    "speciality": "services municipaux",
+    "city": "Marrakech",
+    "rating": 4.6,
+    "availability": "week",
+    "avatar": "MM",
+    "price": 0,
+    "times": [
+      {"hour":"09:00","status":"available"},
+      {"hour":"09:30","status":"available"},
+      {"hour":"10:00","status":"available"},
+      {"hour":"10:30","status":"reserved"},
+      {"hour":"11:00","status":"available"},
+      {"hour":"11:30","status":"available"},
+      {"hour":"14:00","status":"reserved"},
+      {"hour":"14:30","status":"available"}
+    ]
+  }
+]
+
