@@ -58,10 +58,7 @@
 </div>
 
 <script>
-// =================== Configuration ===================
-const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
-
-// =================== Navigation ===================
+// Navigation
 const profileSection = document.getElementById('profileSection');
 const availabilitySection = document.getElementById('availabilitySection');
 const reservationsSection = document.getElementById('reservationsSection');
@@ -82,14 +79,16 @@ document.getElementById('viewReservationsBtn').addEventListener('click', () => {
   reservationsSection.style.display = 'block';
 });
 
-// =================== Récupération infos pro ===================
+// 🔹 Backend URL
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
+
+// 🔹 Récupération du proId depuis localStorage
 const proId = localStorage.getItem("proId");
 
-if(proId){
+if (proId) {
   fetch(`${BASE_URL}/api/professionals/${proId}`)
     .then(res => res.json())
     .then(pro => {
-      console.log("Pro reçu :", pro);
       document.getElementById('profileNameCard').innerText = pro.firstName + " " + pro.lastName;
       document.getElementById('profileEmail').innerText = pro.email;
       document.getElementById('profileJob').innerText = pro.service + (pro.specialty ? " - " + pro.specialty : "");
@@ -102,7 +101,7 @@ if(proId){
   console.warn("Aucun proId trouvé dans localStorage !");
 }
 
-// =================== Calendrier disponibilités ===================
+// Calendrier disponibilités
 const monthSelect = document.getElementById('monthSelect');
 const yearSelect = document.getElementById('yearSelect');
 const calendarEl = document.getElementById('calendar');
@@ -171,6 +170,5 @@ document.getElementById('saveAvailability').addEventListener('click', () => {
 populateMonthYear();
 renderCalendar(selectedMonth, selectedYear);
 </script>
-
 </body>
 </html>

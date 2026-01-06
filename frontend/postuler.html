@@ -28,7 +28,7 @@
         <input type="password" id="password" placeholder="Mot de passe" required>
         <span class="toggle-password"><i class="fa-regular fa-eye"></i></span>
       </div>
-      <input type="text" id="location" placeholder="Ville ou lieu de travail (ex : Casablanca, Rabat...)" required>
+      <input type="text" id="location" placeholder="Ville ou lieu de travail" required>
 
       <h4>Votre domaine</h4>
       <div class="services" id="services">
@@ -39,8 +39,8 @@
         <div class="service"><i class="fa-solid fa-eye"></i>Opticien</div>
         <div class="service"><i class="fa-solid fa-spa"></i>Esthéticien</div>
         <div class="service"><i class="fa-solid fa-dumbbell"></i>Kinésithérapeute</div>
-        <div class="service"><i class="fa-solid fa-vials"></i>Laboratoire</div>
         <div class="service"><i class="fa-solid fa-car"></i>Garage</div>
+        <div class="service"><i class="fa-solid fa-vials"></i>Laboratoire</div>
         <div class="service"><i class="fa-solid fa-building"></i>Administration</div>
         <div class="service other"><i class="fa-solid fa-ellipsis"></i> Autre</div>
       </div>
@@ -62,7 +62,7 @@
 let selectedService = null;
 let selectedSpecialty = null;
 
-const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com"; // Heroku backend URL
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
 
 const servicesData = {
   "Médecin":["Généraliste","Cardiologue","Chirurgien","Pédiatre","Dermatologue"],
@@ -152,8 +152,11 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
 
     if(response.ok){
       const savedPro = await response.json();
-      console.log("Données reçues :", savedPro);
-      localStorage.setItem("proId", savedPro._id); // ✅ Stockage ID
+
+      // 🔹 Stocker l'ID du pro dans localStorage
+      localStorage.setItem("proId", savedPro._id);
+
+      // 🔹 Redirection vers profil.html
       window.location.href = "profil.html";
     } else {
       const error = await response.json();
