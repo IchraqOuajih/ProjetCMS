@@ -58,6 +58,9 @@
 </div>
 
 <script>
+// =================== Configuration ===================
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
+
 // =================== Navigation ===================
 const profileSection = document.getElementById('profileSection');
 const availabilitySection = document.getElementById('availabilitySection');
@@ -80,17 +83,13 @@ document.getElementById('viewReservationsBtn').addEventListener('click', () => {
 });
 
 // =================== Récupération infos pro ===================
-// URL backend Heroku
-const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
+const proId = localStorage.getItem("proId");
 
-// Récupération du proId depuis URL
-const params = new URLSearchParams(window.location.search);
-const proId = params.get("id");
-
-if (proId) {
+if(proId){
   fetch(`${BASE_URL}/api/professionals/${proId}`)
     .then(res => res.json())
     .then(pro => {
+      console.log("Pro reçu :", pro);
       document.getElementById('profileNameCard').innerText = pro.firstName + " " + pro.lastName;
       document.getElementById('profileEmail').innerText = pro.email;
       document.getElementById('profileJob').innerText = pro.service + (pro.specialty ? " - " + pro.specialty : "");
@@ -100,7 +99,7 @@ if (proId) {
     })
     .catch(err => console.error("Erreur fetch pro:", err));
 } else {
-  console.warn("Aucun proId trouvé dans l'URL !");
+  console.warn("Aucun proId trouvé dans localStorage !");
 }
 
 // =================== Calendrier disponibilités ===================
@@ -172,5 +171,6 @@ document.getElementById('saveAvailability').addEventListener('click', () => {
 populateMonthYear();
 renderCalendar(selectedMonth, selectedYear);
 </script>
+
 </body>
 </html>

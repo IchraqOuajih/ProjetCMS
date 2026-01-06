@@ -62,7 +62,7 @@
 let selectedService = null;
 let selectedSpecialty = null;
 
-const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com"; // 🔥 Heroku backend URL
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com"; // Heroku backend URL
 
 const servicesData = {
   "Médecin":["Généraliste","Cardiologue","Chirurgien","Pédiatre","Dermatologue"],
@@ -152,12 +152,9 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
 
     if(response.ok){
       const savedPro = await response.json();
-
-      // Stockage ID dans localStorage
-      localStorage.setItem("proId", savedPro._id);
-
-      // Redirection vers profil.html avec ID dans l'URL
-      window.location.href = `profil.html?id=${savedPro._id}`;
+      console.log("Données reçues :", savedPro);
+      localStorage.setItem("proId", savedPro._id); // ✅ Stockage ID
+      window.location.href = "profil.html";
     } else {
       const error = await response.json();
       alert("Erreur : "+(error.message || "Impossible d'envoyer la demande"));
