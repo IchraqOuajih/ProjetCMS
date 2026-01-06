@@ -1,122 +1,38 @@
 [
   {
     "id": 1,
-    "name": "Dr Amina El Idrissi",
-    "speciality": "Médecin généraliste",
-    "city": "Rabat",
-    "experience": 8,
-    "rating": 4.6
+    "name": "Dr Hamid EL HARTI",
+    "speciality": "coeur",
+    "city": "Casablanca",
+    "rating": 4.8,
+    "available": true,
+    "price": 150
   },
   {
     "id": 2,
-    "name": "Dr Youssef Karim",
-    "speciality": "Cardiologue",
-    "city": "Casablanca",
-    "experience": 12,
-    "rating": 4.8
+    "name": "Dr Sarah BENJELLOUN",
+    "speciality": "os",
+    "city": "Rabat",
+    "rating": 4.5,
+    "available": true,
+    "price": 120
   },
   {
     "id": 3,
-    "name": "Dr Salma Bennani",
-    "speciality": "Dermatologue",
-    "city": "Rabat",
-    "experience": 6,
-    "rating": 4.5
+    "name": "Dr Ali TOUIL",
+    "speciality": "coeur",
+    "city": "Marrakech",
+    "rating": 4.9,
+    "available": false,
+    "price": 180
   },
   {
     "id": 4,
-    "name": "Dr Hassan El Amrani",
-    "speciality": "Pédiatre",
-    "city": "Fès",
-    "experience": 15,
-    "rating": 4.7
-  },
-  {
-    "id": 5,
-    "name": "Dr Nadia Chraibi",
-    "speciality": "Gynécologue",
+    "name": "Dr Amina LAMRANI",
+    "speciality": "os",
     "city": "Casablanca",
-    "experience": 10,
-    "rating": 4.6
-  },
-  {
-    "id": 6,
-    "name": "Dr Omar Zahidi",
-    "speciality": "Ophtalmologue",
-    "city": "Marrakech",
-    "experience": 9,
-    "rating": 4.4
-  },
-  {
-    "id": 7,
-    "name": "Dr Imane Lahlou",
-    "speciality": "Dentiste",
-    "city": "Rabat",
-    "experience": 7,
-    "rating": 4.5
-  },
-  {
-    "id": 8,
-    "name": "Dr Karim Berrada",
-    "speciality": "Orthopédiste",
-    "city": "Tanger",
-    "experience": 11,
-    "rating": 4.6
-  },
-  {
-    "id": 9,
-    "name": "Dr Sofia Rami",
-    "speciality": "Psychiatre",
-    "city": "Casablanca",
-    "experience": 13,
-    "rating": 4.7
-  },
-  {
-    "id": 10,
-    "name": "Dr Anas El Khatib",
-    "speciality": "Neurologue",
-    "city": "Rabat",
-    "experience": 14,
-    "rating": 4.8
-  },
-  {
-    "id": 11,
-    "name": "Dr Yasmine Alaoui",
-    "speciality": "Endocrinologue",
-    "city": "Agadir",
-    "experience": 9,
-    "rating": 4.5
-  },
-  {
-    "id": 12,
-    "name": "Dr Rachid Mansouri",
-    "speciality": "Urologue",
-    "city": "Meknès",
-    "experience": 16,
-    "rating": 4.6
-  },
-  {
-    "id": 13,
-    "name": "Dr Kawtar El Fassi",
-    "speciality": "ORL",
-    "city": "Casablanca",
-    "experience": 8,
-    "rating": 4.4
-  },
-  {
-    "id": 14,
-    "name": "Dr Abdelilah Souissi",
-    "speciality": "Radiologue",
-    "city": "Rabat",
-    "experience": 18,
-    "rating": 4.7
-  },
-  {
-    "id": 15,
-    "name": "Dr Mounir Ait Taleb",
-    "speciality": "Chirurgien général",
-    "city": "Oujda",
-    "experience": 20,
-    "rating": 4.6
+    "rating": 4.6,
+    "available": true,
+    "price": 130
   }
 ]
