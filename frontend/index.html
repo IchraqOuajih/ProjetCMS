@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,36 +11,35 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-<script>
-// Sélection du logo
-const logoLink = document.getElementById('logoLink');
+  <script>
+    // Sélection du logo
+    const logoLink = document.getElementById('logoLink');
 
-logoLink.addEventListener('click', (e) => {
-    e.preventDefault(); // empêche le href="#" de provoquer un saut brusque
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll vers le haut
-});
-</script>
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault(); // empêche le href="#" de provoquer un saut brusque
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll vers le haut
+    });
+  </script>
 
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
-   <div class="logo">
-  <span id="logoLink">Rendezy</span>
-</div>
+    <div class="logo">
+      <span id="logoLink">Rendezy</span>
+    </div>
 
 
     <nav class="nav-links">
       <a href="#services">Services</a>
-      <a href="#how">Comment ça marche</a>
+      <a href="#how">Comment ça marche ?</a>
       <a href="#contact">Contact</a>
       <a href="inscription.html" class="btn-primary">S’inscrire</a>
     </nav>
@@ -47,150 +47,142 @@ logoLink.addEventListener('click', (e) => {
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero">
-  <div class="bubbles"></div>
+    <div class="bubbles"></div>
 
-  <div class="hero-content">
-    <h1>
-      Réservez <span>n’importe quel</span><br />
-      rendez-vous en un clic
-    </h1>
-    <p>
-      Médecins, coiffeurs, garages, administrations, avocats…<br>
-      Réservez, gérez et simplifiez tous vos rendez-vous depuis une seule plateforme.
-    </p>
-    <div class="hero-buttons">
-  <a href="#" class="btn-primary" id="btnStart">Commencer</a>
-  <a href="#" class="btn-secondary" id="btnhow">Voir comment</a>
-</div>
-
-  </div>
-
-  <div class="hero-visual mockup">
-  <div class="app-card card1">
-    <h4>📅 Rendez-vous confirmé</h4>
-    <p>Dr. Ahmed – 15 Mars à 10:30</p>
-    <span class="status">Confirmé</span>
-  </div>
-
-  <div class="app-card card2">
-    <h4>⏰ Nouveau rendez-vous</h4>
-    <p>Coiffeur – 15 Mars à 14:00</p>
-    <span class="status pending">En attente</span>
-  </div>
-</div>
-
-</section>
-
-
-
-<section class="moving-text-section">
-    <div class="bubbles"></div> 
-  <div class="moving-text-container" id="movingTextContainer">
-    <span>Bienvenue au Rendezy</span>
-    <span>Réservez facilement</span>
-    <span>Gérez votre agenda</span>
-    <span>Tous vos services ici</span>
-  </div>
-</section>
-
-
-
-<div class="choice-wrapper">
-  <section class="choice-section">
-    <h2>Que souhaitez-vous faire ?</h2>
-
-    <div class="choice-grid">
-      <div class="choice-card">
-        <h3>📌 S’inscrire</h3>
-        <p>Découvrez tous les services disponibles et réservez vos rendez-vous facilement.</p>
-        <a href="inscription.html" class="btn-primary">S’inscrire</a>
+    <div class="hero-content">
+      <h1>
+        Réservez <span>n’importe quel</span><br />
+        rendez-vous en un clic
+      </h1>
+      <p>
+        Médecins, coiffeurs, garages, administrations, avocats…<br>
+        Réservez, gérez et simplifiez tous vos rendez-vous depuis une seule plateforme.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary" id="btnStart">Commencer</a>
+        <a href="#" class="btn-secondary" id="btnhow">Voir comment</a>
       </div>
 
-      <div class="choice-card">
-        <h3>💼 Postuler votre travail</h3>
-        <p>Rejoignez notre plateforme et proposez vos services aux utilisateurs.</p>
-        <a href="postuler.html" class="btn-secondary">Postuler</a>
+    </div>
+
+    <div class="hero-visual mockup">
+      <div class="app-card card1">
+        <h4>📅 Rendez-vous confirmé</h4>
+        <p>Dr. Ahmed – 15 Mars à 10:30</p>
+        <span class="status">Confirmé</span>
+      </div>
+
+      <div class="app-card card2">
+        <h4>⏰ Nouveau rendez-vous</h4>
+        <p>Coiffeur – 15 Mars à 14:00</p>
+        <span class="status pending">En attente</span>
       </div>
     </div>
+
   </section>
-</div>
 
 
 
+  <section class="moving-text-section">
+    <div class="bubbles"></div>
+    <div class="moving-text-container" id="movingTextContainer">
+      <span>Bienvenue au Rendezy</span>
+      <span>Réservez facilement</span>
+      <span>Gérez votre agenda</span>
+      <span>Tous vos services ici</span>
+    </div>
+  </section>
 
 
-  
 
+  <div class="choice-wrapper">
+    <section class="choice-section">
+      <h2>Que souhaitez-vous faire ?</h2>
+
+      <div class="choice-grid">
+        <div class="choice-card">
+          <h3>📌 S’inscrire</h3>
+          <p>Découvrez tous les services disponibles et réservez vos rendez-vous facilement.</p>
+          <a href="inscription.html" class="btn-primary">S’inscrire</a>
+        </div>
+
+        <div class="choice-card">
+          <h3>💼 Postuler votre travail</h3>
+          <p>Rejoignez notre plateforme et proposez vos services aux utilisateurs.</p>
+          <a href="postuler.html" class="btn-secondary">Postuler</a>
+        </div>
+      </div>
     </section>
-<h2>   </h2>
-    <!-- ===== SERVICES ===== -->
+  </div>
+
+  <h2> </h2>
+  <!-- ===== SERVICES ===== -->
   <section class="services fade-in" id="services">
-  <h2>Services disponibles</h2>
+    <h2>Services disponibles</h2>
 
-  <div class="floating-bubbles"></div>
+    <div class="floating-bubbles"></div>
 
-  <div class="services-grid">
+    <div class="services-grid">
 
-    <a href="medecins.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
-      <i data-lucide="stethoscope"></i>
-      <span>Médecins</span>
-    </a>
+      <a href="medecins.html" class="service-box" id="btnStart"
+        data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
+        <i data-lucide="stethoscope"></i>
+        <span>Médecins</span>
+      </a>
 
-    <a href="coiffeurs.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
-      <i data-lucide="scissors"></i>
-      <span>Coiffeurs</span>
-    </a>
+      <a href="coiffeurs.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
+        <i data-lucide="scissors"></i>
+        <span>Coiffeurs</span>
+      </a>
 
-    <a href="garages.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-      <i data-lucide="car"></i>
-      <span>Garages</span>
-    </a>
+      <a href="garages.html" class="service-box" data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+        <i data-lucide="car"></i>
+        <span>Garages</span>
+      </a>
 
-    <a href="administrations.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-      <i data-lucide="building-2"></i>
-      <span>Administrations</span>
-    </a>
+      <a href="administrations.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+        <i data-lucide="building-2"></i>
+        <span>Administrations</span>
+      </a>
 
-    <a href="avocats.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
-      <i data-lucide="scale"></i>
-      <span>Avocats</span>
-    </a>
+      <a href="avocats.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
+        <i data-lucide="scale"></i>
+        <span>Avocats</span>
+      </a>
 
-    <a href="dentistes.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
-      <i data-lucide="tooth"></i>
-      <span>Dentistes</span>
-    </a>
+      <a href="dentistes.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
+        <i data-lucide="tooth"></i>
+        <span>Dentistes</span>
+      </a>
 
-    <a href="opticiens.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
-      <i data-lucide="eye"></i>
-      <span>Opticiens</span>
-    </a>
+      <a href="opticiens.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
+        <i data-lucide="eye"></i>
+        <span>Opticiens</span>
+      </a>
 
-    <a href="esthetique.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
-      <i data-lucide="sparkles"></i>
-      <span>Esthéticien(ne)s</span>
-    </a>
+      <a href="esthetique.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
+        <i data-lucide="sparkles"></i>
+        <span>Esthéticien(ne)s</span>
+      </a>
 
-    <a href="kinesitherapie.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
-      <i data-lucide="activity"></i>
-      <span>Kinésithérapeutes</span>
-    </a>
+      <a href="kinesitherapie.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
+        <i data-lucide="activity"></i>
+        <span>Kinésithérapeutes</span>
+      </a>
 
-    <a href="laboratoires.html" class="service-box"
-       data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80">
-      <i data-lucide="flask-conical"></i>
-      <span>Laboratoires</span>
-    </a>
-    <!--<a href="hotels.html" class="service-box" data-bg="https://images.unsplash.com/photo-1501117716987-c8e0a39720b0?auto=format&fit=crop&w=1200&q=80">
+      <a href="laboratoires.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80">
+        <i data-lucide="flask-conical"></i>
+        <span>Laboratoires</span>
+      </a>
+      <!--<a href="hotels.html" class="service-box" data-bg="https://images.unsplash.com/photo-1501117716987-c8e0a39720b0?auto=format&fit=crop&w=1200&q=80">
   <i data-lucide="hotel"></i>
   <span>Hôtels</span>
 </a>
@@ -201,14 +193,14 @@ logoLink.addEventListener('click', (e) => {
 </a>
 -->
 
-    <a href="./postuler.htmly" class="service-box"
-      data-bg="https://images.unsplash.com/photo-1614851099511-773084f6911d?auto=format&fit=crop&w=900&q=80"> 
-      <i data-lucide="briefcase"></i> 
-      <span>Autres services</span> 
-    </a>
+      <a href="./postuler.html" class="service-box"
+        data-bg="https://images.unsplash.com/photo-1614851099511-773084f6911d?auto=format&fit=crop&w=900&q=80">
+        <i data-lucide="briefcase"></i>
+        <span>Autres services</span>
+      </a>
 
-  </div>
-</section>
+    </div>
+  </section>
 
 
 
@@ -244,101 +236,123 @@ logoLink.addEventListener('click', (e) => {
     <a href="inscription.html" class="btn-primary">Créer un compte</a>
   </section>
 
-   <section class="why-choose fade-in" id="why">
-  <h2>Pourquoi choisir Rendezy ?</h2>
-  
-  <div class="why-grid">
-    <div class="why-card">
-      <i data-lucide="clock"></i>
-      <h3>Gain de temps</h3>
-      <p>Réservez vos rendez-vous rapidement et évitez les attentes inutiles.</p>
+  <section class="why-choose fade-in" id="why">
+    <h2>Pourquoi choisir Rendezy ?</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <i data-lucide="clock"></i>
+        <h3>Gain de temps</h3>
+        <p>Réservez vos rendez-vous rapidement et évitez les attentes inutiles.</p>
+      </div>
+      <div class="why-card">
+        <i data-lucide="map-pin"></i>
+        <h3>Services près de chez vous</h3>
+        <p>Trouvez facilement des professionnels dans votre ville.</p>
+      </div>
+      <div class="why-card">
+        <i data-lucide="shield-check"></i>
+        <h3>Sécurité & Fiabilité</h3>
+        <p>Les professionnels sont vérifiés pour garantir des services de qualité.</p>
+      </div>
+      <div class="why-card">
+        <i data-lucide="user-plus"></i>
+        <h3>Facile à utiliser</h3>
+        <p>Interface intuitive et simple pour tout type d’utilisateur.</p>
+      </div>
     </div>
-    <div class="why-card">
-      <i data-lucide="map-pin"></i>
-      <h3>Services près de chez vous</h3>
-      <p>Trouvez facilement des professionnels dans votre ville.</p>
-    </div>
-    <div class="why-card">
-      <i data-lucide="shield-check"></i>
-      <h3>Sécurité & Fiabilité</h3>
-      <p>Les professionnels sont vérifiés pour garantir des services de qualité.</p>
-    </div>
-    <div class="why-card">
-      <i data-lucide="user-plus"></i>
-      <h3>Facile à utiliser</h3>
-      <p>Interface intuitive et simple pour tout type d’utilisateur.</p>
-    </div>
-  </div>
-</section>
+  </section>
   <!-- ===== FOOTER ===== -->
-<footer class="footer" id="contact">
-  <div class="footer-container">
-    <div class="footer-column">
-      <h4>Rendezy</h4>
-      <p>© 2026 Rendezy. Tous droits réservés.</p>
-      <p>Votre plateforme pour réserver facilement vos services.</p>
-    </div>
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Rendezy</h4>
+        <p>© 2026 Rendezy. Tous droits réservés.</p>
+        <p>Votre plateforme pour réserver facilement vos services.</p>
+      </div>
 
-    <div class="footer-column">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="./SMedecins.css">Médecins</a></li>
-        <li><a href="./SCoiffeurs">Coiffeurs</a></li>
-        <li><a href="./SGarages">Garages</a></li>
-        <li><a href="./SAdministrations">Administrations</a></li>
-      </ul>
-    </div>
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="./SMedecins.css">Médecins</a></li>
+          <li><a href="./SCoiffeurs">Coiffeurs</a></li>
+          <li><a href="./SGarages">Garages</a></li>
+          <li><a href="./SAdministrations">Administrations</a></li>
+        </ul>
+      </div>
 
-    <div class="footer-column">
-      <h4>Liens utiles</h4>
-      <ul>
-        <li><a href="About.html">À propos</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="Terms.html">Conditions d'utilisation</a></li>
-        <li><a href="po.html">Politique de confidentialité</a></li>
-      </ul>
-    </div>
+      <div class="footer-column">
+        <h4>Liens utiles</h4>
+        <ul>
+          <li><a href="About.html">À propos</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="Terms.html">Conditions d'utilisation</a></li>
+          <li><a href="po.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
 
-    <div class="footer-column">
-  <h4>Contact</h4>
+      <div class="footer-column">
+        <h4>Contact</h4>
 
-  <p>
-    Email :
-    <a href="mailto:mabrouki.maryem37@gmail.com@gmail.com">Rendezy@gmail.com</a>
-  </p>
+        <p>
+          Email :
+          <a href="mailto:mabrouki.maryem37@gmail.com@gmail.com">Rendezy@gmail.com</a>
+        </p>
 
-  <p>
-    WhatsApp :
-    <a href="https://wa.me/212642683395" target="_blank">
-      +212 6 42 68 33 95
-    </a>
-  </p>
-
-  
-   <p>
-     Instagram :
-    <a href="https://www.instagram.com/yam_ouki_?igsh=MXJjY3MwOWdlaHhhdA==" target="_blank" >
-      @Rendezy
-    </a>
-  </p>
-
-  </div>
-</footer>
+        <p>
+          WhatsApp :
+          <a href="https://wa.me/212642683395" target="_blank">
+            +212 6 42 68 33 95
+          </a>
+        </p>
 
 
+        <p>
+          Instagram :
+          <a href="https://www.instagram.com/yam_ouki_?igsh=MXJjY3MwOWdlaHhhdA==" target="_blank">
+            @Rendezy
+          </a>
+        </p>
+
+      </div>
+  </footer>
 
 
 
 
+  <script >
+    // serv 
+document.querySelectorAll(".service-box").forEach(box => {
+  const img = box.getAttribute("data-bg");
+  box.style.setProperty("--bg", `url(${img})`);
+});
+//back services 
+const bubblesContainer = document.querySelector(".floating-bubbles");
+const colors = ["#9d4edd", "#3b82f6"]; // couleurs du logo
+const numBubbles = 30; // nombre de bulles
 
-<script src="./Dashboard.js"></script>
+for (let i = 0; i < numBubbles; i++) {
+  const bubble = document.createElement("div");
+  const size = Math.random() * 15 + 10; // tailles différentes (10px à 25px)
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+  bubble.style.top = `${Math.random() * 100}%`;
+  bubble.style.left = `${Math.random() * 100}%`;
+  bubble.style.animationDuration = `${Math.random() * 15 + 10}s`; // vitesses différentes
+  bubble.style.animationDelay = `${Math.random() * 5}s`;
+  bubble.style.opacity = Math.random() * 0.5 + 0.3;
+  bubblesContainer.appendChild(bubble);
+}
+
+  </script>
 
 
- <script>
-function createBubbles(containerSelector, count, sizeMin, sizeMax, durationMin, durationMax) {
-    const container = document.querySelector(containerSelector);
+  <script>
+    function createBubbles(containerSelector, count, sizeMin, sizeMax, durationMin, durationMax) {
+      const container = document.querySelector(containerSelector);
 
-    for (let i = 0; i < count; i++) {
+      for (let i = 0; i < count; i++) {
         const bubble = document.createElement('span');
         bubble.classList.add('bubble');
 
@@ -351,86 +365,86 @@ function createBubbles(containerSelector, count, sizeMin, sizeMax, durationMin, 
         bubble.style.animationDelay = '0s'; // apparition immédiate
 
         container.appendChild(bubble);
+      }
     }
-}
 
-// Bulles pour la section hero
-createBubbles('.hero .bubbles', 190, 8, 12, 1, 112);
+    // Bulles pour la section hero
+    createBubbles('.hero .bubbles', 190, 8, 12, 1, 112);
 
-// Bulles pour la section moving text (apparition immédiate)
-createBubbles('.moving-text-section .bubbles', 190, 8, 12, 1, 116);
-</script>
+    // Bulles pour la section moving text (apparition immédiate)
+    createBubbles('.moving-text-section .bubbles', 190, 8, 12, 1, 116);
+  </script>
 
 
-<script>
-const container = document.getElementById('movingTextContainer');
-let position = container.offsetWidth; // start from right
-let speed = 1; // vitesse du texte
+  <script>
+    const container = document.getElementById('movingTextContainer');
+    let position = container.offsetWidth; // start from right
+    let speed = 1; // vitesse du texte
 
-function moveText() {
-    position -= speed;
-    if (position < -container.scrollWidth / 2) { // reset quand tout est passé
+    function moveText() {
+      position -= speed;
+      if (position < -container.scrollWidth / 2) { // reset quand tout est passé
         position = container.offsetWidth;
+      }
+      container.style.transform = `translateX(${position}px)`;
+      requestAnimationFrame(moveText);
     }
-    container.style.transform = `translateX(${position}px)`;
-    requestAnimationFrame(moveText);
-}
 
-// Dupliquer le contenu pour un effet de boucle continue
-container.innerHTML += container.innerHTML;
+    // Dupliquer le contenu pour un effet de boucle continue
+    container.innerHTML += container.innerHTML;
 
-moveText();
-</script>
+    moveText();
+  </script>
 
-<script>
-// Sélectionner toutes les cartes de services
-const serviceCards = document.querySelectorAll('.services-grid .service-card');
+  <script>
+    // Sélectionner toutes les cartes de services
+    const serviceCards = document.querySelectorAll('.services-grid .service-card');
 
-// Sélectionner la section "Que souhaitez-vous faire ?"
-const choiceSection = document.querySelector('.choice-section');
+    // Sélectionner la section "Que souhaitez-vous faire ?"
+    const choiceSection = document.querySelector('.choice-section');
 
-serviceCards.forEach(card => {
-    card.addEventListener('click', () => {
+    serviceCards.forEach(card => {
+      card.addEventListener('click', () => {
         // Calculer la position de la section moins un offset
         const offset = 100; // distance en pixels depuis le haut
         const top = choiceSection.getBoundingClientRect().top + window.scrollY - offset;
 
         window.scrollTo({ top: top, behavior: 'smooth' });
+      });
     });
-});
-</script>
+  </script>
 
 
 
 
-<script>
-// Sélection de la section "Que souhaitez-vous faire ?"
-const choiceSectio = document.querySelector('.choice-section');
+  <script>
+    // Sélection de la section "Que souhaitez-vous faire ?"
+    const choiceSectio = document.querySelector('.choice-section');
 
-// Bouton Commencer
-const btnStart = document.getElementById('btnStart');
+    // Bouton Commencer
+    const btnStart = document.getElementById('btnStart');
 
-btnStart.addEventListener('click', (e) => {
-    e.preventDefault(); // empêche le href par défaut
-    const offset = 100; // distance depuis le haut de l'écran
-    const top = choiceSectio.getBoundingClientRect().top + window.scrollY - offset;
-    
-    window.scrollTo({ top: top, behavior: 'smooth' });
-});
+    btnStart.addEventListener('click', (e) => {
+      e.preventDefault(); // empêche le href par défaut
+      const offset = 100; // distance depuis le haut de l'écran
+      const top = choiceSectio.getBoundingClientRect().top + window.scrollY - offset;
 
-</script>
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+
+  </script>
 
 
-<script>
+  <script>
     const btnHow = document.getElementById('btnhow');
-const howSection = document.getElementById('how');
+    const howSection = document.getElementById('how');
 
-btnHow.addEventListener('click', (e) => {
-    e.preventDefault();
-    const offset = 50; // distance depuis le haut
-    const top = howSection.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-});</script>
+    btnHow.addEventListener('click', (e) => {
+      e.preventDefault();
+      const offset = 50; // distance depuis le haut
+      const top = howSection.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });</script>
 
 
 </body>
