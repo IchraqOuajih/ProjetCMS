@@ -62,6 +62,8 @@
 let selectedService = null;
 let selectedSpecialty = null;
 
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com"; // 🔥 Heroku backend URL
+
 const servicesData = {
   "Médecin":["Généraliste","Cardiologue","Chirurgien","Pédiatre","Dermatologue"],
   "Avocat":["Droit pénal","Droit civil","Droit des affaires","Droit du travail"],
@@ -142,7 +144,7 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
   };
 
   try {
-    const response = await fetch("http://localhost:3000/api/professionals",{
+    const response = await fetch(`${BASE_URL}/api/professionals`, {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(data)
@@ -150,7 +152,6 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
 
     if(response.ok){
       const savedPro = await response.json();
-      // Redirection vers profil.html avec id
       window.location.href = `profil.html?id=${savedPro._id}`;
     } else {
       const error = await response.json();

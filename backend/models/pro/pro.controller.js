@@ -5,8 +5,18 @@ exports.createPro = async (req, res) => {
     try {
         const newPro = new Pro(req.body);
         await newPro.save();
-        // renvoyer l'objet créé avec son ID
         res.status(201).json(newPro);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+// Récupérer tous les pros
+exports.getAllPros = async (req, res) => {
+    try {
+        const pros = await Pro.find();
+        res.json(pros);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Erreur serveur" });
