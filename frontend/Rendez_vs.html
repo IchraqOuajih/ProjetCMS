@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendez vous</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="Dashboard.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="app-header" id="main-header">
+        <div class="header-left">
+            <div class="glogo">
+                <img src="img/LogoRendezy.png" alt="">
+                <div class="logo">Rendezy</div>
+            </div>
+
+            
+            <nav class="main-nav" id="main-nav">
+                <a href="./Dashboard.html">Dashboard</a>
+    <a href="#" class="active">Rendez-vous</a>
+    <a href="./services.html">Services</a>
+</nav>
+        </div>
+
+        <div class="header-right">
+            <button class="icon-btn" id="notif-btn">
+                <i data-lucide="bell"></i>
+            </button>
+
+            <button class="icon-btn" id="mail-btn">
+                <i data-lucide="mail"></i>
+            </button>
+
+            <!-- USER MENU -->
+            <div class="user-menu">
+    <div class="avatar" id="avatar-btn">M</div>
+
+    <div class="dropdown-menu" id="avatar-menu">
+        <div class="avatar" id="avatar-btn">M</div>
+        <p class="username" id="username">Maryem</p>
+
+        
+
+<a href="./historique.html" class="dropdown-btn istorique" id="history-btn" onclick="window.location.href='historique.html'">
+    <i data-lucide="clock"></i> Historique
+</a>
+
+
+        <a href="./login.html" class="dropdown-btn logout-btn" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Déconnexion
+        </a>
+        <button class="dropdown-btn" id="edit-profile-btn">
+            <i data-lucide="edit-3"></i>
+            Modifier le profil
+        </button>
+
+        
+    </div>
+</div>
+
+        </div>
+    </header>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="dashboard fade-in">
+        <h1>  </h1>
+  <div class="dashboard-header">
+    <h1>Bienvenue 👋</h1>
+    <p>Gérez tous vos rendez-vous depuis un seul endroit.</p>
+  </div>
+
+  <!-- STATISTIQUES -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <i data-lucide="calendar"></i>
+      <h4>Rendez-vous</h4>
+      <span>12</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="check-circle"></i>
+      <h4>Confirmés</h4>
+      <span>8</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="clock"></i>
+      <h4>En attente</h4>
+      <span>3</span>
+    </div>
+    <div class="stat-card">
+      <i data-lucide="x-circle"></i>
+      <h4>Annulés</h4>
+      <span>1</span>
+    </div>
+  </div>
+
+  <!-- Rendez-vous à venir -->
+        <div class="appointments" id="appointments">
+            <h2>Rendez-vous à venir</h2>
+            <div class="appointment-card">
+                <div>
+                    <h4>Coiffeur</h4>
+                    <p>12 Janvier 2026 - 14:30</p>
+                </div>
+                <span class="status confirmed"><i data-lucide="check-circle"></i> Confirmé</span>
+            </div>
+            <div class="appointment-card">
+                <div>
+                    <h4>Médecin</h4>
+                    <p>18 Janvier 2026 - 10:00</p>
+                </div>
+                <span class="status pending"><i data-lucide="clock"></i> En attente</span>
+            </div>
+        </div>
+
+        <!-- Actions principales -->
+        <div class="quick-actions">
+            <div class="action-card"><i data-lucide="calendar-plus"></i>
+                <h3>Nouveau rendez-vous</h3>
+                <p>Réservez un nouveau créneau facilement</p><a href="./services.html" class="btn-primary">Réserver</a>
+            </div>
+            <div class="action-card"><i data-lucide="list-check"></i>
+                <h3>Mes rendez-vous</h3>
+                <p>Consultez vos rendez-vous à venir</p><a href="./Rendez_vs.html" class="btn-secondary">Voir</a>
+            </div>
+            <div class="action-card"><i data-lucide="user"></i>
+                <h3>Profil</h3>
+                <p>Modifiez vos informations personnelles</p><button class="btn-secondary">Modifier</button>
+            </div>
+        </div>
+
+        
+    </section>
+
+     
+
+
+    <!-- ===== CTA FINALE ===== -->
+    <section class="cta fade-in">
+    <h2>Gérez tous vos rendez-vous facilement</h2>
+    <p>Trouvez rapidement les services dont vous avez besoin et organisez votre planning sans effort.</p>
+    <a href="./services.html" class="btn-primary">Découvrir les services</a>
+</section>
+
+   
+    <!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Rendezy</h4>
+      <p>© 2026 Rendezy. Tous droits réservés.</p>
+      <p>Votre plateforme pour réserver facilement vos services.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="./SMedecins.css">Médecins</a></li>
+        <li><a href="./SCoiffeurs">Coiffeurs</a></li>
+        <li><a href="./SGarages">Garages</a></li>
+        <li><a href="./SAdministrations">Administrations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="About.html">À propos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="Terms.html">Conditions d'utilisation</a></li>
+        <li><a href="po.html">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+  <h4>Contact</h4>
+
+  <p>
+     Email :
+    <a href="mailto:mabrouki.maryem37@gmail.com@gmail.com">Rendezy@gmail.com</a>
+  </p>
+
+  <p>
+     WhatsApp :
+    <a href="https://wa.me/212642683395" target="_blank">
+      +212 6 42 68 33 95
+    </a>
+  </p>
+
+  
+   <p>
+     Instagram :
+    <a href="https://www.instagram.com/am_ouki" target="_blank" >
+      @Rendezy
+    </a>
+  </p>
+
+  </div>
+</footer>
+
+
+<!-- JS -->
+    <script src="./Dashboard.js"></script>
+</body>
+</html>
