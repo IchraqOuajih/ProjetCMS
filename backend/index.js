@@ -22,16 +22,23 @@ app.use(cors({
     }
 }));
 
+// Pour parser le body JSON
 app.use(express.json());
 
-// Connexion à MongoDB (Mongoose v7+)
+// Connexion à MongoDB
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("MongoDB connecté ✅"))
     .catch(err => console.error("Erreur MongoDB :", err));
 
-// Routes
+// --- ROUTES ---
+// Route professionnels
 app.use("/api/professionals", require("./models/pro/pro.route"));
-app.use("/api/users", require("./models/user/user.route")); // <-- ajouté
+
+// Route utilisateurs
+app.use("/api/users", require("./models/user/user.route"));
+
+// Route login
+app.use("/api/login", require("./models/user/login.route")); // <-- ajoutée
 
 // Route test
 app.get("/", (req, res) => {
