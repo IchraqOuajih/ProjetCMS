@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,6 +152,11 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
 
     if(response.ok){
       const savedPro = await response.json();
+
+      // Stockage ID dans localStorage
+      localStorage.setItem("proId", savedPro._id);
+
+      // Redirection vers profil.html avec ID dans l'URL
       window.location.href = `profil.html?id=${savedPro._id}`;
     } else {
       const error = await response.json();

@@ -80,11 +80,12 @@ document.getElementById('viewReservationsBtn').addEventListener('click', () => {
 });
 
 // =================== Récupération infos pro ===================
-// URL de ton backend Heroku
+// URL backend Heroku
 const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
 
-// Récupération du proId depuis localStorage
-const proId = localStorage.getItem("proId");
+// Récupération du proId depuis URL
+const params = new URLSearchParams(window.location.search);
+const proId = params.get("id");
 
 if (proId) {
   fetch(`${BASE_URL}/api/professionals/${proId}`)
@@ -99,7 +100,7 @@ if (proId) {
     })
     .catch(err => console.error("Erreur fetch pro:", err));
 } else {
-  console.warn("Aucun proId trouvé dans localStorage !");
+  console.warn("Aucun proId trouvé dans l'URL !");
 }
 
 // =================== Calendrier disponibilités ===================
