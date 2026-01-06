@@ -10,6 +10,13 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="index.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -112,31 +119,96 @@ logoLink.addEventListener('click', (e) => {
 
 
 
-  <!-- ===== SERVICES ===== -->
-  <section class="services" id="services">
-    <h2>Services disponibles</h2>
+  
 
-   <div class="services-grid">
-  <div class="service-card">👨‍⚕️ Médecins</div>
-  <div class="service-card">💇 Coiffeurs</div>
-  <div class="service-card">🚗 Garages</div>
-  <div class="service-card">🏛 Administrations</div>
-  <div class="service-card">⚖️ Avocats</div>
-  <div class="service-card">🦷 Dentistes</div>
-  <div class="service-card">👁️ Opticiens</div>
-  <div class="service-card">💅 Esthéticien(ne)s</div>
-  <div class="service-card">🩺 Kinésithérapeutes</div>
-  <div class="service-card">🩻 Laboratoires</div>
-</div>
+    </section>
+<h2>   </h2>
+    <!-- ===== SERVICES ===== -->
+  <section class="services fade-in" id="services">
+  <h2>Services disponibles</h2>
 
-  </section>
+  <div class="floating-bubbles"></div>
 
+  <div class="services-grid">
 
+    <a href="medecins.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="stethoscope"></i>
+      <span>Médecins</span>
+    </a>
 
+    <a href="coiffeurs.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
+      <i data-lucide="scissors"></i>
+      <span>Coiffeurs</span>
+    </a>
 
+    <a href="garages.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+      <i data-lucide="car"></i>
+      <span>Garages</span>
+    </a>
 
+    <a href="administrations.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+      <i data-lucide="building-2"></i>
+      <span>Administrations</span>
+    </a>
 
+    <a href="avocats.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="scale"></i>
+      <span>Avocats</span>
+    </a>
 
+    <a href="dentistes.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="tooth"></i>
+      <span>Dentistes</span>
+    </a>
+
+    <a href="opticiens.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="eye"></i>
+      <span>Opticiens</span>
+    </a>
+
+    <a href="esthetique.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
+      <i data-lucide="sparkles"></i>
+      <span>Esthéticien(ne)s</span>
+    </a>
+
+    <a href="kinesitherapie.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
+      <i data-lucide="activity"></i>
+      <span>Kinésithérapeutes</span>
+    </a>
+
+    <a href="laboratoires.html" class="service-box"
+       data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80">
+      <i data-lucide="flask-conical"></i>
+      <span>Laboratoires</span>
+    </a>
+    <!--<a href="hotels.html" class="service-box" data-bg="https://images.unsplash.com/photo-1501117716987-c8e0a39720b0?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="hotel"></i>
+  <span>Hôtels</span>
+</a>
+
+<a href="restaurants.html" class="service-box" data-bg="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80">
+  <i data-lucide="coffee"></i>
+  <span>Restaurants</span>
+</a>
+-->
+
+    <a href="./postuler.htmly" class="service-box"
+      data-bg="https://images.unsplash.com/photo-1614851099511-773084f6911d?auto=format&fit=crop&w=900&q=80"> 
+      <i data-lucide="briefcase"></i> 
+      <span>Autres services</span> 
+    </a>
+
+  </div>
+</section>
 
 
 
@@ -172,6 +244,32 @@ logoLink.addEventListener('click', (e) => {
     <a href="inscription.html" class="btn-primary">Créer un compte</a>
   </section>
 
+   <section class="why-choose fade-in" id="why">
+  <h2>Pourquoi choisir Rendezy ?</h2>
+  
+  <div class="why-grid">
+    <div class="why-card">
+      <i data-lucide="clock"></i>
+      <h3>Gain de temps</h3>
+      <p>Réservez vos rendez-vous rapidement et évitez les attentes inutiles.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="map-pin"></i>
+      <h3>Services près de chez vous</h3>
+      <p>Trouvez facilement des professionnels dans votre ville.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="shield-check"></i>
+      <h3>Sécurité & Fiabilité</h3>
+      <p>Les professionnels sont vérifiés pour garantir des services de qualité.</p>
+    </div>
+    <div class="why-card">
+      <i data-lucide="user-plus"></i>
+      <h3>Facile à utiliser</h3>
+      <p>Interface intuitive et simple pour tout type d’utilisateur.</p>
+    </div>
+  </div>
+</section>
   <!-- ===== FOOTER ===== -->
 <footer class="footer" id="contact">
   <div class="footer-container">
@@ -184,10 +282,10 @@ logoLink.addEventListener('click', (e) => {
     <div class="footer-column">
       <h4>Services</h4>
       <ul>
-        <li><a href="#">Médecins</a></li>
-        <li><a href="#">Coiffeurs</a></li>
-        <li><a href="#">Garages</a></li>
-        <li><a href="#">Administrations</a></li>
+        <li><a href="./SMedecins.css">Médecins</a></li>
+        <li><a href="./SCoiffeurs">Coiffeurs</a></li>
+        <li><a href="./SGarages">Garages</a></li>
+        <li><a href="./SAdministrations">Administrations</a></li>
       </ul>
     </div>
 
@@ -202,15 +300,28 @@ logoLink.addEventListener('click', (e) => {
     </div>
 
     <div class="footer-column">
-      <h4>Contact</h4>
-      <p>Email : contact@rendezy.com</p>
-      <p>Téléphone : +212 6 12 34 56 78</p>
-      <div class="socials">
-        <a href="#">🔗</a>
-        <a href="#">🔗</a>
-        <a href="#">🔗</a>
-      </div>
-    </div>
+  <h4>Contact</h4>
+
+  <p>
+    Email :
+    <a href="mailto:mabrouki.maryem37@gmail.com@gmail.com">Rendezy@gmail.com</a>
+  </p>
+
+  <p>
+    WhatsApp :
+    <a href="https://wa.me/212642683395" target="_blank">
+      +212 6 42 68 33 95
+    </a>
+  </p>
+
+  
+   <p>
+     Instagram :
+    <a href="https://www.instagram.com/yam_ouki_?igsh=MXJjY3MwOWdlaHhhdA==" target="_blank" >
+      @Rendezy
+    </a>
+  </p>
+
   </div>
 </footer>
 
@@ -220,7 +331,7 @@ logoLink.addEventListener('click', (e) => {
 
 
 
-
+<script src="./Dashboard.js"></script>
 
 
  <script>
