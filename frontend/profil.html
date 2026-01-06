@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +58,7 @@
 </div>
 
 <script>
-// Navigation
+// =================== Navigation ===================
 const profileSection = document.getElementById('profileSection');
 const availabilitySection = document.getElementById('availabilitySection');
 const reservationsSection = document.getElementById('reservationsSection');
@@ -79,12 +79,15 @@ document.getElementById('viewReservationsBtn').addEventListener('click', () => {
   reservationsSection.style.display = 'block';
 });
 
-// Récupération id depuis URL
-const params = new URLSearchParams(window.location.search);
-const proId = params.get("id");
+// =================== Récupération infos pro ===================
+// URL de ton backend Heroku
+const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
+
+// Récupération du proId depuis localStorage
+const proId = localStorage.getItem("proId");
 
 if (proId) {
-  fetch(`http://localhost:3000/api/professionals/${proId}`)
+  fetch(`${BASE_URL}/api/professionals/${proId}`)
     .then(res => res.json())
     .then(pro => {
       document.getElementById('profileNameCard').innerText = pro.firstName + " " + pro.lastName;
@@ -94,10 +97,12 @@ if (proId) {
       document.getElementById('profileDesc').innerText = pro.description;
       document.getElementById('proName').innerText = pro.firstName + " " + pro.lastName;
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error("Erreur fetch pro:", err));
+} else {
+  console.warn("Aucun proId trouvé dans localStorage !");
 }
 
-// Calendrier disponibilités
+// =================== Calendrier disponibilités ===================
 const monthSelect = document.getElementById('monthSelect');
 const yearSelect = document.getElementById('yearSelect');
 const calendarEl = document.getElementById('calendar');
@@ -136,35 +141,4 @@ function renderCalendar(month, year) {
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   let start = firstDay === 0 ? 6 : firstDay - 1;
-  for (let i = 0; i < start; i++) calendarEl.appendChild(document.createElement('div'));
-  for (let i = 1; i <= daysInMonth; i++) {
-    const dayDiv = document.createElement('div');
-    dayDiv.className = 'day';
-    dayDiv.innerText = i;
-    if (selectedDays.includes(i)) dayDiv.classList.add('selected');
-    dayDiv.addEventListener('click', () => {
-      if (dayDiv.classList.contains('selected')) {
-        dayDiv.classList.remove('selected');
-        selectedDays = selectedDays.filter(d => d !== i);
-      } else {
-        dayDiv.classList.add('selected');
-        selectedDays.push(i);
-      }
-    });
-    calendarEl.appendChild(dayDiv);
-  }
-}
-
-monthSelect.addEventListener('change', e => { selectedMonth = parseInt(e.target.value); renderCalendar(selectedMonth, selectedYear); });
-yearSelect.addEventListener('change', e => { selectedYear = parseInt(e.target.value); renderCalendar(selectedMonth, selectedYear); });
-
-document.getElementById('saveAvailability').addEventListener('click', () => {
-  console.log("Jours disponibles:", selectedDays, "Mois:", selectedMonth + 1, "Année:", selectedYear);
-  alert("Disponibilités enregistrées !");
-});
-
-populateMonthYear();
-renderCalendar(selectedMonth, selectedYear);
-</script>
-</body>
-</html>
+  for (let i = 0; i < start; i++) calendarEl.appendChild(document.c
