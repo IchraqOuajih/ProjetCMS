@@ -47,7 +47,7 @@ function renderDoctors(data){
             <span class="badge ${doctor.available?"available":"unavailable"}">${doctor.available?"Disponible":"Indisponible"}</span>
           </div>
         </div>
-        <button class="fav-btn" title="Ajouter aux favoris">❤</button>
+        
       </div>
 
       <div class="doctor-actions">
@@ -55,11 +55,9 @@ function renderDoctors(data){
           ${doctor.days.map((d,i)=>`<button class="day ${i===0?'active':''}">${d}</button>`).join("")}
         </div>
         <div class="times-wrapper">
-          <button class="nav prev">‹</button>
           <div class="times">
             ${doctor.times.map((page,i)=>`<div class="times-page ${i===0?'active':''}">${page.slots.map(s=>`<button class="time ${s.status}">${s.time}</button>`).join("")}</div>`).join("")}
           </div>
-          <button class="nav next">›</button>
         </div>
       </div>
 
