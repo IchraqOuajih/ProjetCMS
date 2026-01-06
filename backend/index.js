@@ -25,24 +25,21 @@ app.use(cors({
 
 app.use(express.json());
 
-// Connexion à MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log("MongoDB connecté ✅"))
-.catch(err => console.error("Erreur MongoDB :", err));
+// 🔹 Connexion à MongoDB (corrigé : options obsolètes supprimées)
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log("MongoDB connecté ✅"))
+    .catch(err => console.error("Erreur MongoDB :", err));
 
-// Routes
+// 🔹 Routes
 app.use("/api/pros", require("./models/pro/pro.route"));
 app.use("/api/users", require("./models/user/user.route")); // si tu as aussi les users
 
-// Route test pour vérifier que le serveur fonctionne
+// 🔹 Route test pour vérifier que le serveur fonctionne
 app.get("/", (req, res) => {
     res.send("Backend Rendezy fonctionne ✅");
 });
 
-// Port dynamique pour Heroku
+// 🔹 Port dynamique pour Heroku
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT} 🚀`);

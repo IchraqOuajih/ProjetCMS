@@ -1,7 +1,7 @@
 const Pro = require("./pro.model");
 
 /**
- * 🔹 ROUTE DE TEST (TRÈS IMPORTANTE POUR POSTMAN)
+ * 🔹 ROUTE DE TEST
  * GET /api/pros/test
  */
 exports.test = (req, res) => {
@@ -63,7 +63,7 @@ exports.getProById = async (req, res) => {
 };
 
 /**
- * 🔹 UPDATE PRO (OPTIONNEL MAIS PRO)
+ * 🔹 UPDATE PRO
  * PUT /api/pros/:id
  */
 exports.updatePro = async (req, res) => {
@@ -86,7 +86,7 @@ exports.updatePro = async (req, res) => {
 };
 
 /**
- * 🔹 DELETE PRO (OPTIONNEL)
+ * 🔹 DELETE PRO
  * DELETE /api/pros/:id
  */
 exports.deletePro = async (req, res) => {
