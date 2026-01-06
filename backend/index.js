@@ -31,6 +31,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 app.use("/api/professionals", require("./models/pro/pro.route"));
+app.use("/api/users", require("./models/user/user.route")); // <-- ajouté
 
 // Route test
 app.get("/", (req, res) => {
