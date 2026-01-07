@@ -18,7 +18,7 @@
 
   .container { display:flex; height:calc(100vh - 70px); }
 
-  /* ====== Navigation ====== */
+ 
   nav {
     width:250px;
     background:#1f1f2e;
@@ -42,12 +42,12 @@
   }
   nav button:hover { background:#6a11cb; }
 
-  /* ====== Main ====== */
+
   main { flex:1; padding:30px; overflow-y:auto; }
 
   h2.section-title { margin-top:0; margin-bottom:15px; color:#6a11cb; }
 
-  /* ====== Profil ====== */
+
   .profile-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; }
   .profile-card {
     background:white;

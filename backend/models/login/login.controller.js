@@ -1,9 +1,9 @@
 // login.controller.js
-const User = require("../user/user.model"); // <-- modèle unique
+const User = require("../user/user.model"); 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Login
+
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
 

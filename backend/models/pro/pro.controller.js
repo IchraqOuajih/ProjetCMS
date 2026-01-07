@@ -8,14 +8,14 @@ exports.createPro = async (req, res) => {
         res.status(201).json({ message: "Professionnel créé avec succès ✅", pro: newPro });
     } catch (err) {
         console.error(err);
-        if (err.code === 11000) { // email unique
+        if (err.code === 11000) { 
             return res.status(400).json({ message: "Email déjà utilisé" });
         }
         res.status(500).json({ message: "Erreur serveur" });
     }
 };
 
-// Récupérer tous les professionnels
+
 exports.getAllPros = async (req, res) => {
     try {
         const pros = await Pro.find();
@@ -26,7 +26,6 @@ exports.getAllPros = async (req, res) => {
     }
 };
 
-// Récupérer un professionnel par son ID
 exports.getProById = async (req, res) => {
     try {
         const pro = await Pro.findById(req.params.id);

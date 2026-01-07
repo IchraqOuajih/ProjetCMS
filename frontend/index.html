@@ -6,14 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rendezy | Réservez tous vos rendez-vous</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
-  <!-- Lucide Icons -->
+  
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -21,16 +19,16 @@
 
 <body>
   <script>
-    // Sélection du logo
+    
     const logoLink = document.getElementById('logoLink');
 
     logoLink.addEventListener('click', (e) => {
-      e.preventDefault(); // empêche le href="#" de provoquer un saut brusque
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll vers le haut
+      e.preventDefault(); 
+      window.scrollTo({ top: 0, behavior: 'smooth' }); 
     });
   </script>
 
-  <!-- ===== NAVBAR ===== -->
+
   <header class="navbar">
     
     <div class="logo">
@@ -119,7 +117,6 @@
 
   <h2> </h2>
   
-    <!-- ===== SERVICES ===== -->
   <section class="services fade-in" id="services">
   <h2>Services disponibles</h2>
 
@@ -207,7 +204,7 @@
 </section>
 
 
-  <!-- ===== HOW IT WORKS ===== -->
+ 
   <section class="how-it-works" id="how">
     <h2>Comment ça marche ?</h2>
 
@@ -232,7 +229,7 @@
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
+
   <section class="cta">
     <h2>Gagnez du temps dès aujourd’hui</h2>
     <p>Créez votre compte gratuitement et gérez vos rendez-vous facilement.</p>
@@ -346,36 +343,34 @@ for (let i = 0; i < numBubbles; i++) {
       }
     }
 
-    // Bulles pour la section hero
+
     createBubbles('.hero .bubbles', 190, 8, 12, 1, 112);
 
-    // Bulles pour la section moving text (apparition immédiate)
     createBubbles('.moving-text-section .bubbles', 190, 8, 12, 1, 116);
   </script>
 
 
   <script>
     const container = document.getElementById('movingTextContainer');
-    let position = container.offsetWidth; // start from right
-    let speed = 1; // vitesse du texte
-
+    let position = container.offsetWidth;
+    let speed = 1; 
     function moveText() {
       position -= speed;
-      if (position < -container.scrollWidth / 2) { // reset quand tout est passé
+      if (position < -container.scrollWidth / 2) { 
         position = container.offsetWidth;
       }
       container.style.transform = `translateX(${position}px)`;
       requestAnimationFrame(moveText);
     }
 
-    // Dupliquer le contenu pour un effet de boucle continue
+
     container.innerHTML += container.innerHTML;
 
     moveText();
   </script>
 
   <script>
-    // Sélectionner toutes les cartes de services
+    
     const serviceCards = document.querySelectorAll('.services-grid .service-card');
 
     // Sélectionner la section "Que souhaitez-vous faire ?"

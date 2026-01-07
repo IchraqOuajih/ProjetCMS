@@ -33,12 +33,11 @@ app.use("/api/professionals", require("./models/pro/pro.route"));
 app.use("/api/users", require("./models/user/user.route")); 
 
 
-// Route test
 app.get("/", (req, res) => {
     res.send("Backend Rendezy fonctionne ✅");
 });
 
-// Port dynamique
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT} 🚀`);
