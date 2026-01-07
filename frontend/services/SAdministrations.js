@@ -155,7 +155,7 @@ function attachEvents(){
     btn.addEventListener("click",(e)=>{
       e.preventDefault();
       // Rediriger directement vers la page de rendez-vous
-      window.location.href = 'Rendez_vs.html';
+      window.location.href = 'tst.html';
     });
   });
 }

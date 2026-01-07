@@ -44,7 +44,7 @@ function redirectToAppointmentPage(appointmentData) {
     window.location.href = 'tst.html';
     
     // Alternative si besoin d'une redirection forcée
-    // window.location.replace('./Rendez_vs.html');
+    // window.location.replace('./tst.html');
   } catch (error) {
     console.error("Erreur lors de la redirection:", error);
     alert("Une erreur est survenue lors de la redirection. Veuillez réessayer.");

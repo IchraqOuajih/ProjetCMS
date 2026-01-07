@@ -164,7 +164,7 @@ function attachEvents(){
   document.querySelectorAll(".reserve-btn").forEach(btn=>{
     btn.addEventListener("click",()=>{
       // Rediriger directement vers la page de rendez-vous
-      window.location.href = 'Rendez_vs.html';
+      window.location.href = 'tst.html';
     });
   });
 }
