@@ -104,14 +104,18 @@ function attachEvents(){
     btn.addEventListener("click",(e)=>{
       e.preventDefault();
       btn.classList.toggle("fav-active");
-      if (typeof lucide !== 'undefined') {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      } else if (typeof lucide !== 'undefined' && lucide.replace) {
         lucide.replace();
       }
     });
   });
   
   // Initialiser Lucide Icons
-  if (typeof lucide !== 'undefined') {
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
+  } else if (typeof lucide !== 'undefined' && lucide.replace) {
     lucide.replace();
   }
 
@@ -148,34 +152,7 @@ function attachEvents(){
   // reserver
   document.querySelectorAll(".reserve-btn").forEach(btn=>{
     btn.addEventListener("click",()=>{
-      const card=btn.closest(".doctor-card");
-      const avocatName=card.querySelector("h3").textContent;
-      const selectedTime=card.querySelector(".time.active")?.textContent;
-      const selectedDay = card.querySelector(".days .day.active")?.textContent || "Aujourd'hui";
-      const price = card.querySelector(".price strong")?.textContent || "";
-      const speciality = card.querySelector(".doctor-info p")?.textContent.split("·")[0]?.trim() || "";
-      const city = card.querySelector(".doctor-info p")?.textContent.split("·")[1]?.trim() || "";
-      
-      if (!selectedTime || selectedTime === "Non sélectionné") {
-        alert("Veuillez sélectionner un créneau horaire disponible");
-        return;
-      }
-      
-      // Stocker les informations dans localStorage
-      const appointmentData = {
-        type: "Avocat",
-        name: avocatName,
-        speciality: speciality,
-        city: city,
-        day: selectedDay,
-        time: selectedTime,
-        price: price,
-        date: new Date().toISOString()
-      };
-      
-      localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
-      
-      // Rediriger vers la page de rendez-vous
+      // Rediriger directement vers la page de rendez-vous
       window.location.href = 'Rendez_vs.html';
     });
   });
@@ -201,4 +178,3 @@ function applyFilters(){
 
 // ===== INIT =====
 renderAvocats(avocats);
-

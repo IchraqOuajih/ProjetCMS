@@ -56,6 +56,7 @@ function renderAdministrations(data){
     article.className="doctor-card";
     article.dataset.cat=admin.category;
     article.dataset.availability=admin.availability;
+    article.dataset.id = admin.id;
 
     article.innerHTML=`
       <div class="doctor-main">
@@ -87,7 +88,7 @@ function renderAdministrations(data){
 
       <div class="doctor-footer">
         <span class="price">Service : <strong>Gratuit</strong></span>
-        <button class="reserve-btn"><span>Prendre rendez-vous</span></button>
+        <button herf="tst.html" class="reserve-btn"><span>Prendre rendez-vous</span></button>
       </div>
     `;
 
@@ -104,14 +105,18 @@ function attachEvents(){
     btn.addEventListener("click",(e)=>{
       e.preventDefault();
       btn.classList.toggle("fav-active");
-      if (typeof lucide !== 'undefined') {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      } else if (typeof lucide !== 'undefined' && lucide.replace) {
         lucide.replace();
       }
     });
   });
   
   // Initialiser Lucide Icons
-  if (typeof lucide !== 'undefined') {
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
+  } else if (typeof lucide !== 'undefined' && lucide.replace) {
     lucide.replace();
   }
 
@@ -147,34 +152,9 @@ function attachEvents(){
 
   // reserver
   document.querySelectorAll(".reserve-btn").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      const card=btn.closest(".doctor-card");
-      const adminName=card.querySelector("h3").textContent;
-      const selectedTime=card.querySelector(".time.active")?.textContent;
-      const selectedDay = card.querySelector(".days .day.active")?.textContent || "Aujourd'hui";
-      const speciality = card.querySelector(".doctor-info p")?.textContent.split("·")[0]?.trim() || "";
-      const city = card.querySelector(".doctor-info p")?.textContent.split("·")[1]?.trim() || "";
-      
-      if (!selectedTime || selectedTime === "Non sélectionné") {
-        alert("Veuillez sélectionner un créneau horaire disponible");
-        return;
-      }
-      
-      // Stocker les informations dans localStorage
-      const appointmentData = {
-        type: "Administration",
-        name: adminName,
-        speciality: speciality,
-        city: city,
-        day: selectedDay,
-        time: selectedTime,
-        price: "Gratuit",
-        date: new Date().toISOString()
-      };
-      
-      localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
-      
-      // Rediriger vers la page de rendez-vous
+    btn.addEventListener("click",(e)=>{
+      e.preventDefault();
+      // Rediriger directement vers la page de rendez-vous
       window.location.href = 'Rendez_vs.html';
     });
   });
@@ -200,4 +180,3 @@ function applyFilters(){
 
 // ===== INIT =====
 renderAdministrations(administrations);
-

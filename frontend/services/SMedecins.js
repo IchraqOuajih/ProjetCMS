@@ -1,55 +1,3 @@
-card.innerHTML += `
-  <button class="reserve-btn" onclick="openReservation('${doctor._id}')">
-    Réserver
-  </button>
-`;
-let selectedProId = null;
-
-function openReservation(proId) {
-  selectedProId = proId;
-  document.getElementById("reservationModal").style.display = "flex";
-}
-
-function closeReservation() {
-  document.getElementById("reservationModal").style.display = "none";
-}
-
-async function confirmReservation() {
-  const date = document.getElementById("resDate").value;
-  const time = document.getElementById("resTime").value;
-
-  if (!date || !time) {
-    alert("Veuillez choisir une date et une heure");
-    return;
-  }
-
-  try {
-    const res = await fetch("http://localhost:5000/api/reservations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        proId: selectedProId,
-        date,
-        time
-      })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      alert("Rendez-vous réservé ✅");
-      closeReservation();
-    } else {
-      alert(data.message);
-    }
-
-  } catch (err) {
-    alert("Erreur serveur");
-  }
-}
-
 const doctors = [
   {
     id: 1, name: "Dr Hamid EL HARTI", speciality: "Cardiologie", city: "Casablanca",
@@ -135,14 +83,18 @@ function attachEvents(){
       e.preventDefault();
       btn.classList.toggle("fav-active");
       // Initialiser Lucide Icons après le toggle
-      if (typeof lucide !== 'undefined') {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      } else if (typeof lucide !== 'undefined' && lucide.replace) {
         lucide.replace();
       }
     });
   });
   
   // Initialiser Lucide Icons
-  if (typeof lucide !== 'undefined') {
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
+  } else if (typeof lucide !== 'undefined' && lucide.replace) {
     lucide.replace();
   }
 
@@ -179,34 +131,7 @@ function attachEvents(){
   // reserver
   document.querySelectorAll(".reserve-btn").forEach(btn=>{
     btn.addEventListener("click",()=>{
-      const card=btn.closest(".doctor-card");
-      const doctorName=card.querySelector("h3").textContent;
-      const selectedTime=card.querySelector(".time.active")?.textContent;
-      const selectedDay = card.querySelector(".days .day.active")?.textContent || "Aujourd'hui";
-      const price = card.querySelector(".price strong")?.textContent || "";
-      const speciality = card.querySelector(".doctor-info p")?.textContent.split("·")[0]?.trim() || "";
-      const city = card.querySelector(".doctor-info p")?.textContent.split("·")[1]?.trim() || "";
-      
-      if (!selectedTime || selectedTime === "Non sélectionné") {
-        alert("Veuillez sélectionner un créneau horaire disponible");
-        return;
-      }
-      
-      // Stocker les informations dans localStorage
-      const appointmentData = {
-        type: "Médecin",
-        name: doctorName,
-        speciality: speciality,
-        city: city,
-        day: selectedDay,
-        time: selectedTime,
-        price: price,
-        date: new Date().toISOString()
-      };
-      
-      localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
-      
-      // Rediriger vers la page de rendez-vous
+      // Rediriger directement vers la page de rendez-vous
       window.location.href = './Rendez_vs.html';
     });
   });

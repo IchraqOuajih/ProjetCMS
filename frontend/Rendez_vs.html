@@ -167,10 +167,16 @@
     <div class="footer-column">
       <h4>Services</h4>
       <ul>
-        <li><a href="./SMedecins.css">Médecins</a></li>
-        <li><a href="./SCoiffeurs">Coiffeurs</a></li>
-        <li><a href="./SGarages">Garages</a></li>
-        <li><a href="./SAdministrations">Administrations</a></li>
+        <li><a href="./SMedecins.html">Médecins</a></li>
+        <li><a href="./SCoiffeurs.html">Coiffeurs</a></li>
+        <li><a href="./SGarages.html">Garages</a></li>
+        <li><a href="./SAdministrations.html">Administrations</a></li>
+        <li><a href="./SAvocats.html">Avocats</a></li>
+        <li><a href="./SDentistes.html">Dentistes</a></li>
+        <li><a href="./SOpticiens.html">Opticiens</a></li>
+        <li><a href="./SEstheticiens.html">Esthéticiens</a></li>
+        <li><a href="./SKinesitherapeutes.html">Kinésithérapeutes</a></li>
+        <li><a href="./SLaboratoires.html">Laboratoires</a></li>
       </ul>
     </div>
 
@@ -213,5 +219,107 @@
 
 <!-- JS -->
     <script src="./Dashboard.js"></script>
+    <script>
+      // Afficher le nouveau rendez-vous si disponible
+      document.addEventListener('DOMContentLoaded', function() {
+        const appointmentData = localStorage.getItem('appointmentData');
+        
+        if (appointmentData) {
+          try {
+            const data = JSON.parse(appointmentData);
+            const appointmentsContainer = document.getElementById('appointments');
+            
+            if (appointmentsContainer) {
+              // Créer une nouvelle carte de rendez-vous
+              const newAppointment = document.createElement('div');
+              newAppointment.className = 'appointment-card';
+              newAppointment.style.animation = 'fadeIn 0.5s ease';
+              newAppointment.style.border = '2px solid rgba(157, 78, 221, 0.5)';
+              newAppointment.style.boxShadow = '0 4px 15px rgba(157, 78, 221, 0.3)';
+              
+              // Formater le jour et l'heure
+              let dateDisplay = '';
+              if (data.day === 'Aujourd\'hui' || data.day === 'Aujourd\'hui') {
+                const today = new Date();
+                dateDisplay = today.toLocaleDateString('fr-FR', { 
+                  day: 'numeric', 
+                  month: 'long', 
+                  year: 'numeric' 
+                });
+              } else if (data.day === 'Demain') {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateDisplay = tomorrow.toLocaleDateString('fr-FR', { 
+                  day: 'numeric', 
+                  month: 'long', 
+                  year: 'numeric' 
+                });
+              } else {
+                const date = new Date(data.date);
+                dateDisplay = date.toLocaleDateString('fr-FR', { 
+                  day: 'numeric', 
+                  month: 'long', 
+                  year: 'numeric' 
+                });
+              }
+              
+              newAppointment.innerHTML = `
+                <div>
+                  <h4>${data.name}</h4>
+                  <p style="color: #9d4edd; font-weight: 600; margin: 5px 0;">${data.type}</p>
+                  <p>${data.speciality ? data.speciality + ' · ' : ''}${data.city}</p>
+                  <p style="margin-top: 8px;"><strong>${dateDisplay}</strong> - <strong>${data.time}</strong></p>
+                  ${data.price ? `<p style="margin-top: 5px; color: #b8b8d4;">Prix : <strong style="color: #9d4edd;">${data.price}</strong></p>` : ''}
+                </div>
+                <span class="status pending"><i data-lucide="clock"></i> En attente</span>
+              `;
+              
+              // Insérer en haut de la liste (après le h2)
+              const firstCard = appointmentsContainer.querySelector('.appointment-card');
+              if (firstCard) {
+                appointmentsContainer.insertBefore(newAppointment, firstCard);
+              } else {
+                // Si pas de carte existante, ajouter après le h2
+                appointmentsContainer.appendChild(newAppointment);
+              }
+              
+              // Initialiser les icônes Lucide
+              if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+              } else if (typeof lucide !== 'undefined' && lucide.replace) {
+                lucide.replace();
+              }
+              
+              // Ne pas supprimer les données immédiatement pour permettre le rechargement
+              // localStorage.removeItem('appointmentData');
+            }
+          } catch (e) {
+            console.error('Erreur lors de l\'affichage du rendez-vous:', e);
+          }
+        }
+      });
+      
+      // Animation fadeIn
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .appointment-card {
+          transition: all 0.3s ease;
+        }
+        .appointment-card:hover {
+          transform: translateY(-2px);
+        }
+      `;
+      document.head.appendChild(style);
+    </script>
 </body>
 </html>

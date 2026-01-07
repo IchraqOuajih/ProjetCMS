@@ -56,7 +56,12 @@ window.addEventListener("scroll", () => {
   }
 });
 
-lucide.createIcons();
+// Initialiser Lucide Icons
+if (typeof lucide !== 'undefined' && lucide.createIcons) {
+  lucide.createIcons();
+} else if (typeof lucide !== 'undefined' && lucide.replace) {
+  lucide.replace();
+}
 
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
@@ -133,20 +138,21 @@ document.querySelectorAll(".service-box").forEach(box => {
 });
 //back services 
 const bubblesContainer = document.querySelector(".floating-bubbles");
-const colors = ["#9d4edd", "#3b82f6"]; // couleurs du logo
-const numBubbles = 30; // nombre de bulles
+if (bubblesContainer) {
+  const colors = ["#9d4edd", "#3b82f6"]; // couleurs du logo
+  const numBubbles = 30; // nombre de bulles
 
-for (let i = 0; i < numBubbles; i++) {
-  const bubble = document.createElement("div");
-  const size = Math.random() * 15 + 10; // tailles différentes (10px à 25px)
-  bubble.style.width = `${size}px`;
-  bubble.style.height = `${size}px`;
-  bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
-  bubble.style.top = `${Math.random() * 100}%`;
-  bubble.style.left = `${Math.random() * 100}%`;
-  bubble.style.animationDuration = `${Math.random() * 15 + 10}s`; // vitesses différentes
-  bubble.style.animationDelay = `${Math.random() * 5}s`;
-  bubble.style.opacity = Math.random() * 0.5 + 0.3;
-  bubblesContainer.appendChild(bubble);
+  for (let i = 0; i < numBubbles; i++) {
+    const bubble = document.createElement("div");
+    const size = Math.random() * 15 + 10; // tailles différentes (10px à 25px)
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+    bubble.style.top = `${Math.random() * 100}%`;
+    bubble.style.left = `${Math.random() * 100}%`;
+    bubble.style.animationDuration = `${Math.random() * 15 + 10}s`; // vitesses différentes
+    bubble.style.animationDelay = `${Math.random() * 5}s`;
+    bubble.style.opacity = Math.random() * 0.5 + 0.3;
+    bubblesContainer.appendChild(bubble);
+  }
 }
-

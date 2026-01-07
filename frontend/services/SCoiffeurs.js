@@ -41,7 +41,7 @@ function redirectToAppointmentPage(appointmentData) {
     localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
     
     // Rediriger vers la page de rendez-vous
-    window.location.href = './Rendez_vs.html';
+    window.location.href = 'tst.html';
     
     // Alternative si besoin d'une redirection forcée
     // window.location.replace('./Rendez_vs.html');
@@ -112,14 +112,18 @@ function attachEvents(){
       e.preventDefault();
       btn.classList.toggle("fav-active");
       // Initialiser Lucide Icons après le toggle
-      if (typeof lucide !== 'undefined') {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      } else if (typeof lucide !== 'undefined' && lucide.replace) {
         lucide.replace();
       }
     });
   });
   
   // Initialiser Lucide Icons
-  if (typeof lucide !== 'undefined') {
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
+  } else if (typeof lucide !== 'undefined' && lucide.replace) {
     lucide.replace();
   }
 
@@ -157,42 +161,8 @@ function attachEvents(){
   document.querySelectorAll(".reserve-btn").forEach(btn=>{
     btn.addEventListener("click",(e)=>{
       e.preventDefault();
-      e.stopPropagation();
-      
-      const card = btn.closest(".doctor-card");
-      if(!card) {
-        console.error("Carte du coiffeur introuvable");
-        return;
-      }
-      
-      // Récupérer les informations du coiffeur
-      const coiffeurName = card.querySelector("h3")?.textContent || "";
-      const selectedTime = card.querySelector(".time.active")?.textContent || "";
-      const selectedDay = card.querySelector(".days .day.active")?.textContent || "Aujourd'hui";
-      const price = card.querySelector(".price strong")?.textContent || "";
-      const speciality = card.querySelector(".doctor-info p")?.textContent?.split("·")[0]?.trim() || "";
-      const city = card.querySelector(".doctor-info p")?.textContent?.split("·")[1]?.trim() || "";
-      
-      // Vérifier qu'un créneau horaire a été sélectionné
-      if (!selectedTime || selectedTime.trim() === "") {
-        alert("⚠️ Veuillez sélectionner un créneau horaire disponible avant de réserver");
-        return;
-      }
-      
-      // Préparer les données du rendez-vous
-      const appointmentData = {
-        type: "Coiffeur",
-        name: coiffeurName,
-        speciality: speciality,
-        city: city,
-        day: selectedDay,
-        time: selectedTime,
-        price: price,
-        date: new Date().toISOString()
-      };
-      
-      // Appeler la fonction de redirection
-      redirectToAppointmentPage(appointmentData);
+      // Rediriger directement vers la page de rendez-vous
+      window.location.href = 'tst.html';
     });
   });
 }
@@ -217,4 +187,3 @@ function applyFilters(){
 
 // ===== INIT =====
 renderCoiffeurs(coiffeurs);
-
