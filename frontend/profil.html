@@ -58,47 +58,53 @@
 </div>
 
 <script>
-// 🔹 Backend URL
 const BASE_URL = "https://rendezy-backend-04a0b37d0bd1.herokuapp.com";
 
-// 🔹 Récupération des données
 let proData = null;
 
-// Fonction pour charger les données depuis localStorage ou API
+// 🔹 Mettre à jour l'affichage du profil
+function updateProfileUI(data) {
+  if (!data) return;
+
+  const fullName = `${data.firstName || ''} ${data.lastName || ''}`.trim();
+  document.getElementById('profileNameCard').innerText = fullName || "Non spécifié";
+  document.getElementById('proName').innerText = fullName || "Profil";
+
+  document.getElementById('profileEmail').innerText = data.email || "Non spécifié";
+
+  const jobText = data.service ? `${data.service}${data.specialty ? " - " + data.specialty : ""}` : "Non spécifié";
+  document.getElementById('profileJob').innerText = jobText;
+
+  document.getElementById('profileLocation').innerText = data.location || "Non spécifié";
+
+  document.getElementById('profileDesc').innerText = data.description || "Aucune description";
+}
+
+// 🔹 Charger les données depuis localStorage ou API
 async function loadProfessionalData() {
-  // D'abord essayer depuis localStorage
   const storedData = localStorage.getItem("proData");
+  const proId = localStorage.getItem("proId");
+
   if (storedData) {
     proData = JSON.parse(storedData);
-    console.log("Données depuis localStorage:", proData);
     updateProfileUI(proData);
   }
-  
-  // Ensuite vérifier via API si proId existe
-  const proId = localStorage.getItem("proId");
-  
-  if (proId && !proData) {
+
+  if (proId) {
     try {
       const response = await fetch(`${BASE_URL}/api/professionals/${proId}`);
-      
       if (response.ok) {
         const apiData = await response.json();
-        console.log("Données depuis API:", apiData);
-        
-        // Stocker les données API dans localStorage
         localStorage.setItem("proData", JSON.stringify(apiData));
         proData = apiData;
         updateProfileUI(proData);
-      } else {
-        console.warn("API non disponible, utilisation des données locales");
-      }
-    } catch (error) {
-      console.error("Erreur API:", error);
-      // Continuer avec les données locales si API échoue
+      } 
+    } catch (err) {
+      console.error("Erreur API:", err);
     }
   }
-  
-  // Si aucune donnée n'est disponible
+
+  // Si aucune donnée dispo
   if (!proData) {
     document.getElementById('proName').innerText = "Veuillez vous connecter";
     document.getElementById('profileNameCard').innerText = "Données non disponibles";
@@ -109,32 +115,7 @@ async function loadProfessionalData() {
   }
 }
 
-// Fonction pour mettre à jour l'interface
-function updateProfileUI(data) {
-  if (!data) return;
-  
-  // Nom complet
-  const fullName = `${data.firstName || ''} ${data.lastName || ''}`.trim();
-  document.getElementById('profileNameCard').innerText = fullName || "Non spécifié";
-  document.getElementById('proName').innerText = fullName || "Profil";
-  
-  // Email
-  document.getElementById('profileEmail').innerText = data.email || "Non spécifié";
-  
-  // Métier et spécialité
-  const jobText = data.service ? 
-    `${data.service}${data.specialty ? " - " + data.specialty : ""}` : 
-    "Non spécifié";
-  document.getElementById('profileJob').innerText = jobText;
-  
-  // Ville
-  document.getElementById('profileLocation').innerText = data.location || "Non spécifié";
-  
-  // Description
-  document.getElementById('profileDesc').innerText = data.description || "Aucune description";
-}
-
-// Navigation
+// 🔹 Navigation
 const profileSection = document.getElementById('profileSection');
 const availabilitySection = document.getElementById('availabilitySection');
 const reservationsSection = document.getElementById('reservationsSection');
@@ -149,20 +130,15 @@ document.getElementById('manageAvailabilityBtn').addEventListener('click', () =>
   profileSection.style.display = 'none';
   availabilitySection.style.display = 'block';
   reservationsSection.style.display = 'none';
-  loadAvailability(); // Charger les disponibilités si besoin
 });
 
 document.getElementById('viewReservationsBtn').addEventListener('click', () => {
   profileSection.style.display = 'none';
   availabilitySection.style.display = 'none';
   reservationsSection.style.display = 'block';
-  loadReservations(); // Charger les réservations si besoin
 });
 
-// Charger les données au démarrage
-document.addEventListener('DOMContentLoaded', loadProfessionalData);
-
-// Calendrier disponibilités
+// 🔹 Calendrier disponibilités (inchangé)
 const monthSelect = document.getElementById('monthSelect');
 const yearSelect = document.getElementById('yearSelect');
 const calendarEl = document.getElementById('calendar');
@@ -173,127 +149,73 @@ let selectedYear = today.getFullYear();
 let selectedDays = [];
 
 function populateMonthYear() {
-  // Nettoyer les selects
   monthSelect.innerHTML = '';
   yearSelect.innerHTML = '';
-  
-  // Remplir les mois
   months.forEach((m, i) => {
     const opt = document.createElement('option');
     opt.value = i;
     opt.text = m;
-    if (i === selectedMonth) opt.selected = true;
+    if(i===selectedMonth) opt.selected=true;
     monthSelect.appendChild(opt);
   });
-  
-  // Remplir les années (5 ans à partir de l'année actuelle)
-  for (let y = today.getFullYear(); y <= today.getFullYear() + 5; y++) {
+  for(let y=today.getFullYear(); y<=today.getFullYear()+5; y++){
     const opt = document.createElement('option');
-    opt.value = y;
-    opt.text = y;
-    if (y === selectedYear) opt.selected = true;
+    opt.value=y;
+    opt.text=y;
+    if(y===selectedYear) opt.selected=true;
     yearSelect.appendChild(opt);
   }
 }
 
 function renderCalendar(month, year) {
-  calendarEl.innerHTML = '';
-  
-  // Ajouter les jours de la semaine
-  const weekdays = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
-  weekdays.forEach(d => {
-    const wd = document.createElement('div');
-    wd.className = 'weekday';
-    wd.innerText = d;
+  calendarEl.innerHTML='';
+  const weekdays=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+  weekdays.forEach(d=>{
+    const wd=document.createElement('div');
+    wd.className='weekday';
+    wd.innerText=d;
     calendarEl.appendChild(wd);
   });
-  
-  // Calculer le premier jour du mois
   const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
-  // Ajuster pour commencer le lundi
-  let start = firstDay === 0 ? 6 : firstDay - 1;
-  
-  // Cases vides avant le premier jour
-  for (let i = 0; i < start; i++) {
-    calendarEl.appendChild(document.createElement('div'));
-  }
-  
-  // Cases des jours du mois
-  for (let i = 1; i <= daysInMonth; i++) {
-    const dayDiv = document.createElement('div');
-    dayDiv.className = 'day';
-    dayDiv.innerText = i;
-    
-    // Vérifier si le jour est sélectionné
-    if (selectedDays.includes(i)) {
-      dayDiv.classList.add('selected');
-    }
-    
-    // Gérer le clic sur un jour
-    dayDiv.addEventListener('click', () => {
-      if (dayDiv.classList.contains('selected')) {
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  let start = firstDay===0?6:firstDay-1;
+  for(let i=0;i<start;i++) calendarEl.appendChild(document.createElement('div'));
+  for(let i=1;i<=daysInMonth;i++){
+    const dayDiv=document.createElement('div');
+    dayDiv.className='day';
+    dayDiv.innerText=i;
+    if(selectedDays.includes(i)) dayDiv.classList.add('selected');
+    dayDiv.addEventListener('click',()=>{
+      if(dayDiv.classList.contains('selected')){
         dayDiv.classList.remove('selected');
-        selectedDays = selectedDays.filter(d => d !== i);
+        selectedDays=selectedDays.filter(d=>d!==i);
       } else {
         dayDiv.classList.add('selected');
         selectedDays.push(i);
       }
     });
-    
     calendarEl.appendChild(dayDiv);
   }
 }
 
-// Événements pour les changements de mois/année
-monthSelect.addEventListener('change', e => {
-  selectedMonth = parseInt(e.target.value);
+monthSelect.addEventListener('change', e=>{
+  selectedMonth=parseInt(e.target.value);
   renderCalendar(selectedMonth, selectedYear);
 });
 
-yearSelect.addEventListener('change', e => {
-  selectedYear = parseInt(e.target.value);
+yearSelect.addEventListener('change', e=>{
+  selectedYear=parseInt(e.target.value);
   renderCalendar(selectedMonth, selectedYear);
 });
 
-// Sauvegarder les disponibilités
-document.getElementById('saveAvailability').addEventListener('click', () => {
+document.getElementById('saveAvailability').addEventListener('click', ()=>{
   const proId = localStorage.getItem("proId");
-  
-  if (!proId) {
-    alert("Veuillez d'abord créer un profil");
-    return;
-  }
-  
-  // Préparer les données
-  const availabilityData = {
-    professionalId: proId,
-    month: selectedMonth + 1, // +1 car les mois commencent à 0 en JS
-    year: selectedYear,
-    availableDays: selectedDays
-  };
-  
-  console.log("Disponibilités à enregistrer:", availabilityData);
-  
-  // Ici, vous pouvez envoyer les données au backend
-  // fetch(`${BASE_URL}/api/availability`, { ... })
-  
+  if(!proId) return alert("Veuillez d'abord créer un profil");
   alert(`Disponibilités enregistrées pour ${selectedDays.length} jour(s) !`);
 });
 
-// Fonctions pour charger les disponibilités et réservations
-function loadAvailability() {
-  // À implémenter: charger depuis l'API
-  console.log("Chargement des disponibilités...");
-}
-
-function loadReservations() {
-  // À implémenter: charger depuis l'API
-  console.log("Chargement des réservations...");
-}
-
-// Initialiser le calendrier
+// Charger les données au démarrage
+document.addEventListener('DOMContentLoaded', loadProfessionalData);
 populateMonthYear();
 renderCalendar(selectedMonth, selectedYear);
 </script>
