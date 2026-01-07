@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const proSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  location: { type: String, required: true },
-  service: { type: String, required: true },
+  firstName: { type: String },  // enlever `required: true`
+  lastName: { type: String },
+  email: { type: String, unique: true }, // tu peux laisser unique pour éviter les doublons
+  password: { type: String },
+  location: { type: String },
+  service: { type: String },
   specialty: { type: String },
   description: { type: String },
   createdAt: { type: Date, default: Date.now },
