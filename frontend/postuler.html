@@ -164,13 +164,16 @@ document.getElementById("proForm").addEventListener("submit", async e=>{
 
     if(response.ok){
       const savedPro = await response.json();
-      
-      console.log("Réponse API:", savedPro);
-      
+
+      if(!savedPro._id){
+        alert("Erreur : l'utilisateur n'a pas été sauvegardé correctement.");
+        return;
+      }
+
       // Stocker l'ID ET toutes les données dans localStorage
       localStorage.setItem("proId", savedPro._id);
       localStorage.setItem("proData", JSON.stringify(savedPro));
-      
+
       // Redirection vers profil.html
       window.location.href = "profil.html";
     } else {
