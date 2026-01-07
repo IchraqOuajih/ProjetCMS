@@ -44,10 +44,10 @@
       <a href="#how">Comment ça marche ?</a>
       <a href="#contact">Contact</a>
       <a href="inscription.html" class="btn-primary">S’inscrire</a>
+      <a href="login.html" class="btn-primary">se connecter</a>
     </nav>
   </header>
 
-  <!-- ===== HERO SECTION ===== -->
   <section class="hero">
     <div class="bubbles"></div>
 
@@ -127,61 +127,61 @@
 
   <div class="services-grid">
 
-    <a href="./services/SMedecins.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80">
       <i data-lucide="stethoscope"></i>
       <span>Médecins</span>
     </a>
 
-    <a href="services/SCoiffeurs.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1600948836101-f9ffda59d250">
       <i data-lucide="scissors"></i>
       <span>Coiffeurs</span>
     </a>
 
-    <a href="services/SGarages.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
       <i data-lucide="car"></i>
       <span>Garages</span>
     </a>
 
-    <a href="services/SAdministrations.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
       <i data-lucide="building-2"></i>
       <span>Administrations</span>
     </a>
 
-    <a href="services/SAvocats.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=900&q=80">
       <i data-lucide="scale"></i>
       <span>Avocats</span>
     </a>
 
-    <a href="services/SDentistes.css" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80">
       <i data-lucide="tooth"></i>
       <span>Dentistes</span>
     </a>
 
-    <a href="services/SOpticiens.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
       <i data-lucide="eye"></i>
       <span>Opticiens</span>
     </a>
 
-    <a href="services/SEstheticiens.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9">
       <i data-lucide="sparkles"></i>
       <span>Esthéticien(ne)s</span>
     </a>
 
-    <a href="services/SKinesitherapeutes.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=80">
       <i data-lucide="activity"></i>
       <span>Kinésithérapeutes</span>
     </a>
 
-    <a href="services/SLaboratoires.html" class="service-box"
+    <a href="#" class="service-box"
        data-bg="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80">
       <i data-lucide="flask-conical"></i>
       <span>Laboratoires</span>
@@ -239,32 +239,7 @@
     <a href="inscription.html" class="btn-primary">Créer un compte</a>
   </section>
 
-  <section class="why-choose fade-in" id="why">
-    <h2>Pourquoi choisir Rendezy ?</h2>
-
-    <div class="why-grid">
-      <div class="why-card">
-        <i data-lucide="clock"></i>
-        <h3>Gain de temps</h3>
-        <p>Réservez vos rendez-vous rapidement et évitez les attentes inutiles.</p>
-      </div>
-      <div class="why-card">
-        <i data-lucide="map-pin"></i>
-        <h3>Services près de chez vous</h3>
-        <p>Trouvez facilement des professionnels dans votre ville.</p>
-      </div>
-      <div class="why-card">
-        <i data-lucide="shield-check"></i>
-        <h3>Sécurité & Fiabilité</h3>
-        <p>Les professionnels sont vérifiés pour garantir des services de qualité.</p>
-      </div>
-      <div class="why-card">
-        <i data-lucide="user-plus"></i>
-        <h3>Facile à utiliser</h3>
-        <p>Interface intuitive et simple pour tout type d’utilisateur.</p>
-      </div>
-    </div>
-  </section>
+ 
   <!-- ===== FOOTER ===== -->
   <footer class="footer" id="contact">
     <div class="footer-container">
@@ -324,19 +299,19 @@
 
 
   <script >
-    // serv 
+    
 document.querySelectorAll(".service-box").forEach(box => {
   const img = box.getAttribute("data-bg");
   box.style.setProperty("--bg", `url(${img})`);
 });
-//back services 
+
 const bubblesContainer = document.querySelector(".floating-bubbles");
-const colors = ["#9d4edd", "#3b82f6"]; // couleurs du logo
-const numBubbles = 30; // nombre de bulles
+const colors = ["#9d4edd", "#3b82f6"]; 
+const numBubbles = 30; 
 
 for (let i = 0; i < numBubbles; i++) {
   const bubble = document.createElement("div");
-  const size = Math.random() * 15 + 10; // tailles différentes (10px à 25px)
+  const size = Math.random() * 15 + 10; 
   bubble.style.width = `${size}px`;
   bubble.style.height = `${size}px`;
   bubble.style.background = colors[Math.floor(Math.random() * colors.length)];

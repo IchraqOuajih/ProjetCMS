@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 
-// CORS: autoriser le front local ET Vercel
+
 const allowedOrigins = [
     "http://127.0.0.1:5500",             
     "https://projet-cms-kgik.vercel.app"
@@ -24,14 +24,13 @@ app.use(cors({
 
 app.use(express.json());
 
-// Connexion à MongoDB (Mongoose v7+)
+
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("MongoDB connecté ✅"))
     .catch(err => console.error("Erreur MongoDB :", err));
 
-// Routes
 app.use("/api/professionals", require("./models/pro/pro.route"));
-app.use("/api/users", require("./models/user/user.route")); // <-- ajouté
+app.use("/api/users", require("./models/user/user.route")); 
 
 
 // Route test
